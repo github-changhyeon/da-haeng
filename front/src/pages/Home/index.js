@@ -15,6 +15,13 @@ export default function Home() {
       >
         Go webgl Test
       </button>
+      <button
+        onClick={() => {
+          history.push(RouterInfo.PAGE_URLS.TEST2);
+        }}
+      >
+        webgl connect test
+      </button>
     </div>
   );
 }
