@@ -4,6 +4,12 @@
 
 
 
+<br />
+
+<br />
+
+
+
 ## 🧐 팀 소개
 
 ### 💡 아하텍
@@ -14,6 +20,10 @@
 | :------: | ---------------- | ---------- | ---------- | ------ | ---------- |
 | Profile  | ![p1](README.assets/p1.jpg) | ![p2](README.assets/p2.jpg) | ![p3](README.assets/p3.jpg) | ![p4](README.assets/p4.jpg) | ![p5](README.assets/p5.jpg) |
 | Position | 팀장<br />백엔드 | 프론트엔드 | 프론트엔드 | 백엔드 | 프론트엔드 |
+
+<br />
+
+<br />
 
 
 
@@ -30,6 +40,10 @@
 ### 🎮 Etc
 
 ![SpringBoot](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
+
+<br />
+
+<br />
 
 
 
@@ -52,12 +66,11 @@
 
   
 
-### 
+<br />
 
-
+<br />
 
 ## 🖼 와이어프레임
 
-![wireframe](README.assets/wireframe.png)
+![wireframe](README.assets/wireframe.PNG)
 
-### 
