@@ -3,7 +3,6 @@
 - 메타버스를 활용하여 다같이 더불어 사는 행복한 세상을 만들기 위한 특수학급 체험학습 플랫폼 `다행` 입니다.
 
 
-
 <br />
 
 <br />
@@ -21,10 +20,10 @@
 | Profile  | ![p1](README.assets/p1.jpg) | ![p2](README.assets/p2.jpg) | ![p3](README.assets/p3.jpg) | ![p4](README.assets/p4.jpg) | ![p5](README.assets/p5.jpg) |
 | Position | 팀장<br />백엔드 | 프론트엔드 | 프론트엔드 | 백엔드 | 프론트엔드 |
 
-<br />
 
 <br />
 
+<br />
 
 
 ## 🔧 기술 스택
@@ -40,6 +39,7 @@
 ### 🎮 Etc
 
 ![SpringBoot](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
+
 
 <br />
 
@@ -65,6 +65,7 @@
 - 학생 개인의 과제 수행 진척도를 통해 개인 맞춤형 학습을 제공할 수 있도록 함
 
   
+
 
 <br />
 
