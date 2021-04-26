@@ -3,21 +3,33 @@ package com.aha.dahaeng.user.domain;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
+/**
+ * com.aha.dahaeng.user.domain
+ * Student.java
+ * @date    2021-04-26 오후 2:11
+ * @author  이주희
+ *
+ * @변경이력
+ **/
 
 @Entity
 @Getter
 @DiscriminatorValue("S")
 public class Student extends User {
 
-    private Long adminId;
 
-    public Student(){}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+    public Student() {
+    }
 
     @Builder
-    public Student(Long id, String name, Long adminId) {
-        super(id, name, UserRole.ROLE_STUDENT);
-        this.adminId = adminId;
+    public Student(String loginId, String password,String name, Admin admin) {
+        super(loginId, password, name, UserRole.ROLE_ADMIN);
+        this.admin = admin;
     }
 }
