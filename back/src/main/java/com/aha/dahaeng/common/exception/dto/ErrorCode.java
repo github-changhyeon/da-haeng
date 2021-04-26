@@ -11,7 +11,8 @@ package com.aha.dahaeng.common.exception.dto;
 
 public enum ErrorCode {
     USER_NOT_FOUND(400,"US_001", "해당 사용자를 찾을 수 없습니다."),
-    CODE_NOT_FOUND(400,"US_002", "해당 선생님을 찾을 수 없습니다.");
+    CODE_NOT_FOUND(400,"US_002", "해당 선생님을 찾을 수 없습니다."),
+    PASSWORD_NOT_MATCH(400, "US_003", "비밀 번호가 일치하지 않습니다.");
 
     private final String code;
     private final String message;
