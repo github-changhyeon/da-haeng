@@ -1,7 +1,7 @@
-import { React } from 'react';
-import styles from './index.module.css';
-import { useHistory } from 'react-router-dom';
-import RouterInfo from 'src/constants/RouterInfo';
+import { React } from "react";
+import styles from "./index.module.css";
+import { useHistory } from "react-router-dom";
+import RouterInfo from "src/constants/RouterInfo";
 
 export default function Home() {
   const history = useHistory();
@@ -14,7 +14,7 @@ export default function Home() {
           history.push(RouterInfo.PAGE_URLS.TEST);
         }}
       >
-        Go webgl Test
+        Multi Test
       </button>
       <button
         onClick={() => {
