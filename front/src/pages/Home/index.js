@@ -1,6 +1,7 @@
-import { React } from "react";
-import { useHistory } from "react-router-dom";
-import RouterInfo from "src/constants/RouterInfo";
+import { React } from 'react';
+import styles from './index.module.css';
+import { useHistory } from 'react-router-dom';
+import RouterInfo from 'src/constants/RouterInfo';
 
 export default function Home() {
   const history = useHistory();
@@ -21,6 +22,13 @@ export default function Home() {
         }}
       >
         webgl connect test
+      </button>
+      <button
+        onClick={() => {
+          history.push(RouterInfo.PAGE_URLS.TEST3);
+        }}
+      >
+        components
       </button>
     </div>
   );
