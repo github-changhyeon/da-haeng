@@ -1,8 +1,16 @@
 const RouterInfo = {
   PAGE_URLS: {
-    HOME: "/",
-    TEST: "/test",
-    TEST2: "/test2",
+    TEST: '/test',
+    TEST2: '/test2',
+    TEST3: '/test3',
+    HOME: '/',
+    LOGIN: '/login',
+    MAIN: '/main',
+    MYPAGE: '/mypage/:uid',
+    TUTORIAL: '/tutorial/:category',
+    EXERCISE: '/exercise/:category',
+    PRACTICE: '/practice/:category/:uid',
+    SIGNUP: '/signup',
   },
 };
 
