@@ -3,12 +3,15 @@ package com.aha.dahaeng.user.service;
 import com.aha.dahaeng.common.exception.NotFoundException;
 import com.aha.dahaeng.common.exception.dto.ErrorCode;
 import com.aha.dahaeng.user.domain.User;
+import com.aha.dahaeng.user.dto.request.SignUpRequest;
 import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 /**
  * com.aha.dahaeng.user.service
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Service;
  **/
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
@@ -30,7 +34,8 @@ public class UserService implements UserDetailsService {
        return findUser(username);
     }
 
-    public User createUser(){
+    public User createUser(SignUpRequest signUpRequest){
+//        User signUpUser = User.builder();
         return null;
     }
 
