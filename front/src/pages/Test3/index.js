@@ -4,11 +4,12 @@ import HomeComp from 'src/components/HomeComp/HomeComp';
 import ProfileComp from 'src/components/ProfileComp/ProfileComp';
 import StepComp from 'src/components/StepComp/StepComp';
 import UserComp from 'src/components/UserComp/UserComp';
+import Header from 'src/components/Header/Header';
 
 export default function Test3() {
   return (
     <div>
-      <h1>Components Test Page</h1>
+      <Header />
       <CardComp type="burger_tutorial" />
       <CardComp type="burger_exercise" />
       <CardComp type="burger_practice" />

@@ -10,6 +10,7 @@ const RouterInfo = {
     TUTORIAL: '/tutorial/:category',
     EXERCISE: '/exercise/:category',
     PRACTICE: '/practice/:category/:uid',
+    PLAZA: '/plaza',
     SIGNUP: '/signup',
   },
 };
