@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +30,14 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
 
     @ApiOperation(value = "회원 가입")
     @ApiResponse(code = 201, message = "created")
+    @PostMapping("")
     public ResponseEntity<String> signUp(final @Valid @RequestBody SignUpRequest signUpRequest){
-
+        userService.createUser(signUpRequest);
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 }

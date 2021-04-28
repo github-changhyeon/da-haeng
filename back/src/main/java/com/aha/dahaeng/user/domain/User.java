@@ -58,7 +58,6 @@ public class User implements UserDetails, JwtDetails {
     @Column(name = "pin_code")
     private Long pinCode;
 
-
     @CreationTimestamp
     private LocalDateTime createDate;
 
@@ -68,7 +67,6 @@ public class User implements UserDetails, JwtDetails {
     public User() {
     }
 
-    @Builder
     public User(String loginId, String password, String name, UserRole role) {
         this.loginId = loginId;
         this.password = password;

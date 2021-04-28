@@ -28,8 +28,12 @@ public class Student extends User {
     }
 
     @Builder
-    public Student(String loginId, String password,String name, Admin admin) {
-        super(loginId, password, name, UserRole.ROLE_ADMIN);
+    public Student(String loginId, String password, String name, Admin admin) {
+        super(loginId, password, name, UserRole.ROLE_STUDENT);
         this.admin = admin;
+
+        if(this.admin != null){
+            admin.addStudent(this);
+        }
     }
 }
