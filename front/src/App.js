@@ -14,6 +14,7 @@ import {
   Tutorial,
   Exercise,
   Practice,
+  Plaza,
   MyPage,
 } from './pages';
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path={RouterInfo.PAGE_URLS.TUTORIAL} component={Tutorial} />
           <Route path={RouterInfo.PAGE_URLS.EXERCISE} component={Exercise} />
           <Route path={RouterInfo.PAGE_URLS.PRACTICE} component={Practice} />
+          <Route path={RouterInfo.PAGE_URLS.PLAZA} component={Plaza} />
           <Route path={RouterInfo.PAGE_URLS.MYPAGE} component={MyPage} />
           <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
           <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />

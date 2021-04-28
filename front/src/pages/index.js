@@ -13,4 +13,6 @@ export { default as Tutorial } from './Tutorial';
 export { default as Exercise } from './Exercise';
 export { default as Practice } from './Practice';
 
+export { default as Plaza } from './Plaza';
+
 export { default as MyPage } from './MyPage';
