@@ -1,7 +1,11 @@
 package com.aha.dahaeng.user.controller;
 
 
+import com.aha.dahaeng.common.annotation.CurrentUser;
+import com.aha.dahaeng.user.domain.User;
 import com.aha.dahaeng.user.dto.request.SignUpRequest;
+import com.aha.dahaeng.user.dto.response.AdminResponse;
+import com.aha.dahaeng.user.dto.response.UserResponse;
 import com.aha.dahaeng.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -9,10 +13,8 @@ import io.swagger.annotations.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -40,4 +42,18 @@ public class UserController {
         userService.createUser(signUpRequest);
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
+
+    @ApiOperation(value = "사용자 정보 조회")
+    @GetMapping("")
+    public ResponseEntity<UserResponse> getUserInfo(@ApiIgnore @CurrentUser User user){
+        UserResponse userResponse = userService.getUserInfo(user);
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    }
+
+//    @ApiOperation(value = "마이페이지 (선생님)")
+//    @GetMapping("/admin/{loginId}")
+//    public ResponseEntity<AdminResponse> getAdminInfo(@PathVariable String loginId){
+//        return null;
+//    }
+
 }

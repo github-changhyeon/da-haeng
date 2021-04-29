@@ -5,8 +5,8 @@ import com.aha.dahaeng.common.exception.dto.ErrorCode;
 import com.aha.dahaeng.user.domain.Admin;
 import com.aha.dahaeng.user.domain.Student;
 import com.aha.dahaeng.user.domain.User;
-import com.aha.dahaeng.user.domain.UserRole;
 import com.aha.dahaeng.user.dto.request.SignUpRequest;
+import com.aha.dahaeng.user.dto.response.UserResponse;
 import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 /**
  * com.aha.dahaeng.user.service
@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
        return findUser(username);
     }
 
-    public Long createUser(SignUpRequest signUpRequest){
+    public Long createUser(SignUpRequest signUpRequest){ //회원가입
         Long userId = 0L;
 
         if(signUpRequest.getRole().equals("ROLE_ADMIN")){ //선생님이면
@@ -77,6 +77,12 @@ public class UserService implements UserDetailsService {
         }
 
         return userId;
+    }
+
+    @Transactional(readOnly = true)
+    public UserResponse getUserInfo(User user){
+        User userInfo = findUser(user.getLoginId());
+        return UserResponse.of(userInfo);
     }
 
     private User findUser(String loginId) {
