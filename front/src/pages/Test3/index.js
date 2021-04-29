@@ -43,7 +43,9 @@ export default function Test3() {
         colorDeep="#f73a78"
       />
 
-      <ProfileComp />
+      <ProfileComp role="ROLE_ADMIN" />
+      <ProfileComp role="ROLE_STUDENT" />
+
       <StepComp />
     </div>
   );
