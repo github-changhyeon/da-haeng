@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Button.module.css';
+import styles from './ButtonComp.module.css';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory, generatePath } from 'react-router';
 import $ from 'jquery';
 
-export default function Button({ onClickFunc, text, width, color, colorDeep }) {
+export default function ButtonComp({ onClickFunc, text, width, color, colorDeep }) {
   const history = useHistory();
 
   // color : #ce89c8
