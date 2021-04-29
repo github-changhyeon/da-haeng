@@ -16,7 +16,9 @@
 | Profile  | ![p1](README.assets/p1.jpg) | ![p2](README.assets/p2.jpg) | ![p3](README.assets/p3.jpg) | ![p4](README.assets/p4.jpg) | ![p5](README.assets/p5.jpg) |
 | Position | 팀장<br />백엔드 | 프론트엔드 | 프론트엔드 | 백엔드 | 프론트엔드 |
 
+
 <br/> <br/>
+
 
 ## 🔧 기술 스택
 
@@ -32,7 +34,9 @@
 
 ![SpringBoot](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
 
+
 <br/> <br/>
+
 
 ## 📜 주요 기능
 
@@ -53,15 +57,17 @@
 
   
 
+
 <br/> <br/>
 <br/> <br/>
-
-
 
 
 ## 🖼 아하텍의 모든 것
 [위키(노션) 바로가기](https://www.notion.so/686c4135a4934eab92ae303e37fa8aec)
-
 [Figma 바로가기](https://www.figma.com/file/mL2XwZm10WTW8f47E9eA9o/%EC%95%84%ED%95%98%ED%85%8D?node-id=0%3A1)
 
-### 
+![wireframe](README.assets/wireframe.PNG)
+
+
+
+

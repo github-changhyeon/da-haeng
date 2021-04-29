@@ -21,7 +21,7 @@ import java.util.List;
 @DiscriminatorValue("A")
 public class Admin extends User {
 
-    private String code;
+    private Long pinCode;
 
     @OneToMany(mappedBy = "admin", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
@@ -30,8 +30,16 @@ public class Admin extends User {
     }
 
     @Builder
-    public Admin(String loginId, String password, String name, String code) {
+    public Admin(String loginId, String password, String name, Long pinCode) {
         super(loginId, password, name, UserRole.ROLE_ADMIN);
-        this.code = code;
+        this.pinCode = pinCode;
+    }
+
+    public void setPinCode(Long pinCode){
+        this.pinCode = pinCode;
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
     }
 }
