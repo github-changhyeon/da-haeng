@@ -2,6 +2,7 @@ package com.aha.dahaeng.common.security.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.DatatypeConverter;
 import java.util.Date;
@@ -19,12 +20,15 @@ import java.util.Map;
 
 public class JwtProvider {
 
+    @Autowired
+    private JwtProperties jwtProperties;
+
     public String createAccessToken(JwtDetails principal) {
-        return createToken(principal, JwtProperties.EXPIRATION_TIME);
+        return createToken(principal, jwtProperties.getExpirationTime());
     }
 
     public String createRefreshToken(JwtDetails principal) {
-        return createToken(principal, JwtProperties.REFRESH_EXPIRATION_TIME);
+        return createToken(principal, jwtProperties.getExpirationTime());
     }
 
     public Map<String, String> createHeader(JwtDetails principal) {
@@ -32,8 +36,8 @@ public class JwtProvider {
         String refreshToken = createRefreshToken(principal);
 
         Map<String, String> header = new HashMap<String, String>();
-        header.put(JwtProperties.HEADER_STRING, token);
-        header.put(JwtProperties.REFRESH_HEADER_STRING, refreshToken);
+        header.put(jwtProperties.getHeader(), token);
+        header.put(jwtProperties.getRefreshHeader(), refreshToken);
 
         return header;
     }
@@ -75,12 +79,12 @@ public class JwtProvider {
                 .setClaims(principal.getClaims())
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, JwtProperties.SECRET)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
     }
 
     private Claims parseClaims(String token) {
-        return Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(JwtProperties.SECRET))
+        return Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(jwtProperties.getSecret()))
                 .parseClaimsJws(token).getBody();
     }
 
