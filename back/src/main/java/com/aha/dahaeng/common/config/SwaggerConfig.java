@@ -1,6 +1,5 @@
 package com.aha.dahaeng.common.config;
 
-import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,7 +59,7 @@ public class SwaggerConfig {
     }
 
     private ApiKey apiKey(){
-        return new ApiKey("JWT", JwtProperties.HEADER_STRING, "header");
+        return new ApiKey("JWT", "Authorization", "header");
     }
 
     private SecurityContext securityContext(){
