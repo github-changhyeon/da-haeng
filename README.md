@@ -2,11 +2,7 @@
 
 - 메타버스를 활용하여 다같이 더불어 사는 행복한 세상을 만들기 위한 특수학급 체험학습 플랫폼 `다행` 입니다.
 
-
-<br />
-
-<br />
-
+<br/> <br/>
 
 
 ## 🧐 팀 소개
@@ -21,9 +17,7 @@
 | Position | 팀장<br />백엔드 | 프론트엔드 | 프론트엔드 | 백엔드 | 프론트엔드 |
 
 
-<br />
-
-<br />
+<br/> <br/>
 
 
 ## 🔧 기술 스택
@@ -41,10 +35,7 @@
 ![SpringBoot](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
 
 
-<br />
-
-<br />
-
+<br/> <br/>
 
 
 ## 📜 주요 기능
@@ -67,11 +58,16 @@
   
 
 
-<br />
+<br/> <br/>
+<br/> <br/>
 
-<br />
 
-## 🖼 와이어프레임
+## 🖼 아하텍의 모든 것
+[위키(노션) 바로가기](https://www.notion.so/686c4135a4934eab92ae303e37fa8aec)
+[Figma 바로가기](https://www.figma.com/file/mL2XwZm10WTW8f47E9eA9o/%EC%95%84%ED%95%98%ED%85%8D?node-id=0%3A1)
 
 ![wireframe](README.assets/wireframe.PNG)
+
+
+
 

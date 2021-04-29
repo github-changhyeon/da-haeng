@@ -1,6 +1,7 @@
 package com.aha.dahaeng.common.security;
 
 import com.aha.dahaeng.common.security.jwt.JwtProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,15 +24,18 @@ import java.io.IOException;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
+    @Autowired
+    private JwtProperties jwtProperties;
+
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(JwtProperties.HEADER_STRING);
+        String header = request.getHeader(jwtProperties.getHeader());
 
-        if (header == null || !header.startsWith(JwtProperties.TOKEN_PREFIX)) {
+        if (header == null || !header.startsWith(jwtProperties.getTokenPrefix())) {
             chain.doFilter(request, response);
             return;
         }
@@ -44,7 +48,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private Authentication getUsernamePasswordAuthentication(HttpServletRequest request) {
         Authentication authentication = null;
-        String token = request.getHeader(JwtProperties.HEADER_STRING);
+        String token = request.getHeader(jwtProperties.getHeader());
 
         //TODO token 확인하기
 
