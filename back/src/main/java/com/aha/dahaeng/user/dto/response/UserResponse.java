@@ -20,15 +20,17 @@ public class UserResponse {
     private String loginId;
     private String name;
     private String role;
+    private Long pinCode;
 
-    public UserResponse(Long id, String loginId, String name, String role) {
+    public UserResponse(Long id, String loginId, String name, String role, Long pinCode) {
         this.id = id;
         this.loginId = loginId;
         this.name = name;
         this.role = role;
+        this.pinCode = pinCode;
     }
 
     public static UserResponse of(User user){
-        return new UserResponse(user.getId(), user.getLoginId(), user.getName(), user.getRole().name());
+        return new UserResponse(user.getId(), user.getLoginId(), user.getName(), user.getRole().name(), user.getPinCode());
     }
 }

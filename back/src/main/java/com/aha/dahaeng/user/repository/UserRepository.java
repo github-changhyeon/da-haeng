@@ -14,7 +14,7 @@ import java.util.Optional;
  * @변경이력
  **/
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByLoginId(String loginId);
     Optional<User> findByPinCode(Long pinCode);
 }

@@ -1,6 +1,8 @@
 package com.aha.dahaeng.user.domain;
 
 import com.aha.dahaeng.common.security.jwt.JwtDetails;
+import com.aha.dahaeng.stage.domain.Progress;
+import com.aha.dahaeng.stage.domain.StageResult;
 import lombok.Builder;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,7 +13,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,6 +67,12 @@ public class User implements UserDetails, JwtDetails {
 
     @UpdateTimestamp
     private LocalDateTime updateDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<StageResult> stageResults = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Progress> progresses = new ArrayList<>();
 
     public User() {
     }
