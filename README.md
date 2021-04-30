@@ -1,8 +1,20 @@
+![index](README.assets/index.jpg)
+
 ## 🚌 다행 (다같이 행복행)
 
 - 메타버스를 활용하여 다같이 더불어 사는 행복한 세상을 만들기 위한 특수학급 체험학습 플랫폼 `다행` 입니다.
 
-<br/> <br/>
+<br/>
+
+### ❗ 아하텍의 모든 것 
+- Product Server 
+   - [https://da-haeng.com](https://da-haeng.com)
+   - [https://k4b102.p.ssafy.io](https://k4b102.p.ssafy.io)
+- Develop Server
+   - [https://kichulove.da-haeng.com](https://kichulove.da-haeng.com)
+   - [https://k4b1021.p.ssafy.io](https://k4b1021.p.ssafy.io)
+- [위키(노션) 바로가기](https://www.notion.so/686c4135a4934eab92ae303e37fa8aec)
+<br/> <br/> <br/>
 
 
 ## 🧐 팀 소개
@@ -62,8 +74,7 @@
 <br/> <br/>
 
 
-## 🖼 아하텍의 모든 것
-[위키(노션) 바로가기](https://www.notion.so/686c4135a4934eab92ae303e37fa8aec)
+## 🖼 와이어프레임
 [Figma 바로가기](https://www.figma.com/file/mL2XwZm10WTW8f47E9eA9o/%EC%95%84%ED%95%98%ED%85%8D?node-id=0%3A1)
 
 ![wireframe](README.assets/wireframe.PNG)
