@@ -11,6 +11,9 @@ import { useHistory, generatePath } from 'react-router';
 export default function Test3() {
   const history = useHistory();
 
+  const burgerStageResult = 3;
+  const busStageResult = 1;
+
   return (
     <div>
       <Header />
@@ -47,8 +50,9 @@ export default function Test3() {
       <ProfileComp role="ROLE_ADMIN" />
       <ProfileComp role="ROLE_STUDENT" />
 
-      <ProgressComp percent="30" />
-      <StepComp />
+      <ProgressComp percent="33" />
+      <StepComp type="burger" max={burgerStageResult} />
+      <StepComp type="bus" max={busStageResult} />
     </div>
   );
 }
