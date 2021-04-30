@@ -11,7 +11,7 @@
    - [https://da-haeng.com](https://da-haeng.com)
    - [https://k4b102.p.ssafy.io](https://k4b102.p.ssafy.io)
 - Develop Server
-   - [https://kichulove.da-haeng.com](https://kichulove.da-haeng.com)
+   - [https://kichulove.da-haeng.com](https://kichulove.da-haeng.com) (kichul is... love... 💘)
    - [https://k4b1021.p.ssafy.io](https://k4b1021.p.ssafy.io)
 - [위키(노션) 바로가기](https://www.notion.so/686c4135a4934eab92ae303e37fa8aec)
 <br/> <br/> <br/>
