@@ -1,0 +1,51 @@
+.background {
+  position: relative;
+  /* max-width: 1920px;
+  width: 100%; */
+  width: 1920px;
+  height: 1080px;
+}
+
+/* .background_res {
+  max-width: 1920px;
+  width: 100%;
+  position: relative;
+}
+
+.background_res > div {
+  padding-bottom: 50%;
+  width: 100%;
+} */
+
+.background_image {
+  /* width: 100%;
+  height: 100%; */
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  z-index: -2;
+}
+
+.background_cloud {
+  /* width: 100%;
+  height: 100%; */
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: moveCloud 100s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveCloud {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2000% 0;
+  }
+}
