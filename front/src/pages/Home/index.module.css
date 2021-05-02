@@ -1,0 +1,32 @@
+.home_container {
+  height: 100vh;
+  text-align: center;
+}
+
+.home_items {
+  width: 850px;
+  height: 80vh;
+  display: inline-block;
+  justify-content: center;
+  position: relative;
+}
+
+.home_logo {
+  padding-top: 70px;
+}
+
+.home_logo_image {
+  width: 750px;
+}
+
+.home_buttons {
+  position: absolute;
+  left: 90px;
+  bottom: 90px;
+  display: flex;
+  flex-direction: row;
+}
+
+.home_button {
+  padding-right: 20px;
+}

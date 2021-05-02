@@ -24,7 +24,8 @@ export default function BackgroundComp({ color }) {
               background: `url('/images/background/cloud.png') 0 center / 90vw repeat-x`,
             }}
           >
-            <BirdComp />
+            {/* TODO 힘숨찐 */}
+            {/* <BirdComp /> */}
           </div>
         </div>
 

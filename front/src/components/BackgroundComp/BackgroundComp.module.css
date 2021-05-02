@@ -38,7 +38,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  animation: moveCloud 90s linear infinite;
+  animation: moveCloud 100s linear infinite;
   z-index: -1;
 }
 
