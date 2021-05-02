@@ -7,6 +7,7 @@ import {
   Test,
   Test2,
   Test3,
+  Test4,
   Home,
   Login,
   SignUp,
@@ -34,6 +35,7 @@ function App() {
           <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
           <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />
           <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
+          <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
         </Switch>
       </Router>
     </StylesProvider>

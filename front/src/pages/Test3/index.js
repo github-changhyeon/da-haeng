@@ -5,6 +5,7 @@ import StepComp from 'src/components/StepComp/StepComp';
 import Header from 'src/components/Header/Header';
 import ButtonComp from 'src/components/ButtonComp/ButtonComp';
 import ProgressComp from 'src/components/ProgressComp/ProgressComp';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory, generatePath } from 'react-router';
 
@@ -17,6 +18,7 @@ export default function Test3() {
   return (
     <div>
       <Header />
+      <BackgroundComp />
       <CardComp type="burger_tutorial" />
       <CardComp type="burger_exercise" />
       <CardComp type="burger_practice" />
