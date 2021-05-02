@@ -1,9 +1,17 @@
+.background_position {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -3;
+}
+
 .background {
   position: relative;
-  /* max-width: 1920px;
-  width: 100%; */
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  /* birdComp가 overflow 됨 */
+  overflow: hidden;
 }
 
 /* .background_res {
@@ -18,26 +26,19 @@
 } */
 
 .background_image {
-  /* width: 100%;
-  height: 100%; */
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   position: relative;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  z-index: -2;
+  z-index: -1;
 }
 
 .background_cloud {
-  /* width: 100%;
-  height: 100%; */
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  animation: moveCloud 100s linear infinite;
+  animation: moveCloud 90s linear infinite;
   z-index: -1;
 }
 
@@ -46,6 +47,6 @@
     background-position: 0 0;
   }
   100% {
-    background-position: 2000% 0;
+    background-position: 90vw 0;
   }
 }

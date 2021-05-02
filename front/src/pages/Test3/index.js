@@ -18,7 +18,7 @@ export default function Test3() {
   return (
     <div>
       <Header />
-      <BackgroundComp />
+      <BackgroundComp color="blue" />
       <CardComp type="burger_tutorial" />
       <CardComp type="burger_exercise" />
       <CardComp type="burger_practice" />

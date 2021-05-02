@@ -1,0 +1,61 @@
+:root {
+  --bird-size: 100px;
+}
+
+.bird {
+  animation: fly 50s linear infinite;
+  height: var(--bird-size);
+  position: relative;
+  width: var(--bird-size);
+  top: 400px;
+}
+
+.bird__body {
+  animation: bounce 1s infinite;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: var(--bird-size);
+}
+
+.bird__wing {
+  animation: rotate 1s infinite, bounce 1s infinite;
+  left: 0;
+  position: absolute;
+  top: 0;
+  /* transform-origin: 50% 50%; */
+  width: var(--bird-size);
+}
+
+@keyframes fly {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: calc(-1 * var(--bird-size));
+  }
+}
+
+@keyframes bounce {
+  0% {
+    margin-top: 15px;
+  }
+  50% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 15px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
