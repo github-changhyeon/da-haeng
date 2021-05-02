@@ -10,7 +10,7 @@ export default function MyPage() {
   return (
     <div>
       <h1>hello MyPage</h1>
-      <BackgroundComp />
+      <BackgroundComp color="blue" />
     </div>
   );
 }
