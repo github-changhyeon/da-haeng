@@ -10,6 +10,7 @@ import com.aha.dahaeng.stage.repository.CategoryRepository;
 import com.aha.dahaeng.stage.repository.ProgressRepository;
 import com.aha.dahaeng.stage.repository.StageRepository;
 import com.aha.dahaeng.stage.repository.CategoryResultRepository;
+import com.aha.dahaeng.user.domain.Student;
 import com.aha.dahaeng.user.domain.User;
 import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,7 @@ public class StageService {
         Long uid = findUser(loginId).getId(); //선생님의 uid
 
         //선생님의 uid를 admin_id로 가지는 학생들
-        List<User> students = userRepository.findByAdminId(uid);
+        List<Student> students = userRepository.findByAdminId(uid);
 
         List<StudentUserResponse> studentUserResponses = new ArrayList<>();
 
