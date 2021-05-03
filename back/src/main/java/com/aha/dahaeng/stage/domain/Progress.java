@@ -29,7 +29,7 @@ public class Progress {
     private int rate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "admin_id")
     private User user;
 
 }

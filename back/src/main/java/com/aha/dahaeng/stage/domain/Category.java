@@ -23,11 +23,16 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "name")
+    private CategoryInfo categoryInfo;
 
     @OneToMany(mappedBy = "category")
     private List<Stage> stages = new ArrayList<>();
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Progress> progresses = new ArrayList<>();
+
+    @OneToOne(mappedBy = "category")
+    private CategoryResult categoryResult;
 }

@@ -2,7 +2,7 @@ package com.aha.dahaeng.user.domain;
 
 import com.aha.dahaeng.common.security.jwt.JwtDetails;
 import com.aha.dahaeng.stage.domain.Progress;
-import com.aha.dahaeng.stage.domain.StageResult;
+import com.aha.dahaeng.stage.domain.CategoryResult;
 import lombok.Builder;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -69,7 +69,7 @@ public class User implements UserDetails, JwtDetails {
     private LocalDateTime updateDate;
 
     @OneToMany(mappedBy = "user")
-    private List<StageResult> stageResults = new ArrayList<>();
+    private List<CategoryResult> categoryResults = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Progress> progresses = new ArrayList<>();

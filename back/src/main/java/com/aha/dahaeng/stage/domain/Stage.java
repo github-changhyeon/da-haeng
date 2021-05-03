@@ -30,7 +30,4 @@ public class Stage {
     @Column(name = "stage_number")
     private Long stageNumber;
 
-    @OneToMany(mappedBy = "stage")
-    private List<StageResult> stageResults = new ArrayList<>();
-
 }
