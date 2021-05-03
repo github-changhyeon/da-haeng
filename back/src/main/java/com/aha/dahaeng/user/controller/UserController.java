@@ -4,7 +4,6 @@ package com.aha.dahaeng.user.controller;
 import com.aha.dahaeng.common.annotation.CurrentUser;
 import com.aha.dahaeng.user.domain.User;
 import com.aha.dahaeng.user.dto.request.SignUpRequest;
-import com.aha.dahaeng.user.dto.response.AdminResponse;
 import com.aha.dahaeng.user.dto.response.UserResponse;
 import com.aha.dahaeng.user.service.UserService;
 import io.swagger.annotations.Api;
@@ -49,11 +48,5 @@ public class UserController {
         UserResponse userResponse = userService.getUserInfo(user);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
-
-//    @ApiOperation(value = "마이페이지 (선생님)")
-//    @GetMapping("/admin/{loginId}")
-//    public ResponseEntity<AdminResponse> getAdminInfo(@PathVariable String loginId){
-//        return null;
-//    }
 
 }
