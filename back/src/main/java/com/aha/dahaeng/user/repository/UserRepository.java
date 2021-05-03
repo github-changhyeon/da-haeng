@@ -1,5 +1,6 @@
 package com.aha.dahaeng.user.repository;
 
+import com.aha.dahaeng.user.domain.Student;
 import com.aha.dahaeng.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -18,5 +19,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByLoginId(String loginId);
     Optional<User> findByPinCode(Long pinCode);
-    List<User> findByAdminId(Long adminId);
+    List<Student> findByAdminId(Long id);
 }
