@@ -4,6 +4,7 @@ import com.aha.dahaeng.common.security.JwtAuthenticationFilter;
 import com.aha.dahaeng.common.security.JwtAuthenticationProvider;
 import com.aha.dahaeng.common.security.JwtAuthorizationFilter;
 import com.aha.dahaeng.common.security.jwt.JwtProvider;
+import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +39,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final UserRepository userRepository;
 
     // 시큐리티 앞단에서 스웨거 관련 접근을 허용
     @Override
@@ -65,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
 
-        http.addFilterBefore(new JwtAuthorizationFilter(authenticationManager()), BasicAuthenticationFilter.class)
+        http.addFilterBefore(new JwtAuthorizationFilter(authenticationManager(), userRepository), BasicAuthenticationFilter.class)
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
     }
 
@@ -84,11 +86,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public JwtProvider jwtProvider() throws Exception {
-        return new JwtProvider();
     }
 
     @Bean
