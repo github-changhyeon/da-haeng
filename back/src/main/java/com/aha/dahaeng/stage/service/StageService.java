@@ -10,6 +10,7 @@ import com.aha.dahaeng.stage.repository.CategoryRepository;
 import com.aha.dahaeng.stage.repository.ProgressRepository;
 import com.aha.dahaeng.stage.repository.StageRepository;
 import com.aha.dahaeng.stage.repository.CategoryResultRepository;
+import com.aha.dahaeng.user.domain.User;
 import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,8 @@ public class StageService {
     private final CategoryResultRepository categoryResultRepository;
     private final UserRepository userRepository;
 
-    public AdminUserResponse getStudents(User user){
-        Long uid = findUser(user.getLoginId()).getId(); //선생님의 uid
+    public AdminUserResponse getStudents(String loginId){
+        Long uid = findUser(loginId).getId(); //선생님의 uid
 
         //선생님의 uid를 admin_id로 가지는 학생들
         List<User> students = userRepository.findByAdminId(uid);

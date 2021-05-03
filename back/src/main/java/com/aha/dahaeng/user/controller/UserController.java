@@ -1,8 +1,7 @@
 package com.aha.dahaeng.user.controller;
 
 
-import com.aha.dahaeng.common.annotation.CurrentUser;
-import com.aha.dahaeng.user.domain.User;
+import com.aha.dahaeng.common.annotation.CurrentLoginId;
 import com.aha.dahaeng.user.dto.request.SignUpRequest;
 import com.aha.dahaeng.user.dto.response.UserResponse;
 import com.aha.dahaeng.user.service.UserService;
@@ -44,8 +43,8 @@ public class UserController {
 
     @ApiOperation(value = "사용자 정보 조회")
     @GetMapping("")
-    public ResponseEntity<UserResponse> getUserInfo(@ApiIgnore @CurrentUser User user){
-        UserResponse userResponse = userService.getUserInfo(user);
+    public ResponseEntity<UserResponse> getUserInfo(@ApiIgnore @CurrentLoginId String loginId){
+        UserResponse userResponse = userService.getUserInfo(loginId);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
