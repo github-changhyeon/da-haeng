@@ -80,8 +80,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public UserResponse getUserInfo(User user){
-        User userInfo = findUser(user.getLoginId());
+    public UserResponse getUserInfo(String loginId){
+        User userInfo = findUser(loginId);
         return UserResponse.of(userInfo);
     }
 

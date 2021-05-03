@@ -1,9 +1,8 @@
 package com.aha.dahaeng.stage.controller;
 
-import com.aha.dahaeng.common.annotation.CurrentUser;
+import com.aha.dahaeng.common.annotation.CurrentLoginId;
 import com.aha.dahaeng.stage.dto.response.AdminUserResponse;
 import com.aha.dahaeng.stage.service.StageService;
-import com.aha.dahaeng.user.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +33,8 @@ public class StageController {
 
     @GetMapping("/admin")
     @ApiOperation(value = "마이페이지 정보 조회(선생님)")
-    public ResponseEntity<AdminUserResponse> getAdminInfo(@ApiIgnore @CurrentUser User user){
-        AdminUserResponse result = stageService.getStudents(user);
+    public ResponseEntity<AdminUserResponse> getAdminInfo(@ApiIgnore @CurrentLoginId String loginId){
+        AdminUserResponse result = stageService.getStudents(loginId);
         return new ResponseEntity<AdminUserResponse>(result, HttpStatus.OK);
     }
 
