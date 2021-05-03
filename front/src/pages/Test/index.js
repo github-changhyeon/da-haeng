@@ -3,10 +3,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 
 export default function Test() {
   const unityContext = new UnityContext({
-    loaderUrl: "UnityBuild/MultiWebGL.loader.js",
-    dataUrl: "UnityBuild/MultiWebGL.data",
-    frameworkUrl: "UnityBuild/MultiWebGL.framework.js",
-    codeUrl: "UnityBuild/MultiWebGL.wasm",
+    loaderUrl: "UnitySelectCharacter/SelectCharacterWebGL.loader.js",
+    dataUrl: "UnitySelectCharacter/SelectCharacterWebGL.data",
+    frameworkUrl: "UnitySelectCharacter/SelectCharacterWebGL.framework.js",
+    codeUrl: "UnitySelectCharacter/SelectCharacterWebGL.wasm",
   });
   return (
     <div>
