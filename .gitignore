@@ -214,3 +214,4 @@ $RECYCLE.BIN/
 **/.env
 **/.env.*
 **/application.yaml
+**/JwtProperties.java

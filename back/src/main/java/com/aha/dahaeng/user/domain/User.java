@@ -8,29 +8,26 @@ import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * com.aha.dahaeng.user.domain
  * User.java
  *
  * @author 이주희
+ * @author 박수빈
+ * Builder, NotNull 어노테이션 추가
+ * pinCode 필드 추가
+ * user_id : AI 되는 PK값
+ * loin_id : 사용자가 로그인 할 때 사용하는 ID
  * @date 2021-04-19 오후 5:33S
  * @변경이력
- *  @author 박수빈
- *  Builder, NotNull 어노테이션 추가
- *  pinCode 필드 추가
- *  user_id : AI 되는 PK값
- *  loin_id : 사용자가 로그인 할 때 사용하는 ID
- *
  **/
 
 
@@ -86,46 +83,55 @@ public class User implements UserDetails, JwtDetails {
 
     @Override
     public String getSubject() {
-        return null;
+        return this.loginId;
     }
 
     @Override
     public Map<String, Object> getClaims() {
-        return null;
+        Map<String, Object> claims = new HashMap<>();
+
+        claims.put("loginId", this.loginId);
+        claims.put("name", this.name);
+        claims.put("role", this.role);
+
+        return claims;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(this.role.toString()));
+
+        return grantedAuthorities;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.loginId;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
