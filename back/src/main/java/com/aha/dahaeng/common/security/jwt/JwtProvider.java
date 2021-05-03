@@ -2,7 +2,6 @@ package com.aha.dahaeng.common.security.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.DatatypeConverter;
 import java.util.Date;
@@ -20,42 +19,36 @@ import java.util.Map;
 
 public class JwtProvider {
 
-    @Autowired
-    private JwtProperties jwtProperties;
-
-    public String createAccessToken(JwtDetails principal) {
-        return createToken(principal, jwtProperties.getExpirationTime());
+    public static String createAccessToken(JwtDetails principal) {
+        return createToken(principal, JwtProperties.EXPIRATION_TIME);
     }
 
-    public String createRefreshToken(JwtDetails principal) {
-        return createToken(principal, jwtProperties.getExpirationTime());
+    public static String createRefreshToken(JwtDetails principal) {
+        return createToken(principal, JwtProperties.REFRESH_EXPIRATION_TIME);
     }
 
-    public Map<String, String> createHeader(JwtDetails principal) {
+    public static Map<String, String> createHeader(JwtDetails principal) {
         String token = createAccessToken(principal);
         String refreshToken = createRefreshToken(principal);
 
         Map<String, String> header = new HashMap<String, String>();
-        header.put(jwtProperties.getHeader(), token);
-        header.put(jwtProperties.getRefreshHeader(), refreshToken);
+        header.put(JwtProperties.HEADER_STRING, token);
+        header.put(JwtProperties.REFRESH_HEADER_STRING, refreshToken);
 
         return header;
     }
 
-    public JwtToken createBody(JwtDetails jwtDetails) throws JsonProcessingException {
-        String token = createAccessToken(jwtDetails);
-        String refreshToken = createRefreshToken(jwtDetails);
+    public static JwtToken createBody(JwtDetails jwtDetails) throws JsonProcessingException {
+        String token = JwtProperties.TOKEN_PREFIX + createAccessToken(jwtDetails);
+        String refreshToken = JwtProperties.TOKEN_PREFIX + createRefreshToken(jwtDetails);
 
         return new JwtToken(token, refreshToken);
     }
 
-    public Claims getClaims(String token) {
+    public static Claims getClaims(String token) {
         try {
             Claims claims = parseClaims(token);
-
-
             return claims;
-
         } catch (ExpiredJwtException exception) {
             return null;
         } catch (JwtException exception) {
@@ -65,13 +58,7 @@ public class JwtProvider {
         }
     }
 
-    public String getUsername(String token) throws JwtException {
-        Claims claims = parseClaims(token);
-
-        return (String) claims.get("name");
-    }
-
-    private String createToken(JwtDetails principal, long expirationTime) {
+    private static String createToken(JwtDetails principal, long expirationTime) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + expirationTime);
 
@@ -79,12 +66,12 @@ public class JwtProvider {
                 .setClaims(principal.getClaims())
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
+                .signWith(SignatureAlgorithm.HS256, JwtProperties.SECRET)
                 .compact();
     }
 
-    private Claims parseClaims(String token) {
-        return Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(jwtProperties.getSecret()))
+    private static Claims parseClaims(String token) {
+        return Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(JwtProperties.SECRET))
                 .parseClaimsJws(token).getBody();
     }
 
