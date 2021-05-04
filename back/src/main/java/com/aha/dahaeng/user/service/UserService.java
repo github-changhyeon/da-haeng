@@ -57,19 +57,19 @@ public class UserService implements UserDetailsService {
             userId = uid;
 
         }else if(signUpRequest.getRole().equals("ROLE_STUDENT")){ //학생이면
+            Admin admin = null;
+
+            if(signUpRequest.getPinCode() != 0){
+                //pinCode에 해당하는 Admin
+                admin = (Admin) userRepository.findByPinCode(signUpRequest.getPinCode()).get();
+            }
+
             Student studentSingUp = Student.builder()
                     .loginId(signUpRequest.getLoginId())
                     .password(passwordEncoder.encode(signUpRequest.getPassword()))
                     .name(signUpRequest.getName())
+                    .admin(admin)
                     .build();
-
-            if(signUpRequest.getPin_code() != 0){
-                //pinCode에 해당하는 Admin
-                Admin admin = (Admin) userRepository.findByPinCode(signUpRequest.getPin_code()).get();
-                studentSingUp = Student.builder()
-                        .admin(admin)
-                        .build();
-            }
 
             Student student = userRepository.save(studentSingUp);
 

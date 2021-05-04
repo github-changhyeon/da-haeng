@@ -19,5 +19,5 @@ public class SignUpRequest {
     private String password;
     private String name;
     private String role;
-    private Long pin_code;
+    private Long pinCode;
 }

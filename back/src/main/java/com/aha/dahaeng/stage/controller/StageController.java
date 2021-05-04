@@ -35,7 +35,7 @@ public class StageController {
     @ApiOperation(value = "마이페이지 정보 조회(선생님)")
     public ResponseEntity<AdminUserResponse> getAdminInfo(@ApiIgnore @CurrentLoginId String loginId){
         AdminUserResponse result = stageService.getStudents(loginId);
-        return new ResponseEntity<AdminUserResponse>(result, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }

@@ -1,5 +1,8 @@
 package com.aha.dahaeng.stage.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum CategoryInfo {
     BUS("BUS", 5),
     BURGER("BURGER", 5);
