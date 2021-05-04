@@ -50,18 +50,26 @@ public class StageService {
 
         Long busSum = 0L;
         Long burgerSum = 0L;
-        int studentNum = studentUserResponses.size();
+        int studentNum = students.size();
 
-        for (User student : students) {
-            busSum += getStudentInfo(student).getBusStageResult();
-            burgerSum += getStudentInfo(student).getBugerStageResult();
+        Long burgerAvg = 0L;
+        Long busAvg = 0L;
 
-            studentUserResponses.add(getStudentInfo(student));
+        if(studentNum != 0){
+            //학생이 있으면
+            for (User student : students) {
+                StudentUserResponse studentUserResponse = getStudentInfo(student);
+
+                busSum += studentUserResponse.getBusStageResult();
+                burgerSum += studentUserResponse.getBugerStageResult();
+
+                studentUserResponses.add(getStudentInfo(student));
+            }
+
+            //Progress에 띄울 평균 (정수형)
+            burgerAvg = burgerSum / (studentNum * CategoryInfo.BURGER.getStageNum());
+            busAvg = busSum / (studentNum * CategoryInfo.BUS.getStageNum());
         }
-
-        //Progress에 띄울 평균 (정수형)
-        Long burgerAvg = burgerSum / (studentNum * CategoryInfo.BURGER.getStageNum());
-        Long busAvg = busSum / (studentNum * CategoryInfo.BUS.getStageNum());
 
         AdminUserResponse adminUserResponse = new AdminUserResponse(burgerAvg, busAvg, studentUserResponses);
 
@@ -70,8 +78,8 @@ public class StageService {
 
     public StudentUserResponse getStudentInfo(User user){
         StudentUserResponse studentUserResponse = null;
-        Long burgerStageResult = 1L;
-        Long busStageResult = 1L;
+        Long burgerStageResult = 0L;
+        Long busStageResult = 0L;
 
         List<CategoryResult> categoryResults = categoryResultRepository.findByUserId(user.getId());
         if(categoryResults != null){
