@@ -19,7 +19,6 @@ import javax.persistence.*;
 @DiscriminatorValue("S")
 public class Student extends User {
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
     private Admin admin;

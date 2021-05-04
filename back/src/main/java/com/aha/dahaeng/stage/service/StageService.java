@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
 * com.aha.dahaeng.stage.service
@@ -51,15 +50,22 @@ public class StageService {
 
         Long busSum = 0L;
         Long burgerSum = 0L;
+        int studentNum = studentUserResponses.size();
 
-        //TODO: 평균 구하기
         for (User student : students) {
-            getStudentInfo(student).getBusStageResult();
+            busSum += getStudentInfo(student).getBusStageResult();
+            burgerSum += getStudentInfo(student).getBugerStageResult();
+
             studentUserResponses.add(getStudentInfo(student));
         }
 
-//        AdminUserResponse adminUserResponse = new AdminUserResponse(studentUserResponses)
-        return null;
+        //Progress에 띄울 평균 (정수형)
+        Long burgerAvg = burgerSum / (studentNum * CategoryInfo.BURGER.getStageNum());
+        Long busAvg = busSum / (studentNum * CategoryInfo.BUS.getStageNum());
+
+        AdminUserResponse adminUserResponse = new AdminUserResponse(burgerAvg, busAvg, studentUserResponses);
+
+        return adminUserResponse;
     }
 
     public StudentUserResponse getStudentInfo(User user){
@@ -71,9 +77,9 @@ public class StageService {
         if(categoryResults != null){
             for (CategoryResult categoryResult : categoryResults) {
                 String cName = categoryResult.getCategory().getCategoryInfo().name();
-                if(cName.equals(CategoryInfo.BURGER.name())){
+                if(cName.equals(CategoryInfo.BURGER.getName())){
                     burgerStageResult = categoryResult.getMaxStage();
-                }else if(cName.equals((CategoryInfo.BUS.name()))) {
+                }else if(cName.equals((CategoryInfo.BUS.getName()))) {
                     busStageResult = categoryResult.getMaxStage();
                 }
             }
