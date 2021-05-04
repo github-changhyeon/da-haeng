@@ -17,8 +17,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
 * com.aha.dahaeng.stage.service
@@ -48,51 +50,56 @@ public class StageService {
 
         List<StudentUserResponse> studentUserResponses = new ArrayList<>();
 
-        Long busSum = 0L;
-        Long burgerSum = 0L;
+        int burgerSum = 0;
+        int busSum = 0;
+
         int studentNum = students.size();
 
-        Long burgerAvg = 0L;
-        Long busAvg = 0L;
+        double burgerAvg = 0;
+        double busAvg = 0;
 
         if(studentNum != 0){
             //학생이 있으면
             for (User student : students) {
-                StudentUserResponse studentUserResponse = getStudentInfo(student);
+                StudentUserResponse studentUserResponse = getStudentInfo(student.getLoginId());
 
-                busSum += studentUserResponse.getBusStageResult();
                 burgerSum += studentUserResponse.getBugerStageResult();
+                busSum += studentUserResponse.getBusStageResult();
 
-                studentUserResponses.add(getStudentInfo(student));
+                studentUserResponses.add(getStudentInfo(student.getLoginId()));
             }
 
             //Progress에 띄울 평균 (정수형)
-            burgerAvg = burgerSum / (studentNum * CategoryInfo.BURGER.getStageNum());
-            busAvg = busSum / (studentNum * CategoryInfo.BUS.getStageNum());
+            burgerAvg = (burgerSum / (double)(studentNum * CategoryInfo.BURGER.getStageNum()))*100;
+            busAvg = (busSum / (double)(studentNum * CategoryInfo.BUS.getStageNum()))*100;
         }
-
-        AdminUserResponse adminUserResponse = new AdminUserResponse(burgerAvg, busAvg, studentUserResponses);
+        AdminUserResponse adminUserResponse = new AdminUserResponse((long)burgerAvg, (long)busAvg, studentUserResponses);
 
         return adminUserResponse;
     }
 
-    public StudentUserResponse getStudentInfo(User user){
+    public StudentUserResponse getStudentInfo(String loginId){
         StudentUserResponse studentUserResponse = null;
         Long burgerStageResult = 0L;
         Long busStageResult = 0L;
 
+        User user = userRepository.findByLoginId(loginId).get();
+
         List<CategoryResult> categoryResults = categoryResultRepository.findByUserId(user.getId());
+
         if(categoryResults != null){
-            for (CategoryResult categoryResult : categoryResults) {
-                String cName = categoryResult.getCategory().getCategoryInfo().name();
+            for (CategoryResult cr : categoryResults) {
+                String cName = cr.getCategory().getCategoryInfo().name();
                 if(cName.equals(CategoryInfo.BURGER.getName())){
-                    burgerStageResult = categoryResult.getMaxStage();
+                    burgerStageResult = cr.getMaxStage();
                 }else if(cName.equals((CategoryInfo.BUS.getName()))) {
-                    busStageResult = categoryResult.getMaxStage();
+                    busStageResult = cr.getMaxStage();
                 }
             }
-            studentUserResponse = new StudentUserResponse(user.getName(), burgerStageResult, busStageResult);
         }
+
+        studentUserResponse = new StudentUserResponse(user.getName(), burgerStageResult, busStageResult);
+
         return studentUserResponse;
     }
 
