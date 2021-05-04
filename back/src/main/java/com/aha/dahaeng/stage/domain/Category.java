@@ -33,6 +33,6 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Progress> progresses = new ArrayList<>();
 
-    @OneToOne(mappedBy = "category")
-    private CategoryResult categoryResult;
+    @OneToMany(mappedBy = "category")
+    private List<CategoryResult> categoryResults = new ArrayList<>();
 }

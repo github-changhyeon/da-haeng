@@ -28,14 +28,10 @@ public class CategoryResult {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "stage_id")
-    private Stage stage;
-
     @Column(name = "max_stage")
     private Long maxStage;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
