@@ -6,9 +6,6 @@ import com.aha.dahaeng.stage.domain.CategoryInfo;
 import com.aha.dahaeng.stage.domain.CategoryResult;
 import com.aha.dahaeng.stage.dto.response.AdminUserResponse;
 import com.aha.dahaeng.stage.dto.response.StudentUserResponse;
-import com.aha.dahaeng.stage.repository.CategoryRepository;
-import com.aha.dahaeng.stage.repository.ProgressRepository;
-import com.aha.dahaeng.stage.repository.StageRepository;
 import com.aha.dahaeng.stage.repository.CategoryResultRepository;
 import com.aha.dahaeng.user.domain.Student;
 import com.aha.dahaeng.user.domain.User;
@@ -17,10 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
 * com.aha.dahaeng.stage.service
@@ -36,9 +31,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StageService {
 
-    private final CategoryRepository categoryRepository;
-    private final ProgressRepository progressRepository;
-    private final StageRepository stageRepository;
     private final CategoryResultRepository categoryResultRepository;
     private final UserRepository userRepository;
 
@@ -73,6 +65,7 @@ public class StageService {
             burgerAvg = (burgerSum / (double)(studentNum * CategoryInfo.BURGER.getStageNum()))*100;
             busAvg = (busSum / (double)(studentNum * CategoryInfo.BUS.getStageNum()))*100;
         }
+
         AdminUserResponse adminUserResponse = new AdminUserResponse((long)burgerAvg, (long)busAvg, studentUserResponses);
 
         return adminUserResponse;
