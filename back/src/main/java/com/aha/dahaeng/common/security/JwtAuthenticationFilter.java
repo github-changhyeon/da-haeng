@@ -1,5 +1,6 @@
 package com.aha.dahaeng.common.security;
 
+import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import com.aha.dahaeng.common.security.jwt.JwtProvider;
 import com.aha.dahaeng.common.security.jwt.JwtToken;
 import com.aha.dahaeng.user.domain.User;
@@ -52,7 +53,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User user = (User) authentication.getPrincipal();
         JwtToken jwtToken = JwtProvider.createBody(user);
 
-        response.addHeader("accessToken", jwtToken.getAccessToken());
-        response.addHeader("refreshToken", jwtToken.getRefreshToken());
+        response.addHeader(JwtProperties.HEADER_STRING, jwtToken.getAccessToken());
+        response.addHeader(JwtProperties.REFRESH_HEADER_STRING, jwtToken.getRefreshToken());
     }
 }
