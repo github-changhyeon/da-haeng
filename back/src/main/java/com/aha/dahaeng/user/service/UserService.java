@@ -53,6 +53,11 @@ public class UserService implements UserDetailsService {
     public Long createUser(SignUpRequest signUpRequest){ //회원가입
         Long userId = 0L;
 
+        //회원 중복 체크
+        if(userRepository.findByLoginId(signUpRequest.getLoginId()).isPresent()){
+            return -1L;
+        }
+
         if(signUpRequest.getRole().equals("ROLE_ADMIN")){ //선생님이면
             userId = createAdmin(signUpRequest);
         }else if(signUpRequest.getRole().equals("ROLE_STUDENT")){ //학생이면
@@ -60,7 +65,7 @@ public class UserService implements UserDetailsService {
         }
 
         //Category별 max_stage 초기화
-        int categoryCount = saveCategoryResult(signUpRequest.getLoginId());
+        saveCategoryResult(signUpRequest.getLoginId());
 
         return userId;
     }
@@ -78,7 +83,10 @@ public class UserService implements UserDetailsService {
             categoryResultRepository.save(categoryResult);
         }
 
-        return 0;
+        //categoryCount와 Category 개수가 같으면 초기화 성공
+        int categoryCount = categoryResultRepository.findByUserId(user.getId()).size();
+
+        return categoryCount;
     }
 
     private Long createStudent(SignUpRequest signUpRequest) {
