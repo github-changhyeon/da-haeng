@@ -1,0 +1,17 @@
+.main_background {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_container {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus_container_image {
+  width: 1000px;
+  height: 650px;
+}

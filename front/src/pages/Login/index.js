@@ -1,14 +1,134 @@
-import { React } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, generatePath } from 'react-router';
 import RouterInfo from 'src/constants/RouterInfo';
+import ButtonComp from 'src/components/ButtonComp/ButtonComp';
+import TextField from '@material-ui/core/TextField';
+import $ from 'jquery';
+import Typography from '@material-ui/core/Typography';
+import { restApi } from 'src/common/axios/index';
 
 export default function Login() {
   const history = useHistory();
 
+  const [loginId, setLoginId] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onLoginIdHandler = (event) => {
+    setLoginId(event.currentTarget.value);
+  };
+
+  const onPasswordHandler = (event) => {
+    setPassword(event.currentTarget.value);
+  };
+
+  const onSubmitHandler = (event) => {
+    const userData = {
+      loginId: loginId,
+      password: password,
+    };
+
+    const instance = restApi();
+
+    instance
+      .post(`/login`, userData)
+      .then((res) => {
+        // if (res.data.response === 'success') {
+        if (res.status == 200) {
+          // 로컬스토리지에 token 저장
+          sessionStorage.setItem('jwt', res.headers.authorization);
+          // window.localStorage.setItem('jwt', res.headers.authorization);
+          console.log(res.headers);
+
+          alert('로그인 성공 !! 추카추 ~!!');
+          history.push({
+            pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
+          });
+        } else {
+          alert('로그인 대 실패 !!');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (loginId === '' && password === '') {
+          alert('아이디와 비밀번호를 입력해 주세요.');
+        } else if (loginId === '') {
+          alert('아이디를 입력해 주세요.');
+        } else if (password === '') {
+          alert('비밀번호를 입력해 주세요.');
+        } else {
+          alert('아이디와 비밀번호가 일치하지 않습니다.');
+        }
+      });
+  };
+
+  const onEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      onSubmitHandler();
+    }
+  };
+
   return (
     <div>
-      <h1>hello Login</h1>
+      <div className={styles.check_info_container}>
+        <div className={styles.check_info_box}>
+          <div className={styles.check_info_title}>로그인</div>
+          {/* 아이디 */}
+          <div className={styles.check_info_block}>
+            <div className={styles.check_info_label}>아이디</div>
+            <input
+              className={styles.check_info_input}
+              id="loginId"
+              type="text"
+              autofocus
+              placeholder="아이디"
+              required
+              onChange={onLoginIdHandler}
+            />
+            {/* <LoginId style={{ height: '30px', fontSize: '20px' }} /> */}
+          </div>
+          {/* 비밀번호 */}
+          <div className={styles.check_info_block}>
+            <div className={styles.check_info_label}>비밀번호</div>
+            <input
+              className={styles.check_info_input}
+              id="password"
+              type="password"
+              autofocus
+              placeholder="비밀번호"
+              required
+              onChange={onPasswordHandler}
+              onKeyPress={onEnterPress}
+            />
+            {/* <Password style={{ height: '30px', fontSize: '20px' }} /> */}
+            <div className={styles.check_info_buttons}>
+              <div className={styles.check_info_button}>
+                <ButtonComp
+                  onClickFunc={() => {
+                    history.push({
+                      pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
+                    });
+                  }}
+                  text="홈으로"
+                  width="160px"
+                  color="#ffc531"
+                  colorDeep="#ca9100"
+                />
+              </div>
+              <div className={styles.check_info_button}>
+                <ButtonComp
+                  onClickFunc={onSubmitHandler}
+                  text="로그인"
+                  width="160px"
+                  color="#fb9cbb"
+                  colorDeep="#f73a78"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
