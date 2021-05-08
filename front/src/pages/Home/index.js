@@ -2,7 +2,6 @@ import { React } from 'react';
 import styles from './index.module.css';
 import { useHistory, generatePath } from 'react-router';
 import RouterInfo from 'src/constants/RouterInfo';
-import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 import ButtonComp from 'src/components/ButtonComp/ButtonComp';
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
 
   return (
     <div className={styles.home_container}>
-      <BackgroundComp color="blue" />
       <div className={styles.home_items}>
         <div className={styles.home_logo}>
           <img className={styles.home_logo_image} src="/images/logo.png" alt="logo" />
