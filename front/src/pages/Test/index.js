@@ -3,10 +3,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 
 export default function Test() {
   const unityContext = new UnityContext({
-    loaderUrl: "UnitySelectCharacter/SelectCharacterWebGL.loader.js",
-    dataUrl: "UnitySelectCharacter/SelectCharacterWebGL.data",
-    frameworkUrl: "UnitySelectCharacter/SelectCharacterWebGL.framework.js",
-    codeUrl: "UnitySelectCharacter/SelectCharacterWebGL.wasm",
+    loaderUrl: "UnityPlaza/UnityPlaza.loader.js",
+    dataUrl: "UnityPlaza/UnityPlaza.data",
+    frameworkUrl: "UnityPlaza/UnityPlaza.framework.js",
+    codeUrl: "UnityPlaza/UnityPlaza.wasm",
   });
   return (
     <div>
