@@ -2,12 +2,12 @@ package com.aha.dahaeng.stage.service;
 
 import com.aha.dahaeng.common.exception.NotFoundException;
 import com.aha.dahaeng.common.exception.dto.ErrorCode;
-import com.aha.dahaeng.stage.domain.CategoryInfo;
 import com.aha.dahaeng.stage.domain.CategoryResult;
+import com.aha.dahaeng.stage.dto.request.StageResultRequest;
 import com.aha.dahaeng.stage.dto.response.AdminUserResponse;
 import com.aha.dahaeng.stage.dto.response.StudentUserResponse;
+import com.aha.dahaeng.stage.repository.CategoryRepository;
 import com.aha.dahaeng.stage.repository.CategoryResultRepository;
-import com.aha.dahaeng.stage.repository.StageRepository;
 import com.aha.dahaeng.user.domain.Student;
 import com.aha.dahaeng.user.domain.User;
 import com.aha.dahaeng.user.repository.UserRepository;
@@ -34,6 +34,7 @@ public class StageService {
 
     private final CategoryResultRepository categoryResultRepository;
     private final UserRepository userRepository;
+    private final CategoryRepository categoryRepository;
 
     public AdminUserResponse getStudents(String loginId){
         Long uid = findUser(loginId).getId(); //선생님의 uid
@@ -63,8 +64,8 @@ public class StageService {
             }
 
             //Progress에 띄울 평균 (정수형)
-            burgerAvg = (burgerSum / (double)(studentNum * CategoryInfo.BURGER.getStageNum()))*100;
-            busAvg = (busSum / (double)(studentNum * CategoryInfo.BUS.getStageNum()))*100;
+            burgerAvg = (burgerSum / (double)(studentNum * categoryRepository.findByName("BURGER").getStage()))*100;
+            busAvg = (busSum / (double)(studentNum * categoryRepository.findByName("BUS").getStage()))*100;
         }
 
         AdminUserResponse adminUserResponse = new AdminUserResponse((long)burgerAvg, (long)busAvg, studentUserResponses);
@@ -83,10 +84,10 @@ public class StageService {
 
         if(categoryResults != null){
             for (CategoryResult cr : categoryResults) {
-                String cName = cr.getCategory().getCategoryInfo().name();
-                if(cName.equals(CategoryInfo.BURGER.getName())){
+                String cName = cr.getCategory().getName();
+                if(cName.equals("BURGER")){
                     burgerStageResult = cr.getMaxStage();
-                }else if(cName.equals((CategoryInfo.BUS.getName()))) {
+                }else if(cName.equals(("BUS"))) {
                     busStageResult = cr.getMaxStage();
                 }
             }
@@ -103,11 +104,15 @@ public class StageService {
         });
     }
 
-    public void updateStageResult(String loginId) {
+    public void updateStageResult(String loginId, StageResultRequest stageResultRequest) {
         Long userId = userRepository.findByLoginId(loginId).get().getId();
-        //TODO: 해당 카테고리에 맞는 stage update 하기
-//        CategoryResult categoryResult = categoryResultRepository.findByUserId(userId);
+        Long categoryId = categoryRepository.findByName(stageResultRequest.getCategoryName()).getId();
 
+        //TODO: 해당 카테고리에 맞는 stage update 하기
+        CategoryResult categoryResult = categoryResultRepository.findByUserIdAndCategoryId(userId, categoryId);
+        categoryResult.setMaxStage(stageResultRequest.getStageNumber());
+
+        categoryResultRepository.save(categoryResult);
     }
 }
 

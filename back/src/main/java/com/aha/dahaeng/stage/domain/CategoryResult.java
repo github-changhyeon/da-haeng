@@ -3,6 +3,8 @@ package com.aha.dahaeng.stage.domain;
 import com.aha.dahaeng.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -19,11 +21,13 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "category_result")
 public class CategoryResult {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

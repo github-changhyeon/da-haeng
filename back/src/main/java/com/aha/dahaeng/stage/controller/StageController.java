@@ -1,6 +1,7 @@
 package com.aha.dahaeng.stage.controller;
 
 import com.aha.dahaeng.common.annotation.CurrentLoginId;
+import com.aha.dahaeng.stage.dto.request.StageResultRequest;
 import com.aha.dahaeng.stage.dto.response.AdminUserResponse;
 import com.aha.dahaeng.stage.dto.response.StudentUserResponse;
 import com.aha.dahaeng.stage.service.StageService;
@@ -42,10 +43,10 @@ public class StageController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PatchMapping("/burger/{stageNumber}")
+    @PatchMapping("")
     @ApiOperation(value = "버거 스테이지 성공 결과 저장")
-    public ResponseEntity<String> updateStageResult(@PathVariable("stageNumber") Long stageNumber, @ApiIgnore @CurrentLoginId String loginId){
-        stageService.updateStageResult(loginId);
+    public ResponseEntity<String> updateStageResult(@ApiIgnore @CurrentLoginId String loginId, @RequestBody StageResultRequest stageResultRequest) {
+        stageService.updateStageResult(loginId, stageResultRequest);
         return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 

@@ -23,9 +23,9 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "name")
-    private CategoryInfo categoryInfo;
+    private String name;
+
+    private Long stage;
 
     @OneToMany(mappedBy = "category")
     private List<Stage> stages = new ArrayList<>();
