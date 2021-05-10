@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import RouterInfo from 'src/constants/RouterInfo';
 import { restApi } from 'src/common/axios/index';
 import Header from 'src/components/Header/Header';
+import CardComp from 'src/components/CardComp/CardComp';
 
 export default function Main() {
   const history = useHistory();
@@ -25,6 +26,7 @@ export default function Main() {
         if (res.status == 200) {
           console.log('성공');
           console.log(res.data);
+          console.log(res.data.id);
         } else {
           console.log('반만 성공');
         }
@@ -40,11 +42,19 @@ export default function Main() {
     <div className={styles.main_background}>
       <Header />
       <div className={styles.main_container}>
-        {/* <img
-          className={styles.bus_container_image}
-          src="/images/burger_container.png"
-          alt="container"
-        ></img> */}
+        <div
+          className={styles.burger_container}
+          style={{
+            background: `url('/images/burger_container.png') center center`,
+            backgroundSize: '100% 100%',
+          }}
+        >
+          <div className={styles.burger_cards}>
+            <CardComp type="burger_tutorial" />
+            <CardComp type="burger_exercise" />
+            <CardComp type="burger_practice" />
+          </div>
+        </div>
       </div>
       {/* <button onClick={onClickCheck}>눌러바</button> */}
     </div>

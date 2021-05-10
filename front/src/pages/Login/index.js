@@ -35,10 +35,30 @@ export default function Login() {
       .then((res) => {
         // if (res.data.response === 'success') {
         if (res.status == 200) {
-          // 로컬스토리지에 token 저장
+          // 세션스토리지에 token 저장
           sessionStorage.setItem('jwt', res.headers.authorization);
           // window.localStorage.setItem('jwt', res.headers.authorization);
           console.log(res.headers);
+
+          // id 가져오기
+          instance
+            .get(`/users`, {
+              headers: {
+                Authorization: sessionStorage.getItem('jwt'),
+              },
+            })
+            .then((res) => {
+              if (res.status == 200) {
+                // 세션스토리지에 id 저장
+                sessionStorage.setItem('uid', res.data.id);
+              } else {
+                console.log('반만 성공');
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              alert('실패!!!!');
+            });
 
           alert('로그인 성공 !! 추카추 ~!!');
           history.push({
@@ -81,7 +101,6 @@ export default function Login() {
               className={styles.check_info_input}
               id="loginId"
               type="text"
-              autofocus
               placeholder="아이디"
               required
               onChange={onLoginIdHandler}
@@ -95,7 +114,6 @@ export default function Login() {
               className={styles.check_info_input}
               id="password"
               type="password"
-              autofocus
               placeholder="비밀번호"
               required
               onChange={onPasswordHandler}
@@ -106,11 +124,9 @@ export default function Login() {
               <div className={styles.check_info_button}>
                 <ButtonComp
                   onClickFunc={() => {
-                    history.push({
-                      pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
-                    });
+                    history.go(-1);
                   }}
-                  text="홈으로"
+                  text="뒤로가기"
                   width="160px"
                   color="#ffc531"
                   colorDeep="#ca9100"

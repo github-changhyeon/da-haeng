@@ -9,8 +9,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 export default function Header() {
   const history = useHistory();
 
+  // 로그인 여부 확인
   const [isLogined, setIsLogined] = useState(false);
-
   useEffect(() => {
     if (sessionStorage.getItem('jwt')) {
       setIsLogined(true);
@@ -19,11 +19,17 @@ export default function Header() {
     }
   }, [sessionStorage.getItem('jwt')]);
 
-  // TODO uid 진짜로 받아오기
-  const [uid, setUid] = useState(5);
+  // 로그인 되어있다면 uid 가져오기
+  const [uid, setUid] = useState(0);
+  useEffect(() => {
+    if (isLogined) {
+      setUid(sessionStorage.getItem('uid'));
+    }
+  }, [isLogined]);
 
   const onLogoutClick = (event) => {
-    sessionStorage.removeItem('jwt');
+    // sessionStorage.removeItem('jwt');
+    sessionStorage.clear();
     // window.localStorage.clear();
     console.log(sessionStorage);
 
@@ -38,7 +44,8 @@ export default function Header() {
           className={styles.header_left_button}
           onClick={() => {
             history.push({
-              pathname: generatePath(RouterInfo.PAGE_URLS.PLAZA),
+              // pathname: generatePath(RouterInfo.PAGE_URLS.PLAZA),
+              pathname: generatePath(RouterInfo.PAGE_URLS.TEST),
             });
           }}
         >
