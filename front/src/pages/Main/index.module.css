@@ -1,0 +1,25 @@
+.main_background {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main_container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burger_container {
+  width: 1100px;
+  height: 680px;
+  /* border: red solid 10px; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.burger_cards {
+  position: absolute;
+  bottom: 50px;
+}
