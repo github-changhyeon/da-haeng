@@ -7,10 +7,23 @@ import { useHistory, generatePath } from 'react-router';
 export default function CardComp({ type }) {
   const history = useHistory();
 
-  // TODO 로그인 여부 확인해서 isLogined 바꾸기
-  const [isLogined, setIsLogined] = useState(true);
-  // TODO uid 진짜로 받아오기
-  const [uid, setUid] = useState(5);
+  // 로그인 여부 확인
+  const [isLogined, setIsLogined] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem('jwt')) {
+      setIsLogined(true);
+    } else {
+      setIsLogined(false);
+    }
+  }, [sessionStorage.getItem('jwt')]);
+
+  // 로그인 되어있다면 uid 가져오기
+  const [uid, setUid] = useState(0);
+  useEffect(() => {
+    if (isLogined) {
+      setUid(sessionStorage.getItem('uid'));
+    }
+  }, [isLogined]);
 
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');

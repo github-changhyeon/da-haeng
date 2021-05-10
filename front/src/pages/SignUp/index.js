@@ -22,12 +22,6 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const [nullError, setNullError] = useState(false);
-  const [loginIdError, setLoginIdError] = useState(false);
-  const [passwordLengthError, setNullPasswordLengthError] = useState(false);
-  const [passwordMatchError, setPasswordMatchError] = useState(false);
-  const [nameError, setNameError] = useState(false);
-
   function onClickStudent() {
     setIsSelectStudent(!isSelectStudent);
     setRole('ROLE_STUDENT');
@@ -83,23 +77,14 @@ export default function SignUp() {
     const loginId = document.getElementById('loginId');
     if (loginId != null) {
       if (loginId.value === '') {
-        setNullError(true);
-        // return <Typography className={styles.error_message}>&nbsp;</Typography>;
         return <Typography>&nbsp;</Typography>;
       }
       if (1 > loginId.value.length || loginId.value.length > 10) {
-        setNullError(false);
-        setLoginIdError(true);
         return <Typography className={styles.error}>아이디는 10자 이하입니다.</Typography>;
       } else {
-        setNullError(false);
-        setLoginIdError(false);
-        // return <Typography className={styles.error_message}>&nbsp;</Typography>;
         return <Typography>&nbsp;</Typography>;
       }
     }
-    // setNullError(true);
-    // return <Typography className={styles.error_message}>&nbsp;</Typography>;
     return <Typography>&nbsp;</Typography>;
   }
 
@@ -108,20 +93,14 @@ export default function SignUp() {
     const name = document.getElementById('name');
     if (name != null) {
       if (name.value === '') {
-        setNullError(true);
         return <Typography>&nbsp;</Typography>;
       }
       if (1 > name.value.length || name.value.length > 10) {
-        setNullError(false);
-        setNameError(true);
         return <Typography className={styles.error}>이름은 다 적합인뎅?</Typography>;
       } else {
-        setNullError(false);
-        setNameError(false);
         return <Typography>&nbsp;</Typography>;
       }
     }
-    // setNullError(true);
     return <Typography>&nbsp;</Typography>;
   }
 
@@ -131,24 +110,18 @@ export default function SignUp() {
     const password = document.getElementById('password');
     if (password != null) {
       if (password.value === '') {
-        setNullError(true);
         return <Typography>&nbsp;</Typography>;
       }
       if (!reg.test(password.value)) {
-        setNullError(false);
-        setNullPasswordLengthError(true);
         return (
           <Typography className={styles.error} style={{ fontSize: '16px' }}>
             비밀번호는 소문자/숫자 포함 8자 이상, 20자 이하입니다.
           </Typography>
         );
       } else {
-        setNullError(false);
-        setNullPasswordLengthError(false);
         return <Typography>&nbsp;</Typography>;
       }
     }
-    // setNullError(true);
     return <Typography>&nbsp;</Typography>;
   }
 
@@ -158,21 +131,15 @@ export default function SignUp() {
     const confirm = document.getElementById('passwordConfirm');
     if (password && confirm != null) {
       if (password.value === '' || confirm.value === '') {
-        setNullError(true);
         return <Typography>&nbsp;</Typography>;
       }
       if (password.value === confirm.value) {
-        setNullError(false);
-        setPasswordMatchError(false);
         return <Typography>&nbsp;</Typography>;
       }
       if (password.value !== confirm.value) {
-        setNullError(false);
-        setPasswordMatchError(true);
         return <Typography className={styles.error}>비밀번호가 일치하지 않습니다.</Typography>;
       }
     }
-    // setNullError(true);
     return <Typography>&nbsp;</Typography>;
   }
 
@@ -202,11 +169,10 @@ export default function SignUp() {
         if (res.status == 201) {
           history.push({
             pathname: '/login',
-            // state: { email: email }
           });
           alert('회원가입 성공 !! 경축 !!!');
         } else {
-          alert('회원가입 실패에용');
+          alert('회원가입 실패 !!');
         }
       })
       .catch((err) => {
@@ -362,7 +328,6 @@ export default function SignUp() {
                   className={styles.check_info_input}
                   id="loginId"
                   type="text"
-                  autofocus
                   placeholder="아이디"
                   required
                   onChange={onLoginIdHandler}
@@ -376,7 +341,6 @@ export default function SignUp() {
                   className={styles.check_info_input}
                   id="password"
                   type="password"
-                  autofocus
                   placeholder="비밀번호"
                   required
                   onChange={onPasswordHandler}
@@ -390,7 +354,6 @@ export default function SignUp() {
                   className={styles.check_info_input}
                   id="name"
                   type="text"
-                  autofocus
                   placeholder="이름"
                   required
                   onChange={onNameHandler}
@@ -404,7 +367,6 @@ export default function SignUp() {
                   className={styles.check_info_input}
                   id="passwordConfirm"
                   type="password"
-                  autofocus
                   placeholder="비밀번호 확인"
                   required
                   onChange={onPasswordConfirmHandler}
