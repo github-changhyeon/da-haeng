@@ -37,7 +37,12 @@ public class UserController {
     @ApiResponse(code = 201, message = "created")
     @PostMapping("")
     public ResponseEntity<String> signUp(final @Valid @RequestBody SignUpRequest signUpRequest){
-        userService.createUser(signUpRequest);
+        Long userId = userService.createUser(signUpRequest);
+
+        if(userId==-1L){ //아이디 중복 체크
+            return new ResponseEntity<>("Duplicate Id", HttpStatus.CONFLICT);
+        }
+
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 

@@ -3,7 +3,6 @@ package com.aha.dahaeng.common.config;
 import com.aha.dahaeng.common.security.JwtAuthenticationFilter;
 import com.aha.dahaeng.common.security.JwtAuthenticationProvider;
 import com.aha.dahaeng.common.security.JwtAuthorizationFilter;
-import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import com.aha.dahaeng.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
