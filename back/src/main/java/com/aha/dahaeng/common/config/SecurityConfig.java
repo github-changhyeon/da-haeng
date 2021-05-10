@@ -27,9 +27,9 @@ import java.util.Collections;
 /**
  * com.aha.dahaeng.common.config
  * SecurityConfig.java
- * @date    2021-04-22 오후 3:06
- * @author  이주희
  *
+ * @author 이주희
+ * @date 2021-04-22 오후 3:06
  * @변경이력
  **/
 
@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.setAllowedMethods(Collections.singletonList("*"));
         config.setAllowedOrigins(Collections.singletonList("*"));
         config.setAllowedHeaders(Collections.singletonList("*"));
-        config.setExposedHeaders(Arrays.asList("Authorization"));
+        config.setExposedHeaders(Arrays.asList(JwtProperties.HEADER_STRING, JwtProperties.REFRESH_HEADER_STRING));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;

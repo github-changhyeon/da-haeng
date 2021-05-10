@@ -3,10 +3,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 
 export default function Test() {
   const unityContext = new UnityContext({
-    loaderUrl: "UnityBuild/MultiWebGL.loader.js",
-    dataUrl: "UnityBuild/MultiWebGL.data",
-    frameworkUrl: "UnityBuild/MultiWebGL.framework.js",
-    codeUrl: "UnityBuild/MultiWebGL.wasm",
+    loaderUrl: "UnityPlaza/UnityPlaza.loader.js",
+    dataUrl: "UnityPlaza/UnityPlaza.data",
+    frameworkUrl: "UnityPlaza/UnityPlaza.framework.js",
+    codeUrl: "UnityPlaza/UnityPlaza.wasm",
   });
   return (
     <div>

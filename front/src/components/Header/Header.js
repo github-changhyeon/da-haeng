@@ -9,10 +9,33 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 export default function Header() {
   const history = useHistory();
 
-  // TODO 로그인 여부 확인해서 isLogined 바꾸기
-  const [isLogined, setIsLogined] = useState(true);
-  // TODO uid 진짜로 받아오기
-  const [uid, setUid] = useState(5);
+  // 로그인 여부 확인
+  const [isLogined, setIsLogined] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem('jwt')) {
+      setIsLogined(true);
+    } else {
+      setIsLogined(false);
+    }
+  }, [sessionStorage.getItem('jwt')]);
+
+  // 로그인 되어있다면 uid 가져오기
+  const [uid, setUid] = useState(0);
+  useEffect(() => {
+    if (isLogined) {
+      setUid(sessionStorage.getItem('uid'));
+    }
+  }, [isLogined]);
+
+  const onLogoutClick = (event) => {
+    // sessionStorage.removeItem('jwt');
+    sessionStorage.clear();
+    // window.localStorage.clear();
+    console.log(sessionStorage);
+
+    alert('로그아웃이 완료되었습니다.');
+    history.push(RouterInfo.PAGE_URLS.HOME);
+  };
 
   return (
     <div className={styles.header}>
@@ -21,7 +44,8 @@ export default function Header() {
           className={styles.header_left_button}
           onClick={() => {
             history.push({
-              pathname: generatePath(RouterInfo.PAGE_URLS.PLAZA),
+              // pathname: generatePath(RouterInfo.PAGE_URLS.PLAZA),
+              pathname: generatePath(RouterInfo.PAGE_URLS.TEST),
             });
           }}
         >
@@ -48,7 +72,7 @@ export default function Header() {
               className={styles.header_right_item}
               onClick={() => {
                 history.push({
-                  pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
+                  pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
                 });
               }}
             >
@@ -83,14 +107,7 @@ export default function Header() {
                     </p>
                     <p>나의 정보</p>
                   </div>
-                  <div
-                    onClick={() => {
-                      history.push({
-                        pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
-                      });
-                    }}
-                    className={styles.dropdown_menu}
-                  >
+                  <div onClick={onLogoutClick} className={styles.dropdown_menu}>
                     <p>
                       <ExitToAppIcon className={styles.dropdown_icon} />
                     </p>
