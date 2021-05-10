@@ -4,6 +4,7 @@ import com.aha.dahaeng.common.security.JwtAuthenticationFilter;
 import com.aha.dahaeng.common.security.JwtAuthenticationProvider;
 import com.aha.dahaeng.common.security.JwtAuthorizationFilter;
 import com.aha.dahaeng.user.repository.UserRepository;
+import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -76,8 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.setAllowedMethods(Collections.singletonList("*"));
         config.setAllowedOrigins(Collections.singletonList("*"));
         config.setAllowedHeaders(Collections.singletonList("*"));
-        config.setExposedHeaders(Arrays.asList("Authorization"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        config.setExposedHeaders(Arrays.asList(JwtProperties.HEADER_STRING, JwtProperties.REFRESH_HEADER_STRING));        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
     }
