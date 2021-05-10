@@ -34,7 +34,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @ApiOperation(value = "회원 가입")
+    @ApiOperation(value = "회원 가입", notes = "role \n 선생님 : 'ROLE_ADMIN' \n 학생 : 'ROLE_STUDENT' ")
     @ApiResponses({
             @ApiResponse(code = 201, message = "회원 가입 성공"),
             @ApiResponse(code = 409, message = "중복된 아이디" )

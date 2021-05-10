@@ -44,7 +44,7 @@ public class StageController {
     }
 
     @PatchMapping("")
-    @ApiOperation(value = "버거 스테이지 성공 결과 저장")
+    @ApiOperation(value = "스테이지 성공 결과 저장", notes = "CategoryName 입력 \n 버거 : 'BURGER' \n 버스 : 'BUS'")
     public ResponseEntity<String> updateStageResult(@ApiIgnore @CurrentLoginId String loginId, @RequestBody StageResultRequest stageResultRequest) {
         stageService.updateStageResult(loginId, stageResultRequest);
         return new ResponseEntity<>("Success", HttpStatus.OK);
