@@ -36,8 +36,8 @@ public class UserController {
 
     @ApiOperation(value = "회원 가입")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "created"),
-            @ApiResponse(code = 409, message = "중복 아이디" )
+            @ApiResponse(code = 201, message = "회원 가입 성공"),
+            @ApiResponse(code = 409, message = "중복된 아이디" )
     })
     @PostMapping("")
     public ResponseEntity<String> signUp(final @Valid @RequestBody SignUpRequest signUpRequest){
