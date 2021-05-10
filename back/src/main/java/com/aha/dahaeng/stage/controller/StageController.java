@@ -9,12 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
-import java.util.List;
 
 /**
 * com.aha.dahaeng.stage.controller
@@ -44,6 +40,13 @@ public class StageController {
     public ResponseEntity<StudentUserResponse> getStudentInfo(@ApiIgnore @CurrentLoginId String loginId){
         StudentUserResponse result = stageService.getStudentInfo(loginId);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PatchMapping("/burger/{stageNumber}")
+    @ApiOperation(value = "버거 스테이지 성공 결과 저장")
+    public ResponseEntity<String> updateStageResult(@PathVariable("stageNumber") Long stageNumber, @ApiIgnore @CurrentLoginId String loginId){
+        stageService.updateStageResult(loginId);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
 }

@@ -21,12 +21,12 @@
 
 .home_buttons {
   position: absolute;
-  left: 90px;
-  bottom: 90px;
+  left: -10px;
+  bottom: 80px;
   display: flex;
   flex-direction: row;
 }
 
 .home_button {
-  padding-right: 20px;
+  padding: 0 8px;
 }

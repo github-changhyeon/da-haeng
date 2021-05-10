@@ -3,8 +3,8 @@ package com.aha.dahaeng.common.config;
 import com.aha.dahaeng.common.security.JwtAuthenticationFilter;
 import com.aha.dahaeng.common.security.JwtAuthenticationProvider;
 import com.aha.dahaeng.common.security.JwtAuthorizationFilter;
-import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import com.aha.dahaeng.user.repository.UserRepository;
+import com.aha.dahaeng.common.security.jwt.JwtProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,9 +28,9 @@ import java.util.Collections;
 /**
  * com.aha.dahaeng.common.config
  * SecurityConfig.java
+ * @date    2021-04-22 오후 3:06
+ * @author  이주희
  *
- * @author 이주희
- * @date 2021-04-22 오후 3:06
  * @변경이력
  **/
 

@@ -1,6 +1,7 @@
 package com.aha.dahaeng.stage.domain;
 
 import com.aha.dahaeng.user.domain.User;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ import javax.persistence.*;
 @Table(name = "category_result")
 public class CategoryResult {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_id")
     private Long id;
 
@@ -35,5 +37,10 @@ public class CategoryResult {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
+    @Builder
+    public CategoryResult(User user, Long maxStage, Category category) {
+        this.user = user;
+        this.maxStage = maxStage;
+        this.category = category;
+    }
 }

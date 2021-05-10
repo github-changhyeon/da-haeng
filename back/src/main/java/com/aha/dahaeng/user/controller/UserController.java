@@ -8,6 +8,7 @@ import com.aha.dahaeng.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +35,18 @@ public class UserController {
     private final UserService userService;
 
     @ApiOperation(value = "회원 가입")
-    @ApiResponse(code = 201, message = "created")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "created"),
+            @ApiResponse(code = 409, message = "중복 아이디" )
+    })
     @PostMapping("")
     public ResponseEntity<String> signUp(final @Valid @RequestBody SignUpRequest signUpRequest){
-        userService.createUser(signUpRequest);
+        Long userId = userService.createUser(signUpRequest);
+
+        if(userId==-1L){ //아이디 중복 체크
+            return new ResponseEntity<>("Duplicate Id", HttpStatus.CONFLICT);
+        }
+
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 
