@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory, generatePath } from 'react-router';
+import { restApi } from 'src/common/axios/index';
 import FaceIcon from '@material-ui/icons/Face';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -10,31 +11,48 @@ export default function Header() {
   const history = useHistory();
 
   // 로그인 여부 확인
-  const [isLogined, setIsLogined] = useState(false);
-  useEffect(() => {
-    if (sessionStorage.getItem('jwt')) {
-      setIsLogined(true);
-    } else {
-      setIsLogined(false);
-    }
-  }, [sessionStorage.getItem('jwt')]);
+  const [isLogined, setIsLogined] = useState(sessionStorage.getItem('jwt'));
 
   // 로그인 되어있다면 uid 가져오기
-  const [uid, setUid] = useState(0);
   useEffect(() => {
-    if (isLogined) {
-      setUid(sessionStorage.getItem('uid'));
-    }
-  }, [isLogined]);
+    if (sessionStorage.getItem('jwt') != null) {
+      const instance = restApi();
 
+      instance
+        .get(`/users`, {
+          headers: {
+            Authorization: sessionStorage.getItem('jwt'),
+          },
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log('성공');
+            console.log('header/ uid: ' + res.data.id);
+            sessionStorage.setItem('uid', res.data.id);
+          } else {
+            console.log('반만 성공');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('실패!!!!');
+        });
+    } else {
+      console.log('header/ jwt 토큰 없음 !!');
+    }
+  });
+
+  // 로그아웃
   const onLogoutClick = (event) => {
     // sessionStorage.removeItem('jwt');
     sessionStorage.clear();
-    // window.localStorage.clear();
     console.log(sessionStorage);
 
     alert('로그아웃이 완료되었습니다.');
     history.push(RouterInfo.PAGE_URLS.HOME);
+
+    window.location.reload();
+    console.log('로그아웃 리로드~');
   };
 
   return (
@@ -97,7 +115,7 @@ export default function Header() {
                     onClick={() => {
                       history.push({
                         pathname: generatePath(RouterInfo.PAGE_URLS.MYPAGE, {
-                          uid: uid,
+                          uid: sessionStorage.getItem('uid'),
                         }),
                       });
                     }}
