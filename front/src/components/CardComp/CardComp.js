@@ -8,22 +8,13 @@ export default function CardComp({ type }) {
   const history = useHistory();
 
   // 로그인 여부 확인
-  const [isLogined, setIsLogined] = useState(false);
+  const [isLogined, setIsLogined] = useState(sessionStorage.getItem('jwt'));
+
   useEffect(() => {
     if (sessionStorage.getItem('jwt')) {
-      setIsLogined(true);
-    } else {
-      setIsLogined(false);
+      setIsLogined(sessionStorage.getItem('jwt'));
     }
   }, [sessionStorage.getItem('jwt')]);
-
-  // 로그인 되어있다면 uid 가져오기
-  const [uid, setUid] = useState(0);
-  useEffect(() => {
-    if (isLogined) {
-      setUid(sessionStorage.getItem('uid'));
-    }
-  }, [isLogined]);
 
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
@@ -130,7 +121,7 @@ export default function CardComp({ type }) {
             history.push({
               pathname: generatePath(path, {
                 category: category,
-                uid: uid,
+                uid: sessionStorage.getItem('uid'),
               }),
               state: { category: category },
             });

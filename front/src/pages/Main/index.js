@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { useHistory } from 'react-router-dom';
 import RouterInfo from 'src/constants/RouterInfo';
@@ -9,34 +9,33 @@ import CardComp from 'src/components/CardComp/CardComp';
 export default function Main() {
   const history = useHistory();
 
-  function onClickCheck() {
-    console.log('확인하쟈');
+  useEffect(() => {
+    if (sessionStorage.getItem('jwt') != null) {
+      const instance = restApi();
 
-    // const token = window.localStorage.getItem('jwt');
-    const token = sessionStorage.getItem('jwt');
-
-    const instance = restApi();
-    instance
-      .get(`/users`, {
-        headers: {
-          Authorization: token,
-        },
-      })
-      .then((res) => {
-        if (res.status == 200) {
-          console.log('성공');
-          console.log(res.data);
-          console.log(res.data.id);
-        } else {
-          console.log('반만 성공');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('실패!!!!');
-      });
-    return;
-  }
+      instance
+        .get(`/users`, {
+          headers: {
+            Authorization: sessionStorage.getItem('jwt'),
+          },
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log('성공');
+            console.log('main/ uid :' + res.data.id);
+            sessionStorage.setItem('uid', res.data.id);
+          } else {
+            console.log('반만 성공');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('실패!!!!');
+        });
+    } else {
+      console.log('main/ jwt 토큰 없음 !!');
+    }
+  });
 
   return (
     <div className={styles.main_background}>
@@ -56,7 +55,6 @@ export default function Main() {
           </div>
         </div>
       </div>
-      {/* <button onClick={onClickCheck}>눌러바</button> */}
     </div>
   );
 }

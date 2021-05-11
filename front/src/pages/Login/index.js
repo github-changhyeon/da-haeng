@@ -37,33 +37,16 @@ export default function Login() {
         if (res.status == 200) {
           // 세션스토리지에 token 저장
           sessionStorage.setItem('jwt', res.headers.authorization);
-          // window.localStorage.setItem('jwt', res.headers.authorization);
           console.log(res.headers);
 
-          // id 가져오기
-          instance
-            .get(`/users`, {
-              headers: {
-                Authorization: sessionStorage.getItem('jwt'),
-              },
-            })
-            .then((res) => {
-              if (res.status == 200) {
-                // 세션스토리지에 id 저장
-                sessionStorage.setItem('uid', res.data.id);
-              } else {
-                console.log('반만 성공');
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-              alert('실패!!!!');
-            });
-
           alert('로그인 성공 !! 추카추 ~!!');
+
           history.push({
             pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
           });
+
+          window.location.reload();
+          console.log('로그인 리로드~');
         } else {
           alert('로그인 대 실패 !!');
         }

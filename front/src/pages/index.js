@@ -17,3 +17,5 @@ export { default as Practice } from './Practice';
 export { default as Plaza } from './Plaza';
 
 export { default as MyPage } from './MyPage';
+
+export { default as Loading } from './Loading';

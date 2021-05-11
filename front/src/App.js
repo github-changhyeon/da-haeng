@@ -19,42 +19,12 @@ import {
   Practice,
   Plaza,
   MyPage,
+  Loading,
 } from './pages';
 
 const AppRouter = () => {
-  const history = useHistory();
-
-  const [isLogined, setIsLogined] = useState(false);
-
-  // // 로그인한 사용자가 있다면 탭/브라우저 종료시 로그아웃
-  // useEffect(() => {
-  //   if (isLogined) {
-  //     window.addEventListener('unload', onLogout);
-  //     return () => {
-  //       window.removeEventListener('unload', onLogout);
-  //     };
-  //   }
-  // });
-
-  // const onLogout = () => {
-  //   sessionStorage.removeItem('jwt');
-  //   // window.localStorage.clear();
-  //   console.log(sessionStorage);
-
-  //   // alert('로그아웃이 완료되었습니다.');
-  //   history.push(RouterInfo.PAGE_URLS.HOME);
-  // };
-
-  useEffect(() => {
-    if (sessionStorage.getItem('jwt')) {
-      setIsLogined(true);
-    } else {
-      setIsLogined(false);
-    }
-  }, [sessionStorage.getItem('jwt')]);
-
   // 로그인이 되어 있을 경우
-  if (isLogined) {
+  if (sessionStorage.getItem('jwt')) {
     return <LoginRouter />;
   }
   // 로그인이 안되어 있을 경우
