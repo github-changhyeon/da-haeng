@@ -14,12 +14,12 @@ import lombok.Getter;
 @Getter
 public class StudentUserResponse {
     private String name;
-    private long bugerStageResult;
+    private long burgerStageResult;
     private long busStageResult;
 
-    public StudentUserResponse(String name, long bugerStageResult, long busStageResult) {
+    public StudentUserResponse(String name, long burgerStageResult, long busStageResult) {
         this.name = name;
-        this.bugerStageResult = bugerStageResult;
+        this.burgerStageResult = burgerStageResult;
         this.busStageResult = busStageResult;
     }
 }
