@@ -21,6 +21,7 @@ import {
   MyPage,
   Loading,
 } from './pages';
+import { LaptopWindowsOutlined } from '@material-ui/icons';
 
 const AppRouter = () => {
   // 로그인이 되어 있을 경우
@@ -37,7 +38,7 @@ const NotLoginRouter = () => {
   return (
     <Router>
       {/* TODO 배경 color 다르게 주고싶어 */}
-      <BackgroundComp color="blue" />
+      {/* <BackgroundComp color="blue" /> */}
       <Switch>
         <Route exact path={RouterInfo.PAGE_URLS.HOME} component={Home} />
         <Route path={RouterInfo.PAGE_URLS.LOGIN} component={Login} />
@@ -59,7 +60,7 @@ const LoginRouter = () => {
   return (
     <Router>
       {/* TODO 배경 color 다르게 주고싶어 */}
-      <BackgroundComp color="blue" />
+      {/* <BackgroundComp color="blue" /> */}
       <Switch>
         <Route path={RouterInfo.PAGE_URLS.MAIN} component={Main} />
         <Route path={RouterInfo.PAGE_URLS.TUTORIAL} component={Tutorial} />
@@ -80,6 +81,7 @@ const LoginRouter = () => {
 function App() {
   return (
     <StylesProvider injectFirst>
+      <BackgroundComp color="pink" />
       <AppRouter />
     </StylesProvider>
   );

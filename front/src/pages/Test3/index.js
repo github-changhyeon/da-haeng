@@ -14,6 +14,7 @@ export default function Test3() {
 
   const burgerStageResult = 3;
   const busStageResult = 1;
+  const name = '박건후';
 
   return (
     <div>
@@ -49,8 +50,8 @@ export default function Test3() {
         colorDeep="#f73a78"
       />
 
-      <ProfileComp role="ROLE_ADMIN" />
-      <ProfileComp role="ROLE_STUDENT" />
+      <ProfileComp role="ROLE_ADMIN" name={name} />
+      <ProfileComp role="ROLE_STUDENT" name={name} />
 
       <ProgressComp percent="33" />
       <StepComp type="burger" max={burgerStageResult} />

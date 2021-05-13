@@ -8,7 +8,7 @@ export default function Exercise() {
 
   return (
     <div>
-      <h1>hello Exercise</h1>
+      <h1>Exercise page</h1>
     </div>
   );
 }
