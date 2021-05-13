@@ -50,7 +50,6 @@ export default function StepComp({ type, max }) {
     history.push({
       pathname: generatePath(path, {
         category: thisType,
-        uid: sessionStorage.getItem('uid'),
       }),
       state: { category: thisType },
     });

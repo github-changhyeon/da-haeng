@@ -13,35 +13,6 @@ export default function Header() {
   // 로그인 여부 확인
   const [isLogined, setIsLogined] = useState(sessionStorage.getItem('jwt'));
 
-  // 로그인 되어있다면 uid 가져오기
-  useEffect(() => {
-    if (sessionStorage.getItem('jwt') != null) {
-      const instance = restApi();
-
-      instance
-        .get(`/users`, {
-          headers: {
-            Authorization: sessionStorage.getItem('jwt'),
-          },
-        })
-        .then((res) => {
-          if (res.status == 200) {
-            console.log('성공');
-            console.log('header/ uid: ' + res.data.id);
-            sessionStorage.setItem('uid', res.data.id);
-          } else {
-            console.log('반만 성공');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          alert('실패!!!!');
-        });
-    } else {
-      console.log('header/ jwt 토큰 없음 !!');
-    }
-  });
-
   // 로그아웃
   const onLogoutClick = (event) => {
     // sessionStorage.removeItem('jwt');
@@ -125,9 +96,7 @@ export default function Header() {
                     className={styles.dropdown_menu}
                     onClick={() => {
                       history.push({
-                        pathname: generatePath(RouterInfo.PAGE_URLS.MYPAGE, {
-                          uid: sessionStorage.getItem('uid'),
-                        }),
+                        pathname: generatePath(RouterInfo.PAGE_URLS.MYPAGE, {}),
                       });
                     }}
                   >

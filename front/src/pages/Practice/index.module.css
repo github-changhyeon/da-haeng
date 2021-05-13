@@ -1,0 +1,50 @@
+.practice_container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.cloud_text {
+  height: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ch_bus_icon {
+  width: 90px;
+  position: absolute;
+  left: calc(50% - 90px / 2);
+  top: -50%;
+}
+
+.cloud_1 {
+  height: 120px;
+  width: 210px;
+  position: absolute;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+
+.cloud_1:hover {
+  transition: 200ms;
+  transform: scale(1.1);
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.cloud_2 {
+  height: 110px;
+  width: 200px;
+  position: absolute;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+
+.cloud_2:hover {
+  transition: 200ms;
+  transform: scale(1.1);
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}

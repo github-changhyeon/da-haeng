@@ -25,8 +25,6 @@ export default function Main() {
         .then((res) => {
           if (res.status == 200) {
             console.log('성공');
-            console.log('main/ uid :' + res.data.id);
-            sessionStorage.setItem('uid', res.data.id);
           } else {
             console.log('반만 성공');
           }
