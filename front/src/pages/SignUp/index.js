@@ -15,8 +15,6 @@ export default function SignUp() {
   const [role, setRole] = useState('');
   const [pinCode, setPinCode] = useState(0);
 
-  const [pinValue, setPinValue] = useState(0);
-
   const [loginId, setLoginId] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -40,25 +38,23 @@ export default function SignUp() {
   }, [role]);
 
   function onNext() {
-    setPinCode(0);
+    if (pinCode != 0) {
+      setPinCode(pinCode);
+    }
     $('.checkRole').hide();
     $('.checkInfo').show();
     return;
   }
 
   function onPrev() {
-    if (pinCode === 0) {
-      setPinValue(4);
-    } else {
-      // TODO 내가 입력했던 코드 받아오기
-      setPinValue(555);
-    }
-
     $('.checkRole').show();
     $('.checkInfo').hide();
     return;
   }
 
+  const onPinCodeHandler = (event) => {
+    setPinCode(event.target.value);
+  };
   const onLoginIdHandler = (event) => {
     setLoginId(event.target.value);
   };
@@ -171,6 +167,7 @@ export default function SignUp() {
             pathname: '/login',
           });
           alert('회원가입 성공 !! 경축 !!!');
+          console.log(res);
         } else {
           alert('회원가입 실패 !!');
         }
@@ -265,7 +262,8 @@ export default function SignUp() {
                   id="outlined-search"
                   label="선생님 코드"
                   type="search"
-                  value={pinValue}
+                  onChange={onPinCodeHandler}
+                  // value={pinValue}
                 />
                 {/* <div className={styles.input_container}>
             <div className={styles.pin}>
@@ -299,11 +297,7 @@ export default function SignUp() {
                   </div>
                   <div className={styles.check_role_button}>
                     <ButtonComp
-                      onClickFunc={() => {
-                        history.push({
-                          pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
-                        });
-                      }}
+                      onClickFunc={onNext}
                       text="확인"
                       width="160px"
                       color="#fb9cbb"

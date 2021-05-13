@@ -6,9 +6,6 @@ import { useHistory, generatePath } from 'react-router';
 export default function StepComp({ type, max }) {
   const history = useHistory();
 
-  // TODO uid 진짜로 받아오기
-  const [uid, setUid] = useState(5);
-
   const [thisType, setThisType] = useState('');
   const [thisMax, setThisMax] = useState(0);
 
@@ -53,7 +50,7 @@ export default function StepComp({ type, max }) {
     history.push({
       pathname: generatePath(path, {
         category: thisType,
-        uid: uid,
+        uid: sessionStorage.getItem('uid'),
       }),
       state: { category: thisType },
     });

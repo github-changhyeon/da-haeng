@@ -67,7 +67,7 @@ export default function Header() {
             });
           }}
         >
-          <div className={styles.header_left_button_sign}>
+          <div className={styles.header_left_button_text}>
             광장으로
             <PlayArrowIcon className={styles.header_left_button_icon} />
           </div>
@@ -79,6 +79,17 @@ export default function Header() {
         {!isLogined && (
           <>
             {/* 로그인 버튼 */}
+            <div
+              className={styles.header_right_button_login}
+              onClick={() => {
+                history.push({
+                  pathname: generatePath(RouterInfo.PAGE_URLS.LOGIN),
+                });
+              }}
+            >
+              <div className={styles.header_right_button_login_text}>로그인</div>
+            </div>
+            {/* TODO 해야할까? */}
             {/* 회원가입 버튼 */}
           </>
         )}
