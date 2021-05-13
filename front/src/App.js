@@ -81,7 +81,7 @@ const LoginRouter = () => {
 function App() {
   return (
     <StylesProvider injectFirst>
-      <BackgroundComp color="pink" />
+      <BackgroundComp color="yellow" />
       <AppRouter />
     </StylesProvider>
   );

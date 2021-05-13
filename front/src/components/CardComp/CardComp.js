@@ -121,7 +121,6 @@ export default function CardComp({ type }) {
             history.push({
               pathname: generatePath(path, {
                 category: category,
-                uid: sessionStorage.getItem('uid'),
               }),
               state: { category: category },
             });
