@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { useHistory, generatePath } from 'react-router';
 import RouterInfo from 'src/constants/RouterInfo';
-import ButtonComp from 'src/components/ButtonComp/ButtonComp';
 import TextField from '@material-ui/core/TextField';
 import $ from 'jquery';
 import Typography from '@material-ui/core/Typography';
 import { restApi } from 'src/common/axios/index';
+import ButtonComp from 'src/components/ButtonComp/ButtonComp';
+import BackComp from 'src/components/BackComp/BackComp';
 
 export default function Login() {
   const history = useHistory();
@@ -74,6 +75,7 @@ export default function Login() {
 
   return (
     <div>
+      <BackComp />
       <div className={styles.check_info_container}>
         <div className={styles.check_info_box}>
           <div className={styles.check_info_title}>로그인</div>
@@ -106,22 +108,24 @@ export default function Login() {
             <div className={styles.check_info_buttons}>
               <div className={styles.check_info_button}>
                 <ButtonComp
-                  onClickFunc={() => {
-                    history.go(-1);
-                  }}
-                  text="뒤로가기"
-                  width="160px"
-                  color="#ffc531"
-                  colorDeep="#ca9100"
+                  onClickFunc={onSubmitHandler}
+                  text="로그인"
+                  width="140px"
+                  color="#fb9cbb"
+                  colorDeep="#f73a78"
                 />
               </div>
               <div className={styles.check_info_button}>
                 <ButtonComp
-                  onClickFunc={onSubmitHandler}
-                  text="로그인"
-                  width="160px"
-                  color="#fb9cbb"
-                  colorDeep="#f73a78"
+                  onClickFunc={() => {
+                    history.push({
+                      pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
+                    });
+                  }}
+                  text="회원가입"
+                  width="150px"
+                  color="#cb92fb"
+                  colorDeep="#9152fb"
                 />
               </div>
             </div>

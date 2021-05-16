@@ -48,8 +48,8 @@ const NotLoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.PLAZA} component={Plaza} />
         <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
         <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />
-        {/* <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} /> */}
-        <Route path="*" component={Test3} />
+        <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
+        <Route path="*" component={Loading} />
         <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
       </Switch>
     </Router>
@@ -70,8 +70,8 @@ const LoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.MYPAGE} component={MyPage} />
         <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
         <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />
-        {/* <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} /> */}
-        <Route path="*" component={Test3} />
+        <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
+        <Route path="*" component={Loading} />
         <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
       </Switch>
     </Router>
@@ -81,8 +81,10 @@ const LoginRouter = () => {
 function App() {
   return (
     <StylesProvider injectFirst>
-      <BackgroundComp color="yellow" />
-      <AppRouter />
+      <BackgroundComp color="blue" />
+      <div className="App">
+        <AppRouter />
+      </div>
     </StylesProvider>
   );
 }

@@ -9,7 +9,6 @@
 
 .check_role_title {
   font-size: 60px;
-  font-weight: bold;
   padding-bottom: 20px;
 }
 
@@ -44,7 +43,6 @@
 
 .check_role_text {
   font-size: 40px;
-  font-weight: bold;
 }
 
 .check_role_teacher_code_container {
@@ -59,7 +57,6 @@
 
 .check_role_teacher_code_title {
   font-size: 32px;
-  font-weight: bold;
 }
 
 .input_container {
@@ -106,28 +103,28 @@
 
 .check_info_box {
   background-color: rgba(255, 255, 255, 0.5);
-  width: 1200px;
+  width: 1100px;
   height: 600px;
   border-radius: 50px;
 }
 
 .check_info_title {
   font-size: 50px;
-  font-weight: bold;
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .check_info_blocks {
   display: flex;
-  width: 1200px;
+  width: 1100px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .check_info_block {
-  margin: 20px 30px;
+  margin: 5px 30px;
 }
 
 .check_info_label {

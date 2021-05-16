@@ -4,11 +4,9 @@ import { useHistory } from 'react-router-dom';
 import RouterInfo from 'src/constants/RouterInfo';
 
 export default function Exercise() {
-  const history = useHistory();
-
   return (
     <div>
-      <h1>Exercise page</h1>
+      <h1>hello Exercise</h1>
     </div>
   );
 }

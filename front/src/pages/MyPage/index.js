@@ -69,7 +69,7 @@ export default function MyPage() {
       if (role === 'ROLE_STUDENT') {
         // 학생 도전하기 axios
         instance
-          .get(`/stage/student`, {
+          .get(`/stage`, {
             headers: {
               Authorization: sessionStorage.getItem('jwt'),
             },

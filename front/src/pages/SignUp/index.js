@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import $ from 'jquery';
 import Typography from '@material-ui/core/Typography';
 import { restApi } from 'src/common/axios/index';
+import BackComp from 'src/components/BackComp/BackComp';
 
 export default function SignUp() {
   const history = useHistory();
@@ -43,12 +44,6 @@ export default function SignUp() {
     }
     $('.checkRole').hide();
     $('.checkInfo').show();
-    return;
-  }
-
-  function onPrev() {
-    $('.checkRole').show();
-    $('.checkInfo').hide();
     return;
   }
 
@@ -166,14 +161,18 @@ export default function SignUp() {
           history.push({
             pathname: '/login',
           });
-          alert('회원가입 성공 !! 경축 !!!');
+          alert('회원가입 성공! 반갑습니다!');
           console.log(res);
         } else {
-          alert('회원가입 실패 !!');
+          alert('회원가입에 실패했습니다.');
         }
       })
       .catch((err) => {
-        alert('회원가입 실패');
+        if (err.response.status === 409) {
+          alert('이미 사용 중인 아이디입니다.');
+        } else {
+          alert('회원가입에 실패했습니다.');
+        }
       });
   }
 
@@ -232,6 +231,7 @@ export default function SignUp() {
 
   return (
     <div>
+      <BackComp />
       <article className="checkRole">
         <div className={styles.check_role_container}>
           <div className={styles.check_role_title}>당신은 누구십니까?</div>
@@ -291,17 +291,17 @@ export default function SignUp() {
                       onClickFunc={onNext}
                       text="건너뛰기"
                       width="160px"
-                      color="#ffc531"
-                      colorDeep="#ca9100"
+                      color="#a9c505"
+                      colorDeep="#4d7f36"
                     />
                   </div>
                   <div className={styles.check_role_button}>
                     <ButtonComp
                       onClickFunc={onNext}
-                      text="확인"
+                      text="입력하기"
                       width="160px"
-                      color="#fb9cbb"
-                      colorDeep="#f73a78"
+                      color="#ffaa2b"
+                      colorDeep="#c5670f"
                     />
                   </div>
                 </div>
@@ -328,19 +328,6 @@ export default function SignUp() {
                 />
                 <LoginId style={{ height: '30px', fontSize: '20px' }} />
               </div>
-              {/* 비밀번호 */}
-              <div className={styles.check_info_block}>
-                <div className={styles.check_info_label}>비밀번호</div>
-                <input
-                  className={styles.check_info_input}
-                  id="password"
-                  type="password"
-                  placeholder="비밀번호"
-                  required
-                  onChange={onPasswordHandler}
-                />
-                <Password style={{ height: '30px', fontSize: '20px' }} />
-              </div>
               {/* 이름 */}
               <div className={styles.check_info_block}>
                 <div className={styles.check_info_label}>이름</div>
@@ -353,6 +340,19 @@ export default function SignUp() {
                   onChange={onNameHandler}
                 />
                 <Name style={{ height: '30px', fontSize: '20px' }} />
+              </div>
+              {/* 비밀번호 */}
+              <div className={styles.check_info_block}>
+                <div className={styles.check_info_label}>비밀번호</div>
+                <input
+                  className={styles.check_info_input}
+                  id="password"
+                  type="password"
+                  placeholder="비밀번호"
+                  required
+                  onChange={onPasswordHandler}
+                />
+                <Password style={{ height: '30px', fontSize: '20px' }} />
               </div>
               {/* 비밀번호 확인 */}
               <div className={styles.check_info_block}>
@@ -371,20 +371,24 @@ export default function SignUp() {
               <div className={styles.check_info_buttons}>
                 <div className={styles.check_info_button}>
                   <ButtonComp
-                    onClickFunc={onPrev}
-                    text="뒤로가기"
+                    onClickFunc={onSignUp}
+                    text="회원가입"
                     width="160px"
-                    color="#ffc531"
-                    colorDeep="#ca9100"
+                    color="#cb92fb"
+                    colorDeep="#9152fb"
                   />
                 </div>
                 <div className={styles.check_info_button}>
                   <ButtonComp
-                    onClickFunc={onSignUp}
-                    text="회원가입"
-                    width="160px"
-                    color="#fb9cbb"
-                    colorDeep="#f73a78"
+                    onClickFunc={() => {
+                      history.push({
+                        pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
+                      });
+                    }}
+                    text="홈으로"
+                    width="140px"
+                    color="#ffc531"
+                    colorDeep="#ca9100"
                   />
                 </div>
               </div>

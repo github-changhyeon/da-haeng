@@ -26,7 +26,7 @@
   stroke-width: 2.8;
   stroke-linecap: round;
   animation: progress 1s ease-out forwards;
-  stroke: #4c81c7;
+  stroke: #659ac8;
 }
 
 @keyframes progress {

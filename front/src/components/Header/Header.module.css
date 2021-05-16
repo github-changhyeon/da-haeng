@@ -41,7 +41,6 @@
 
 .header_left_button_text {
   color: white;
-  font-weight: bold;
   font-size: 28px;
   display: flex;
   align-items: center;
@@ -65,11 +64,11 @@
   cursor: pointer;
   width: 140px;
   height: 60px;
-  background: #ffc531;
-  border: 3px #ca9100 solid;
+  background: #fb9cbb;
+  border: 3px #f73a78 solid;
   border-radius: 40px;
   /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
-  box-shadow: 0 10px 0 #ca9100;
+  box-shadow: 0 10px 0 #f73a78;
   transition: all 100ms; /* easeInOutExpo */
   display: flex;
   justify-content: center;
@@ -78,12 +77,11 @@
 
 .header_right_button_login:hover {
   transform: translate(0, 6px);
-  box-shadow: 0 4px 0 #ca9100;
+  box-shadow: 0 4px 0 #f73a78;
 }
 
 .header_right_button_login_text {
   color: white;
-  font-weight: bold;
   font-size: 28px;
   display: flex;
   align-items: center;
