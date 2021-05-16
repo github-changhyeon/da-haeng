@@ -7,7 +7,6 @@
 .cloud_text {
   height: 100%;
   font-size: 2rem;
-  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,10 +14,27 @@
 }
 
 .ch_bus_icon {
-  width: 90px;
+  width: 100px;
   position: absolute;
   left: calc(50% - 90px / 2);
   top: -50%;
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(-15px);
+  }
+  40% {
+    transform: translateY(-45px);
+  }
+  60% {
+    transform: translateY(-30px);
+  }
 }
 
 .cloud_1 {
@@ -27,6 +43,7 @@
   position: absolute;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
   cursor: pointer;
+  animation: cloud-wobble 5s infinite;
 }
 
 .cloud_1:hover {
@@ -35,16 +52,92 @@
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
 }
 
+@keyframes cloud-wobble {
+  0% {
+    transform: translateY(25%) translateX(0%);
+  }
+  25% {
+    transform: translateY(28%) translateX(0%);
+  }
+  50% {
+    transform: translateY(25%) translateX(0%);
+  }
+  75% {
+    transform: translateY(30%) translateX(0%);
+  }
+  100% {
+    transform: translateY(25%) translateX(0%);
+  }
+}
+
 .cloud_2 {
   height: 110px;
   width: 200px;
   position: absolute;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
   cursor: pointer;
+  animation: cloud-wobble 5s infinite;
 }
 
 .cloud_2:hover {
   transition: 200ms;
   transform: scale(1.1);
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* 아래에 그림자 있는 구름 */
+
+.cloud {
+  width: 350px;
+  height: 120px;
+  position: absolute;
+
+  background: #f2f9fe;
+  background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+  background: -webkit-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+  background: -moz-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+  background: -ms-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+  background: -o-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
+
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+
+  position: relative;
+  margin: 120px auto 20px;
+
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.cloud:after,
+.cloud:before {
+  content: '';
+  position: absolute;
+  background: #f2f9fe;
+  z-index: -1;
+}
+
+.cloud:after {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 50px;
+
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+}
+
+.cloud:before {
+  width: 180px;
+  height: 180px;
+  top: -90px;
+  right: 50px;
+
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+}
+
+.cloud:hover {
 }

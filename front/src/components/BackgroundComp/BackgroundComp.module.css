@@ -52,13 +52,13 @@
 }
 
 .background_wrap {
-  bottom: 0;
   left: 0;
   padding-top: 50px;
   position: fixed;
   right: 0;
   top: 0;
   z-index: -1;
+  height: 90vh;
 }
 
 /* KEYFRAMES */
@@ -97,9 +97,9 @@
   -moz-animation: animateCloud 35s linear infinite;
   animation: animateCloud 35s linear infinite;
 
-  -webkit-transform: scale(0.55);
-  -moz-transform: scale(0.55);
-  transform: scale(0.55);
+  -webkit-transform: scale(0.45);
+  -moz-transform: scale(0.45);
+  transform: scale(0.45);
 }
 
 .x2 {
@@ -107,9 +107,9 @@
   -moz-animation: animateCloud 20s linear infinite;
   animation: animateCloud 20s linear infinite;
 
-  -webkit-transform: scale(0.2);
-  -moz-transform: scale(0.2);
-  transform: scale(0.2);
+  -webkit-transform: scale(0.25);
+  -moz-transform: scale(0.25);
+  transform: scale(0.25);
 }
 
 .x3 {
@@ -117,9 +117,9 @@
   -moz-animation: animateCloud 30s linear infinite;
   animation: animateCloud 30s linear infinite;
 
-  -webkit-transform: scale(0.4);
-  -moz-transform: scale(0.4);
-  transform: scale(0.4);
+  -webkit-transform: scale(0.3);
+  -moz-transform: scale(0.3);
+  transform: scale(0.3);
 }
 
 .x4 {
@@ -127,9 +127,9 @@
   -moz-animation: animateCloud 18s linear infinite;
   animation: animateCloud 18s linear infinite;
 
-  -webkit-transform: scale(0.3);
-  -moz-transform: scale(0.3);
-  transform: scale(0.3);
+  -webkit-transform: scale(0.2);
+  -moz-transform: scale(0.2);
+  transform: scale(0.2);
 }
 
 .x5 {
@@ -137,9 +137,21 @@
   -moz-animation: animateCloud 25s linear infinite;
   animation: animateCloud 25s linear infinite;
 
-  -webkit-transform: scale(0.45);
-  -moz-transform: scale(0.45);
-  transform: scale(0.45);
+  -webkit-transform: scale(0.35);
+  -moz-transform: scale(0.35);
+  transform: scale(0.35);
+}
+
+.x6 {
+  -webkit-animation: animateCloud 55s linear infinite;
+  -moz-animation: animateCloud 55s linear infinite;
+  animation: animateCloud 55s linear infinite;
+
+  -webkit-transform: scale(0.35);
+  -moz-transform: scale(0.35);
+  transform: scale(0.35);
+  position: absolute;
+  top: 0;
 }
 
 /* OBJECTS */

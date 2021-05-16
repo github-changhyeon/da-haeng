@@ -1,0 +1,49 @@
+.header {
+  position: absolute;
+  z-index: 50;
+  width: 100vw;
+  height: 100px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center; /* 세로에서 가운데에 요소를 배치 */
+}
+
+.header_left {
+  padding-left: 20px;
+  justify-content: flex-start;
+}
+
+.header_left_button {
+  z-index: 1;
+  cursor: pointer;
+  width: 190px;
+  height: 60px;
+  background: #b9b9b9;
+  border: 3px #666666 solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #666666;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_left_button:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #666666;
+}
+
+.header_left_button_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.header_left_button_icon {
+  width: 40px;
+  height: 40px;
+  color: white;
+}

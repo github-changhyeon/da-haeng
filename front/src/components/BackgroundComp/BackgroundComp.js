@@ -34,6 +34,9 @@ export default function BackgroundComp({ color }) {
             <div className={styles.x5}>
               <div className={styles.cloud}></div>
             </div>
+            <div className={styles.x6}>
+              <div className={styles.cloud}></div>
+            </div>
           </div>
           {/* <div
             className={styles.background_cloud}

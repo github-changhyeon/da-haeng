@@ -3,7 +3,6 @@ import styles from './index.module.css';
 import { useHistory, generatePath } from 'react-router';
 import RouterInfo from 'src/constants/RouterInfo';
 import ButtonComp from 'src/components/ButtonComp/ButtonComp';
-import ButtonSquareComp from 'src/components/ButtonSquareComp/ButtonSquareComp';
 
 export default function Home() {
   const history = useHistory();
@@ -16,7 +15,20 @@ export default function Home() {
         </div>
         <div className={styles.home_buttons}>
           <div className={styles.home_button}>
-            <ButtonSquareComp
+            <ButtonComp
+              onClickFunc={() => {
+                history.push({
+                  pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
+                });
+              }}
+              text="둘러보기"
+              width="150px"
+              color="#ffc531"
+              colorDeep="#ca9100"
+            />
+          </div>
+          <div className={styles.home_button}>
+            <ButtonComp
               onClickFunc={() => {
                 history.push({
                   pathname: generatePath(RouterInfo.PAGE_URLS.LOGIN),
@@ -24,31 +36,18 @@ export default function Home() {
               }}
               text="로그인"
               width="140px"
-              color="#ffc531"
-              colorDeep="#ca9100"
+              color="#fb9cbb"
+              colorDeep="#f73a78"
             />
           </div>
           <div className={styles.home_button}>
-            <ButtonSquareComp
+            <ButtonComp
               onClickFunc={() => {
                 history.push({
                   pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
                 });
               }}
               text="회원가입"
-              width="150px"
-              color="#fb9cbb"
-              colorDeep="#f73a78"
-            />
-          </div>
-          <div className={styles.home_button}>
-            <ButtonSquareComp
-              onClickFunc={() => {
-                history.push({
-                  pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
-                });
-              }}
-              text="둘러보기"
               width="150px"
               color="#cb92fb"
               colorDeep="#9152fb"
