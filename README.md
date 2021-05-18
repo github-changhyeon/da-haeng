@@ -44,7 +44,7 @@
 
 ### 🎮 Etc
 
-![Unity]](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
+![Unity](https://img.shields.io/badge/Unity-2.4.2-000000?Style=flat&logo=Unity&logoColor=ffffff)
 
 
 <br/> <br/>
