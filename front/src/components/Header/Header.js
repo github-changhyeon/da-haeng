@@ -60,8 +60,6 @@ export default function Header() {
             >
               <div className={styles.header_right_button_login_text}>로그인</div>
             </div>
-            {/* TODO 해야할까? */}
-            {/* 회원가입 버튼 */}
           </>
         )}
         {/* 로그인 상태 */}

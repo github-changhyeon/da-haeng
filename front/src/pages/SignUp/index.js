@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './index.module.css';
 import { useHistory, generatePath } from 'react-router';
 import RouterInfo from 'src/constants/RouterInfo';
@@ -21,6 +21,79 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
+  // 선생님 코드
+  const inputRef_1 = useRef(null);
+  const inputRef_2 = useRef(null);
+  const inputRef_3 = useRef(null);
+  const inputRef_4 = useRef(null);
+  const inputRef_5 = useRef(null);
+  const inputRef_6 = useRef(null);
+
+  const onChangeInput_1 = () => {
+    inputRef_2.current.focus();
+  };
+  const onChangeInput_2 = () => {
+    inputRef_3.current.focus();
+  };
+  const onChangeInput_3 = () => {
+    inputRef_4.current.focus();
+  };
+  const onChangeInput_4 = () => {
+    inputRef_5.current.focus();
+  };
+  const onChangeInput_5 = () => {
+    inputRef_6.current.focus();
+  };
+  const onChangeInput_6 = () => {
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input');
+
+    var code = '';
+    for (var i = 0; i < inputs.length; i++) {
+      code += inputs[i].value;
+    }
+
+    if (isNaN(Number(code)) === false && code.length == 6) {
+      setPinCode(Number(code));
+    } else {
+      alert('선생님 코드를 확인해주세요.');
+    }
+  };
+
+  useEffect(() => {
+    console.log('role: ' + role);
+    console.log('pinCode: ' + pinCode);
+  }, [role]);
+
+  function onSkip() {
+    setPinCode(0);
+    $('.checkRole').hide();
+    $('.checkInfo').show();
+    return;
+  }
+
+  function onSubmit() {
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input');
+
+    var code = '';
+    for (var i = 0; i < inputs.length; i++) {
+      code += inputs[i].value;
+    }
+
+    console.log(code);
+
+    if (isNaN(Number(code)) === false && code.length == 6) {
+      setPinCode(Number(code));
+      $('.checkRole').hide();
+      $('.checkInfo').show();
+      return;
+    } else {
+      alert('선생님 코드를 확인해주세요.');
+      return;
+    }
+  }
+
   function onClickStudent() {
     setIsSelectStudent(!isSelectStudent);
     setRole('ROLE_STUDENT');
@@ -29,21 +102,7 @@ export default function SignUp() {
 
   function onClickTeacher() {
     setRole('ROLE_ADMIN');
-    onNext();
-    return;
-  }
-
-  useEffect(() => {
-    console.log('role: ' + role);
-    console.log('pinCode: ' + pinCode);
-  }, [role]);
-
-  function onNext() {
-    if (pinCode != 0) {
-      setPinCode(pinCode);
-    }
-    $('.checkRole').hide();
-    $('.checkInfo').show();
+    onSkip();
     return;
   }
 
@@ -183,52 +242,6 @@ export default function SignUp() {
     }
   };
 
-  // $('styles.ss').on('keyup', function (e) {
-  //   var len = $(this).val().length;
-  //   if (len === 1) {
-  //     $(this).next().trigger('focus').trigger('select');
-  //   } else if (e.key === 'Delete') {
-  //     $(this).prev().trigger('focus').trigger('select');
-  //   } else if (e.key === 46) {
-  //     $(this).prev().trigger('focus').trigger('select');
-  //   }
-  // });
-
-  // function keyUpFunc(e) {
-  //   var len = $(this).val().length;
-  //   if (len === 1) {
-  //     $(this).next().trigger('focus').trigger('select');
-  //   } else if (e.key === 'Delete') {
-  //     $(this).prev().trigger('focus').trigger('select');
-  //   } else if (e.key === 46) {
-  //     $(this).prev().trigger('focus').trigger('select');
-  //   }
-  //   return;
-  // }
-
-  // $('styles.ss').on('click', function (e) {
-  //   $(this).trigger('select');
-  // });
-
-  // var $input = $('styles.ss');
-  // $input.on('keyup', function (e) {
-  //   var max = 1;
-  //   if ($input.val().length > max) {
-  //     $input.val($input.val().substr(0, max));
-  //   }
-  // });
-
-  // $('styles.ss').on('keyup', function () {
-  //   var pw = $(this).val().toString();
-  //   if (pw == '123456') {
-  //     console.log('Hello');
-  //     console.log(pw);
-  //   } else {
-  //     console.log('Hello Failed');
-  //     console.log(pw);
-  //   }
-  // });
-
   return (
     <div>
       <BackComp />
@@ -258,37 +271,62 @@ export default function SignUp() {
                 <div className={styles.check_role_teacher_code_title}>
                   선생님 코드를 입력하세요.
                 </div>
-                <TextField
-                  id="outlined-search"
-                  label="선생님 코드"
-                  type="search"
-                  onChange={onPinCodeHandler}
-                  // value={pinValue}
-                />
-                {/* <div className={styles.input_container}>
-            <div className={styles.pin}>
-                <div className={styles.pin_code_wrapper}>
-                  <input
-                    className={styles.ss}
-                    maxlength="1"
-                    type="tel"
-                    onKeyPress={(e) => {
-                      // if (e.key === '1') console.log('1누름');
-                      keyUpFunc();
-                    }}
-                  />
-                  <input className={styles.ss} maxlength="1" type="tel" />
-                  <input className={styles.ss} maxlength="1" type="tel" />
-                  <input className={styles.ss} maxlength="1" type="tel" />
-                  <input className={styles.ss} maxlength="1" type="tel" />
-                  <input className={styles.ss} maxlength="1" type="tel" />
-                </div>
-              </div>
-            </div> */}
+                <form action="#">
+                  <div onChange={onPinCodeHandler}>
+                    <input
+                      onChange={onChangeInput_1}
+                      ref={inputRef_1}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                    <input
+                      onChange={onChangeInput_2}
+                      ref={inputRef_2}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                    <input
+                      onChange={onChangeInput_3}
+                      ref={inputRef_3}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                    <input
+                      onChange={onChangeInput_4}
+                      ref={inputRef_4}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                    <input
+                      onChange={onChangeInput_5}
+                      ref={inputRef_5}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                    <input
+                      onChange={onChangeInput_6}
+                      ref={inputRef_6}
+                      type="tel"
+                      maxLength="1"
+                      pattern="[0-9]"
+                      className={styles.form_control}
+                    />
+                  </div>
+                </form>
                 <div className={styles.check_role_buttons}>
                   <div className={styles.check_role_button}>
                     <ButtonComp
-                      onClickFunc={onNext}
+                      onClickFunc={onSkip}
                       text="건너뛰기"
                       width="160px"
                       color="#a9c505"
@@ -297,7 +335,7 @@ export default function SignUp() {
                   </div>
                   <div className={styles.check_role_button}>
                     <ButtonComp
-                      onClickFunc={onNext}
+                      onClickFunc={onSubmit}
                       text="입력하기"
                       width="160px"
                       color="#ffaa2b"

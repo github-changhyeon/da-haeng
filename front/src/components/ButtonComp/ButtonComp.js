@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './ButtonComp.module.css';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory, generatePath } from 'react-router';
+import classNames from 'classnames';
 import $ from 'jquery';
 
 export default function ButtonComp({ onClickFunc, text, width, color, colorDeep }) {
@@ -12,7 +13,7 @@ export default function ButtonComp({ onClickFunc, text, width, color, colorDeep 
 
   return (
     <div
-      className={styles.button}
+      className={classNames({ [styles.button]: true, ['button']: true })}
       onClick={onClickFunc}
       style={{
         width: width,

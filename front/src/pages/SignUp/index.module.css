@@ -1,3 +1,8 @@
+input::placeholder {
+  font-family: 'MaplestoryOTFLight';
+  font-size: 35px;
+}
+
 .check_role_container {
   width: 100vw;
   height: 100vh;
@@ -59,28 +64,23 @@
   font-size: 32px;
 }
 
-.input_container {
-  padding: 4vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.input_container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ss {
-  padding: 10px;
-  border: 1px solid #ddd;
-  width: 70px;
-  height: 70px;
+form {
   text-align: center;
-  font-size: 30px;
+  width: 350px;
+  margin-top: 20px;
+}
+
+.form_control {
+  border: 2px black solid;
+  border-radius: 8px;
+  display: inline-block;
+  height: 50px;
+  margin-right: 0.3rem;
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'MaplestoryOTFLight';
+  min-width: 0;
+  max-width: 43px;
 }
 
 .check_role_buttons {

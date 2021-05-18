@@ -45,7 +45,7 @@ export default function BackgroundComp({ color }) {
             }}
           > */}
           {/* TODO 힘숨찐 */}
-          {/* <BirdComp /> */}
+          <BirdComp />
           {/* </div> */}
         </div>
 

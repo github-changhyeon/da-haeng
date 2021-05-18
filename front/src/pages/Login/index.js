@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { restApi } from 'src/common/axios/index';
 import ButtonComp from 'src/components/ButtonComp/ButtonComp';
 import BackComp from 'src/components/BackComp/BackComp';
+import Swal from 'sweetalert2';
 
 export default function Login() {
   const history = useHistory();
@@ -40,7 +41,13 @@ export default function Login() {
           sessionStorage.setItem('jwt', res.headers.authorization);
           console.log(res.headers);
 
-          alert('로그인 성공 !! 추카추 ~!!');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href>Why do I have this issue?</a>',
+          });
+          // alert('로그인 성공 !! 추카추 ~!!');
 
           history.push({
             pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
@@ -86,7 +93,7 @@ export default function Login() {
               className={styles.check_info_input}
               id="loginId"
               type="text"
-              placeholder="아이디"
+              placeholder="아이디를 입력하세요."
               required
               onChange={onLoginIdHandler}
             />
@@ -99,7 +106,7 @@ export default function Login() {
               className={styles.check_info_input}
               id="password"
               type="password"
-              placeholder="비밀번호"
+              placeholder="비밀번호를 입력하세요."
               required
               onChange={onPasswordHandler}
               onKeyPress={onEnterPress}

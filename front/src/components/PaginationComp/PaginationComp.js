@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PaginationComp.module.css';
+import $ from 'jquery';
+import classNames from 'classnames';
 
 export default function PaginationComp({ postsPerPage, totalPosts, paginate }) {
   const pageNumber = [];

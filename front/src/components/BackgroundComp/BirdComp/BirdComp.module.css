@@ -3,7 +3,7 @@
 }
 
 .bird {
-  animation: fly 50s linear infinite;
+  animation: fly 40s linear infinite;
   height: var(--bird-size);
   position: relative;
   width: var(--bird-size);

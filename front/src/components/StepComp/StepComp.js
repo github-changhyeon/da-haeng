@@ -71,7 +71,7 @@ export default function StepComp({ type, max }) {
               <div
                 className={styles.step_each}
                 onClick={onClickPractice}
-                style={{ backgroundColor: '#ff8383' }}
+                style={{ backgroundColor: 'rgba(255, 131, 131, 0.9)' }}
               >
                 {index + 1}
               </div>
