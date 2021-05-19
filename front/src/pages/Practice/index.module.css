@@ -13,10 +13,18 @@
   flex-direction: column;
 }
 
-.ch_bus_icon {
-  width: 100px;
+.ch_burger_icon {
+  width: 110px;
   position: absolute;
-  left: calc(50% - 90px / 2);
+  left: calc(50% - 110px / 2);
+  top: -50%;
+  animation: bounce 1.5s ease infinite;
+}
+
+.ch_bus_icon {
+  width: 150px;
+  position: absolute;
+  left: calc(50% - 150px / 2);
   top: -50%;
   animation: bounce 1.5s ease infinite;
 }
@@ -38,8 +46,8 @@
 }
 
 .cloud_1 {
-  height: 120px;
-  width: 210px;
+  height: 150px;
+  width: 240px;
   position: absolute;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
   cursor: pointer;
@@ -47,6 +55,20 @@
 }
 
 .cloud_1:hover {
+  transition: 200ms;
+  transform: scale(1.1);
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+.cloud_bus {
+  height: 190px;
+  width: 290px;
+  position: absolute;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+  animation: cloud-wobble 5s infinite;
+}
+
+.cloud_bus:hover {
   transition: 200ms;
   transform: scale(1.1);
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));

@@ -84,7 +84,6 @@
 }
 
 .contents {
-  /*TODO 줄바꿈 */
   white-space: pre-wrap; /* \r\n을 줄바꿈으로 변환 */
   color: white;
   font-size: 20px;

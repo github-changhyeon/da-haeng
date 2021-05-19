@@ -17,7 +17,7 @@
 .circle_bg {
   fill: none;
   /* stroke: rgba(190, 190, 190, 0.9); */
-  stroke: #c0c0c0dc;
+  stroke: rgb(211, 211, 211);
   stroke-width: 3.8;
 }
 
@@ -26,7 +26,7 @@
   stroke-width: 2.8;
   stroke-linecap: round;
   animation: progress 1s ease-out forwards;
-  stroke: #659ac8;
+  stroke: rgb(255, 131, 131);
 }
 
 @keyframes progress {

@@ -9,6 +9,8 @@ import ProgressComp from 'src/components/ProgressComp/ProgressComp';
 import StepComp from 'src/components/StepComp/StepComp';
 import PaginationComp from 'src/components/PaginationComp/PaginationComp';
 import $ from 'jquery';
+import classNames from 'classnames';
+import Swal from 'sweetalert2';
 
 export default function MyPage() {
   const history = useHistory();
@@ -55,7 +57,12 @@ export default function MyPage() {
         })
         .catch((err) => {
           console.log(err);
-          alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+          // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+          Swal.fire({
+            icon: 'warning',
+            title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+            text: '잠시 후에 다시 시도해주세요.',
+          });
         });
     } else {
       console.log('mypage/ jwt 토큰 없음 !!');
@@ -86,7 +93,12 @@ export default function MyPage() {
           })
           .catch((err) => {
             console.log(err);
-            alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            Swal.fire({
+              icon: 'warning',
+              title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
           });
       } else if (role === 'ROLE_ADMIN') {
         // 선생님 axios
@@ -110,7 +122,12 @@ export default function MyPage() {
           })
           .catch((err) => {
             console.log(err);
-            alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            Swal.fire({
+              icon: 'warning',
+              title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
           });
       }
     } else {
@@ -123,10 +140,14 @@ export default function MyPage() {
     console.log(now);
     if (now === 'avg') {
       $('.avg').show();
+      $('.tab_avg').css('backgroundColor', 'rgba(255, 183, 58, 0.95)');
       $('.student').hide();
+      $('.tab_student').css('backgroundColor', 'rgba(255, 255, 255, 0.9)');
     } else if (now === 'student') {
       $('.avg').hide();
+      $('.tab_avg').css('backgroundColor', 'rgba(255, 255, 255, 0.9)');
       $('.student').show();
+      $('.tab_student').css('backgroundColor', 'rgba(255, 183, 58, 0.95)');
     }
   }, [now]);
 
@@ -148,8 +169,10 @@ export default function MyPage() {
       {role === 'ROLE_STUDENT' ? (
         // 학생인 경우
         <div>
-          <div className={styles.tab} style={{ marginLeft: '40px' }}>
-            <div className={styles.tab_text}>나의 진척도</div>
+          <div style={{ marginLeft: '40px' }}>
+            <div className={styles.tab}>
+              <div className={styles.tab_text}>나의 진척도</div>
+            </div>
           </div>
           <div className={styles.box}>
             <StepComp type="burger" max={burgerStageResult} />
@@ -160,7 +183,7 @@ export default function MyPage() {
         // 선생님인 경우
         <div>
           <div style={{ marginLeft: '40px' }}>
-            <div className={styles.tab}>
+            <div className={classNames({ [styles.tab]: true, ['tab_avg']: true })}>
               <div
                 className={styles.tab_text}
                 onClick={() => {
@@ -170,7 +193,7 @@ export default function MyPage() {
                 평균 진척도
               </div>
             </div>
-            <div className={styles.tab}>
+            <div className={classNames({ [styles.tab]: true, ['tab_student']: true })}>
               <div
                 className={styles.tab_text}
                 onClick={() => {

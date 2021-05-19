@@ -1,16 +1,18 @@
-import { React, useEffect, useState, useRef } from 'react';
+import { React, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { useHistory } from 'react-router-dom';
 import RouterInfo from 'src/constants/RouterInfo';
 import { restApi } from 'src/common/axios/index';
 import Header from 'src/components/Header/Header';
 import CardComp from 'src/components/CardComp/CardComp';
+import UnityLoader from 'src/components/UnityLoader/UnityLoader';
+import classNames from 'classnames';
+import $ from 'jquery';
+import { TurnedIn } from '@material-ui/icons';
+import Swal from 'sweetalert2';
 
 export default function Main() {
   const history = useHistory();
-  const slideRef = useRef(null);
-
-  const [slide, setSlide] = useState('burger');
 
   useEffect(() => {
     if (sessionStorage.getItem('jwt') != null) {
@@ -25,30 +27,40 @@ export default function Main() {
         .then((res) => {
           if (res.status == 200) {
             console.log('성공');
+            sessionStorage.setItem('uid', res.data.id);
+            sessionStorage.setItem('uname', res.data.name);
           } else {
             console.log('반만 성공');
           }
         })
         .catch((err) => {
           console.log(err);
-          alert('실패!!!!');
+          // alert('실패!!!!');
+          Swal.fire({
+            icon: 'warning',
+            title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+            text: '잠시 후에 다시 시도해주세요.',
+          });
         });
     } else {
       console.log('main/ jwt 토큰 없음 !!');
     }
-  });
+  }, []);
 
-  const onClickBtn = () => {
-    alert('버튼 눌러써?');
-    setSlide('bus');
-    // slideRef.current.style.styles.transition = 'all 0.5s ease-in-out';
-    // slideRef.current.style.styles.transform = 'translateX(-100%)';
+  const onClickNext = () => {
+    $('.main_container').css('transform', 'translateX(-100vw)');
+    $('.main_container').css('transition', 'all 1s ease-in-out');
+  };
+
+  const onClickPrev = () => {
+    $('.main_container').css('transform', 'translateX(0)');
+    $('.main_container').css('transition', 'all 1s ease-in-out');
   };
 
   return (
     <div className={styles.main_background}>
       <Header />
-      <div className={styles.main_container}>
+      <div className={classNames({ [styles.main_container]: true, ['main_container']: true })}>
         <div className={styles.burger_container}>
           <div
             className={styles.burger_image}
@@ -63,9 +75,26 @@ export default function Main() {
               <CardComp type="burger_practice" />
             </div>
           </div>
-          <button onClick={onClickBtn}>다음</button>
+          <div className={styles.next_arrow}>
+            <div
+              className={classNames({
+                [styles.arrow]: true,
+                [styles.bounce]: true,
+              })}
+              onClick={onClickNext}
+            ></div>
+          </div>
         </div>
         <div className={styles.bus_container}>
+          <div className={styles.prev_arrow}>
+            <div
+              className={classNames({
+                [styles.arrow]: true,
+                [styles.bounce]: true,
+              })}
+              onClick={onClickPrev}
+            ></div>
+          </div>
           <div
             className={styles.bus_image}
             style={{

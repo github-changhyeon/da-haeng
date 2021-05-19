@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styles from './StepComp.module.css';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory, generatePath } from 'react-router';
+import { restApi } from 'src/common/axios/index';
+import Swal from 'sweetalert2';
 
 export default function StepComp({ type, max }) {
   const history = useHistory();
+
+  const [role, setRole] = useState('');
 
   const [thisType, setThisType] = useState('');
   const [thisMax, setThisMax] = useState(0);
@@ -17,12 +21,12 @@ export default function StepComp({ type, max }) {
     burger: {
       title: '키오스크',
       totalNum: 5,
-      path: RouterInfo.PAGE_URLS.PRACTICE,
+      path: RouterInfo.PAGE_URLS.STAGES,
     },
     bus: {
       title: '버스',
-      totalNum: 4,
-      path: RouterInfo.PAGE_URLS.PRACTICE,
+      totalNum: 3,
+      path: RouterInfo.PAGE_URLS.STAGES,
     },
   };
 
@@ -48,13 +52,53 @@ export default function StepComp({ type, max }) {
 
   function onClickPractice() {
     history.push({
-      pathname: generatePath(path, {
-        category: thisType,
-      }),
+      pathname: path,
       state: { category: thisType },
     });
     return;
   }
+
+  function onClickStages() {
+    if (role === 'ROLE_STUDENT') {
+      history.push({
+        pathname: path,
+        state: { category: thisType },
+      });
+    }
+    return;
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem('jwt') != null) {
+      const instance = restApi();
+
+      instance
+        .get(`/users`, {
+          headers: {
+            Authorization: sessionStorage.getItem('jwt'),
+          },
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log('성공');
+            setRole(res.data.role);
+          } else {
+            console.log('반만 성공');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          // alert('실패!!!!');
+          Swal.fire({
+            icon: 'warning',
+            title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+            text: '잠시 후에 다시 시도해주세요.',
+          });
+        });
+    } else {
+      console.log('main/ jwt 토큰 없음 !!');
+    }
+  }, []);
 
   return (
     <div className={styles.step}>
@@ -70,8 +114,8 @@ export default function StepComp({ type, max }) {
             return (
               <div
                 className={styles.step_each}
-                onClick={onClickPractice}
-                style={{ backgroundColor: '#ff8383' }}
+                onClick={onClickStages}
+                style={{ backgroundColor: 'rgba(255, 131, 131, 0.9)' }}
               >
                 {index + 1}
               </div>
@@ -81,7 +125,7 @@ export default function StepComp({ type, max }) {
             return (
               <div
                 className={styles.step_each}
-                onClick={onClickPractice}
+                onClick={onClickStages}
                 style={{ backgroundColor: '#ccc' }}
               >
                 {index + 1}
