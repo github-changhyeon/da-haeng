@@ -6,9 +6,17 @@ import UnityLoader from 'src/components/UnityLoader/UnityLoader';
 import { restApi } from 'src/common/axios/index';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router';
+import BackComp from 'src/components/BackComp/BackComp';
+import { useHistory } from 'react-router-dom';
 
 export default function Practice() {
   const location = useLocation();
+
+  const history = useHistory();
+
+  const [receiveResult, setReceiveResult] = useState('');
+  const [nowBurger, setNowBurger] = useState(0);
+  const [nowBus, setNowBus] = useState(0);
 
   const category = location.state.category;
   const stage = location.state.stage;
@@ -42,15 +50,51 @@ export default function Practice() {
       setUid(0);
       setUname('다햄찌');
     }
+
+    const instance = restApi();
+
+    instance
+      .get(`/stage`, {
+        headers: {
+          Authorization: sessionStorage.getItem('jwt'),
+        },
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log('성공');
+          setNowBurger(res.data.burgerStageResult);
+          setNowBus(res.data.busStageResult);
+        } else {
+          console.log('반만 성공');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+        Swal.fire({
+          icon: 'warning',
+          title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+          text: '잠시 후에 다시 시도해주세요.',
+        });
+      });
   }, []);
+
+  useEffect(() => {
+    if (receiveResult === 'success') {
+      // onSuccessHandler();
+      history.go(-1);
+    } else if (receiveResult === 'fail') {
+      history.go(-1);
+    }
+    // console.log(receiveResult);
+  }, [receiveResult]);
 
   const sendJsonData = () => {
     const dataObj = {
       playerName: uname,
       playerID: uid,
       category: category, // burger bus plaza
-      // TODO playType 변경
-      playType: 'challenge', // tutorial exercise practice
+      playType: 'practice', // tutorial exercise practice
       stage: stage,
     };
     // 결과는 string
@@ -74,6 +118,10 @@ export default function Practice() {
     });
 
     setUnityContext(temp);
+
+    temp.on('SendResult', (result) => {
+      setReceiveResult(result);
+    });
   }, []);
 
   useEffect(() => {
@@ -85,6 +133,7 @@ export default function Practice() {
 
   return (
     <div>
+      <BackComp />
       {/* <h1>로딩률 : {progress * 100}</h1> */}
       {progress < 1 ? <UnityLoader percent={progress * 100} here="practice" /> : null}
       {unityContext !== null ? (
