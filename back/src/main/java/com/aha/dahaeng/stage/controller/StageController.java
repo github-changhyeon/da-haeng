@@ -36,8 +36,8 @@ public class StageController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/student")
-    @ApiOperation(value = "마이페이지 정보 조회(학생)")
+    @GetMapping("")
+    @ApiOperation(value = "마이페이지 정보 조회(학생), 도전하기 Stage 현황 불러오기")
     public ResponseEntity<StudentUserResponse> getStudentInfo(@ApiIgnore @CurrentLoginId String loginId){
         StudentUserResponse result = stageService.getStudentInfo(loginId);
         return new ResponseEntity<>(result, HttpStatus.OK);

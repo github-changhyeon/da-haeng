@@ -57,7 +57,7 @@ public class StageService {
             for (User student : students) {
                 StudentUserResponse studentUserResponse = getStudentInfo(student.getLoginId());
 
-                burgerSum += studentUserResponse.getBugerStageResult();
+                burgerSum += studentUserResponse.getBurgerStageResult();
                 busSum += studentUserResponse.getBusStageResult();
 
                 studentUserResponses.add(getStudentInfo(student.getLoginId()));
@@ -108,7 +108,6 @@ public class StageService {
         Long userId = userRepository.findByLoginId(loginId).get().getId();
         Long categoryId = categoryRepository.findByName(stageResultRequest.getCategoryName()).getId();
 
-        //TODO: 해당 카테고리에 맞는 stage update 하기
         CategoryResult categoryResult = categoryResultRepository.findByUserIdAndCategoryId(userId, categoryId);
         categoryResult.setMaxStage(stageResultRequest.getStageNumber());
 
