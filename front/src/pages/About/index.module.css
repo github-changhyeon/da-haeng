@@ -59,12 +59,13 @@
 
 .front {
   font-size: 2rem;
-  background-image: linear-gradient(to right bottom, #2ecc71, #229955);
+  /* background-image: linear-gradient(to right bottom, #2ecc71, #229955); */
+  background-color: rgb(238, 238, 238);
 }
 
 .back {
   font-size: 1.3rem;
-  background-image: linear-gradient(to right bottom, #f1c40f, #e67e22);
+  /* background-image: linear-gradient(to right bottom, #f1c40f, #e67e22); */
 }
 
 .back {
