@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './BusLoader.module.scss';
+import styles from './BusLoader.module.css';
 import classNames from 'classnames';
 
 export default function BusLoader() {
