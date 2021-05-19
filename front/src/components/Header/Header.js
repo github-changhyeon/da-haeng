@@ -100,9 +100,7 @@ export default function Header() {
                   <div
                     className={styles.dropdown_menu}
                     onClick={() => {
-                      history.push({
-                        pathname: generatePath(RouterInfo.PAGE_URLS.MYPAGE, {}),
-                      });
+                      history.push(RouterInfo.PAGE_URLS.ABOUT);
                     }}
                   >
                     <p>
@@ -114,7 +112,12 @@ export default function Header() {
                     </p>
                     <p>이용 방법</p>
                   </div>
-                  <div onClick={onLogoutClick} className={styles.dropdown_menu}>
+                  <div
+                    onClick={() => {
+                      history.push(RouterInfo.PAGE_URLS.AHATECH);
+                    }}
+                    className={styles.dropdown_menu}
+                  >
                     <p>
                       <img
                         src="/images/icons/ahaIcon.png"

@@ -53,8 +53,8 @@ const NotLoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
         <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />
         <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
-        <Route path="*" component={Loading} />
         <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
+        <Route path="*" component={Loading} />
       </Switch>
     </Router>
   );
@@ -76,10 +76,10 @@ const LoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
         <Route path={RouterInfo.PAGE_URLS.TEST2} component={Test2} />
         <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
-        <Route path="*" component={Loading} />
         <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
         <Route path={RouterInfo.PAGE_URLS.ABOUT} component={About} />
         <Route path={RouterInfo.PAGE_URLS.AHATECH} component={Ahatech} />
+        <Route path="*" component={Loading} />
       </Switch>
     </Router>
   );
