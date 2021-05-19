@@ -53,7 +53,7 @@ export default function CardComp({ type }) {
       color: '#F38375',
       colorDeep: '#E56D5D',
       lockable: true,
-      path: RouterInfo.PAGE_URLS.PRACTICE,
+      path: RouterInfo.PAGE_URLS.STAGES,
       category: 'burger',
     },
     bus_tutorial: {
@@ -83,7 +83,7 @@ export default function CardComp({ type }) {
       color: '#F38375',
       colorDeep: '#E56D5D',
       lockable: true,
-      path: RouterInfo.PAGE_URLS.PRACTICE,
+      path: RouterInfo.PAGE_URLS.STAGES,
       category: 'bus',
     },
   };
@@ -119,9 +119,7 @@ export default function CardComp({ type }) {
           className={styles.cover_open}
           onClick={() => {
             history.push({
-              pathname: generatePath(path, {
-                category: category,
-              }),
+              pathname: path,
               state: { category: category },
             });
           }}

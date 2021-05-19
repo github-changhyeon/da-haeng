@@ -8,11 +8,14 @@ const RouterInfo = {
     LOGIN: '/login',
     MAIN: '/main',
     MYPAGE: '/mypage',
-    TUTORIAL: '/tutorial/:category',
-    EXERCISE: '/exercise/:category',
-    PRACTICE: '/practice/:category',
+    TUTORIAL: '/tutorial',
+    EXERCISE: '/exercise',
+    PRACTICE: '/practice',
+    STAGES: '/stages',
     PLAZA: '/plaza',
     SIGNUP: '/signup',
+    ABOUT: '/about',
+    AHATECH: '/ahatech',
   },
 };
 

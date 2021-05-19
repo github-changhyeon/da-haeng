@@ -12,6 +12,7 @@ export default function Home() {
       <div className={styles.home_items}>
         <div className={styles.home_logo}>
           <img className={styles.home_logo_image} src="/images/logo.png" alt="logo" />
+          <img className={styles.home_logo_hz} src="/images/dahamzzi/ch_exercise.png" alt="icon" />
         </div>
         <div className={styles.home_buttons}>
           <div className={styles.home_button}>

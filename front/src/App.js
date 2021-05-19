@@ -4,6 +4,7 @@ import { StylesProvider } from '@material-ui/core/styles';
 import RouterInfo from 'src/constants/RouterInfo';
 import { useHistory } from 'react-router-dom';
 import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
+import $ from 'jquery';
 
 import {
   Test,
@@ -17,9 +18,12 @@ import {
   Tutorial,
   Exercise,
   Practice,
+  Stages,
   Plaza,
   MyPage,
   Loading,
+  About,
+  Ahatech,
 } from './pages';
 import { LaptopWindowsOutlined } from '@material-ui/icons';
 
@@ -66,6 +70,7 @@ const LoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.TUTORIAL} component={Tutorial} />
         <Route path={RouterInfo.PAGE_URLS.EXERCISE} component={Exercise} />
         <Route path={RouterInfo.PAGE_URLS.PRACTICE} component={Practice} />
+        <Route path={RouterInfo.PAGE_URLS.STAGES} component={Stages} />
         <Route path={RouterInfo.PAGE_URLS.PLAZA} component={Plaza} />
         <Route path={RouterInfo.PAGE_URLS.MYPAGE} component={MyPage} />
         <Route path={RouterInfo.PAGE_URLS.TEST} component={Test} />
@@ -73,12 +78,23 @@ const LoginRouter = () => {
         <Route path={RouterInfo.PAGE_URLS.TEST3} component={Test3} />
         <Route path="*" component={Loading} />
         <Route path={RouterInfo.PAGE_URLS.TEST4} component={Test4} />
+        <Route path={RouterInfo.PAGE_URLS.ABOUT} component={About} />
+        <Route path={RouterInfo.PAGE_URLS.AHATECH} component={Ahatech} />
       </Switch>
     </Router>
   );
 };
 
 function App() {
+  useEffect(() => {
+    $('.App').css({
+      cursor: 'url(/images/pointer.png),auto',
+    });
+    // $('.App').css({
+    //   cursor: 'url(https://greghub.github.io/coloron/public/svg/cursor.svg), pointer',
+    // });
+  }, []);
+
   return (
     <StylesProvider injectFirst>
       <BackgroundComp color="blue" />

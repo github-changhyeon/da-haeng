@@ -5,9 +5,11 @@ import RouterInfo from 'src/constants/RouterInfo';
 import { restApi } from 'src/common/axios/index';
 import Header from 'src/components/Header/Header';
 import CardComp from 'src/components/CardComp/CardComp';
+import UnityLoader from 'src/components/UnityLoader/UnityLoader';
 import classNames from 'classnames';
 import $ from 'jquery';
 import { TurnedIn } from '@material-ui/icons';
+import Swal from 'sweetalert2';
 
 export default function Main() {
   const history = useHistory();
@@ -25,18 +27,25 @@ export default function Main() {
         .then((res) => {
           if (res.status == 200) {
             console.log('성공');
+            sessionStorage.setItem('uid', res.data.id);
+            sessionStorage.setItem('uname', res.data.name);
           } else {
             console.log('반만 성공');
           }
         })
         .catch((err) => {
           console.log(err);
-          alert('실패!!!!');
+          // alert('실패!!!!');
+          Swal.fire({
+            icon: 'warning',
+            title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+            text: '잠시 후에 다시 시도해주세요.',
+          });
         });
     } else {
       console.log('main/ jwt 토큰 없음 !!');
     }
-  });
+  }, []);
 
   const onClickNext = () => {
     $('.main_container').css('transform', 'translateX(-100vw)');

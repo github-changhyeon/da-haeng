@@ -41,34 +41,56 @@ export default function Login() {
           sessionStorage.setItem('jwt', res.headers.authorization);
           console.log(res.headers);
 
+          // alert('로그인 성공 !! 추카추 ~!!');
+          Swal.fire({
+            icon: 'success',
+            title: '로그인에 성공했습니다.',
+            text: '반갑다햄!',
+            showConfirmButton: false,
+            timer: 2000,
+          }).then(() => {
+            history.push({
+              pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
+            });
+            window.location.reload();
+            console.log('로그인 리로드~');
+          });
+        } else {
+          // alert('로그인 대 실패 !!');
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-            footer: '<a href>Why do I have this issue?</a>',
+            title: '로그인에 실패했습니다.',
+            showConfirmButton: false,
+            timer: 2000,
           });
-          // alert('로그인 성공 !! 추카추 ~!!');
-
-          history.push({
-            pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
-          });
-
-          window.location.reload();
-          console.log('로그인 리로드~');
-        } else {
-          alert('로그인 대 실패 !!');
         }
       })
       .catch((err) => {
         console.log(err);
         if (loginId === '' && password === '') {
-          alert('아이디와 비밀번호를 입력해 주세요.');
+          // alert('아이디와 비밀번호를 입력해 주세요.');
+          Swal.fire({
+            icon: 'warning',
+            title: '아이디와 비밀번호를 입력해 주세요.',
+          });
         } else if (loginId === '') {
-          alert('아이디를 입력해 주세요.');
+          // alert('아이디를 입력해 주세요.');
+          Swal.fire({
+            icon: 'warning',
+            title: '아이디를 입력해 주세요.',
+          });
         } else if (password === '') {
-          alert('비밀번호를 입력해 주세요.');
+          // alert('비밀번호를 입력해 주세요.');
+          Swal.fire({
+            icon: 'warning',
+            title: '비밀번호를 입력해 주세요.',
+          });
         } else {
-          alert('아이디와 비밀번호가 일치하지 않습니다.');
+          // alert('아이디와 비밀번호가 일치하지 않습니다.');
+          Swal.fire({
+            icon: 'error',
+            title: '아이디와 비밀번호를 확인해주세요.',
+          });
         }
       });
   };

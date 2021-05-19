@@ -10,6 +10,7 @@ import StepComp from 'src/components/StepComp/StepComp';
 import PaginationComp from 'src/components/PaginationComp/PaginationComp';
 import $ from 'jquery';
 import classNames from 'classnames';
+import Swal from 'sweetalert2';
 
 export default function MyPage() {
   const history = useHistory();
@@ -56,7 +57,12 @@ export default function MyPage() {
         })
         .catch((err) => {
           console.log(err);
-          alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+          // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+          Swal.fire({
+            icon: 'warning',
+            title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+            text: '잠시 후에 다시 시도해주세요.',
+          });
         });
     } else {
       console.log('mypage/ jwt 토큰 없음 !!');
@@ -87,7 +93,12 @@ export default function MyPage() {
           })
           .catch((err) => {
             console.log(err);
-            alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            Swal.fire({
+              icon: 'warning',
+              title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
           });
       } else if (role === 'ROLE_ADMIN') {
         // 선생님 axios
@@ -111,7 +122,12 @@ export default function MyPage() {
           })
           .catch((err) => {
             console.log(err);
-            alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            // alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
+            Swal.fire({
+              icon: 'warning',
+              title: '내 정보를 불러오는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
           });
       }
     } else {

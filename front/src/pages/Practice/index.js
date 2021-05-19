@@ -1,163 +1,104 @@
-import { React, useEffect, useState } from 'react';
-import styles from './index.module.css';
-import { useHistory } from 'react-router-dom';
-import RouterInfo from 'src/constants/RouterInfo';
+import { Callbacks } from 'jquery';
+import { React, useState, useEffect } from 'react';
+import Unity, { UnityContext } from 'react-unity-webgl';
+import Loader from 'src/components/Loader/Loader';
+import UnityLoader from 'src/components/UnityLoader/UnityLoader';
 import { restApi } from 'src/common/axios/index';
-import Header from 'src/components/Header/Header';
-import $ from 'jquery';
+import Swal from 'sweetalert2';
+import { useLocation } from 'react-router';
 
 export default function Practice() {
-  const history = useHistory();
+  const location = useLocation();
 
-  const [iconPath, setIconPath] = useState('');
-  const [resultNum, setResultNum] = useState(0);
+  const category = location.state.category;
+  const stage = location.state.stage;
 
+  const [progress, setProgress] = useState(0.0);
+  const [unityContext, setUnityContext] = useState(null);
+
+  const [uid, setUid] = useState(0);
+  const [uname, setUname] = useState('');
+
+  // const [category, setCategory] = useState('');
+  // const [playType, setPlayType] = useState('');
+
+  // const unityContext = new UnityContext({
+  //   loaderUrl: "UnityPlaza/UnityPlaza.loader.js",
+  //   dataUrl: "UnityPlaza/UnityPlaza.data",
+  //   frameworkUrl: "UnityPlaza/UnityPlaza.framework.js",
+  //   codeUrl: "UnityPlaza/UnityPlaza.wasm",
+  // });
+
+  // 기본 정보 받아오기
   useEffect(() => {
-    if (resultNum === 0) {
-      $('.stage_1').show();
-      $('.stage_2').hide();
-      $('.stage_3').hide();
-      $('.stage_4').hide();
-      $('.stage_5').hide();
-    } else if (resultNum === 1) {
-      $('.stage_1').hide();
-      $('.stage_2').show();
-      $('.stage_3').hide();
-      $('.stage_4').hide();
-      $('.stage_5').hide();
-    } else if (resultNum === 2) {
-      $('.stage_1').hide();
-      $('.stage_2').hide();
-      $('.stage_3').show();
-      $('.stage_4').hide();
-      $('.stage_5').hide();
-    } else if (resultNum === 3) {
-      $('.stage_1').hide();
-      $('.stage_2').hide();
-      $('.stage_3').hide();
-      $('.stage_4').show();
-      $('.stage_5').hide();
-    } else if (resultNum === 4 || resultNum === 5) {
-      $('.stage_1').hide();
-      $('.stage_2').hide();
-      $('.stage_3').hide();
-      $('.stage_4').hide();
-      $('.stage_5').show();
-    }
-  }, [resultNum]);
+    // const path = window.location.pathname.split('/').pop();
+    // setCategory(path);
 
-  useEffect(() => {
     if (sessionStorage.getItem('jwt') != null) {
-      const instance = restApi();
-
-      // 도전하기 Stage 현황 불러오기 axios
-      instance
-        .get(`/stage`, {
-          headers: {
-            Authorization: sessionStorage.getItem('jwt'),
-          },
-        })
-        .then((res) => {
-          if (res.status == 200) {
-            console.log('성공');
-            if (window.location.pathname === '/practice/burger') {
-              setResultNum(res.data.burgerStageResult);
-              setIconPath('/images/dahamzzi/ch_burger.png');
-            } else if (window.location.pathname === '/practice/bus') {
-              setResultNum(res.data.busStageResult);
-              setIconPath('/images/dahamzzi/ch_bus.png');
-            }
-          } else {
-            console.log('반만 성공');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          alert('내 정보를 불러오는 중에 오류가 발생했습니다. 잠시 후에 다시 시도해주세요.');
-        });
+      setUid(sessionStorage.getItem('uid'));
+      setUname(sessionStorage.getItem('uname'));
     } else {
-      console.log('mypage/ jwt 토큰 없음 !!');
+      console.log('plaza/ jwt 토큰 없음 !!');
+      setUid(0);
+      setUname('다햄찌');
     }
   }, []);
 
+  const sendJsonData = () => {
+    const dataObj = {
+      playerName: uname,
+      playerID: uid,
+      category: category, // burger bus plaza
+      // TODO playType 변경
+      playType: 'challenge', // tutorial exercise practice
+      stage: stage,
+    };
+    // 결과는 string
+    unityContext.send('PlayInfoObj', 'SetPlayInfo', JSON.stringify(dataObj));
+  };
+
   useEffect(() => {
-    console.log('iconNum: ' + resultNum);
-  }, [resultNum]);
+    // console.log('path');
+    // console.log(category);
+    const temp = new UnityContext({
+      loaderUrl: 'UnityPlaza/test.loader.js',
+      dataUrl: 'UnityPlaza/test.data',
+      frameworkUrl: 'UnityPlaza/test.framework.js',
+      codeUrl: 'UnityPlaza/test.wasm',
+    });
+    // console.log(temp);
+    // console.log('temp 시작 전');
+    temp.on('progress', (progression) => {
+      // alert(progression);
+      setProgress(progression);
+    });
+
+    setUnityContext(temp);
+  }, []);
+
+  useEffect(() => {
+    if (progress !== null && progress >= 1) {
+      // console.log('sendJsonData 시작');
+      sendJsonData();
+    }
+  }, [progress]);
 
   return (
-    <div className={styles.practice_container}>
-      <Header />
-      <div
-        className={styles.cloud_1}
-        style={{
-          background: `url('/images/cloud_1.png') center center`,
-          backgroundSize: '100% 100%',
-          top: '300px',
-          left: '100px',
-        }}
-      >
-        <div className="stage_1">
-          <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
-        </div>
-        <div className={styles.cloud_text}>1</div>
-      </div>
-      <div
-        className={styles.cloud_1}
-        style={{
-          background: `url('/images/cloud_1.png') center center`,
-          backgroundSize: '100% 100%',
-          top: '110px',
-          left: '390px',
-        }}
-      >
-        <div className="stage_2">
-          <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
-        </div>
-        <div className={styles.cloud_text}>2</div>
-      </div>
-      <div
-        className={styles.cloud_1}
-        style={{
-          background: `url('/images/cloud_1.png') center center`,
-          backgroundSize: '100% 100%',
-          top: '420px',
-          left: '630px',
-        }}
-      >
-        <div className="stage_3">
-          <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
-        </div>
-        <div className={styles.cloud_text}>3</div>
-      </div>
-      <div
-        className={styles.cloud_1}
-        style={{
-          background: `url('/images/cloud_1.png') center center`,
-          backgroundSize: '100% 100%',
-          top: '180px',
-          left: '900px',
-        }}
-      >
-        <div className="stage_4">
-          <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
-        </div>
-        <div className={styles.cloud_text}>4</div>
-      </div>
-      {/* <div className={styles.cloud}></div> */}
-      <div
-        className={styles.cloud_1}
-        style={{
-          background: `url('/images/cloud_1.png') center center`,
-          backgroundSize: '100% 100%',
-          top: '340px',
-          left: '1200px',
-        }}
-      >
-        <div className="stage_5">
-          <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
-        </div>
-        <div className={styles.cloud_text}>5</div>
-      </div>
+    <div>
+      {/* <h1>로딩률 : {progress * 100}</h1> */}
+      {progress < 1 ? <UnityLoader percent={progress * 100} here="practice" /> : null}
+      {unityContext !== null ? (
+        <Unity
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            // TODO 커서 바꾸기
+            // cursor: 'url(https://greghub.github.io/coloron/public/svg/cursor-tap.svg), pointer',
+          }}
+          unityContext={unityContext}
+        />
+      ) : null}
     </div>
   );
 }

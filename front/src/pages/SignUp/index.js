@@ -8,6 +8,7 @@ import $ from 'jquery';
 import Typography from '@material-ui/core/Typography';
 import { restApi } from 'src/common/axios/index';
 import BackComp from 'src/components/BackComp/BackComp';
+import Swal from 'sweetalert2';
 
 export default function SignUp() {
   const history = useHistory();
@@ -20,6 +21,11 @@ export default function SignUp() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const [loginIdError, setLoginIdError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordConfirmError, setPasswordConfirmError] = useState(false);
 
   // 선생님 코드
   const inputRef_1 = useRef(null);
@@ -56,7 +62,13 @@ export default function SignUp() {
     if (isNaN(Number(code)) === false && code.length == 6) {
       setPinCode(Number(code));
     } else {
-      alert('선생님 코드를 확인해주세요.');
+      // alert('선생님 코드를 확인해주세요.');
+      Swal.fire({
+        icon: 'warning',
+        title: '선생님 코드를 확인해주세요.',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   };
 
@@ -89,7 +101,13 @@ export default function SignUp() {
       $('.checkInfo').show();
       return;
     } else {
-      alert('선생님 코드를 확인해주세요.');
+      // alert('선생님 코드를 확인해주세요.');
+      Swal.fire({
+        icon: 'warning',
+        title: '선생님 코드를 확인해주세요.',
+        showConfirmButton: false,
+        timer: 2000,
+      });
       return;
     }
   }
@@ -130,8 +148,10 @@ export default function SignUp() {
         return <Typography>&nbsp;</Typography>;
       }
       if (1 > loginId.value.length || loginId.value.length > 10) {
+        setLoginIdError(true);
         return <Typography className={styles.error}>아이디는 10자 이하입니다.</Typography>;
       } else {
+        setLoginIdError(false);
         return <Typography>&nbsp;</Typography>;
       }
     }
@@ -146,8 +166,10 @@ export default function SignUp() {
         return <Typography>&nbsp;</Typography>;
       }
       if (1 > name.value.length || name.value.length > 10) {
+        setNameError(true);
         return <Typography className={styles.error}>이름은 다 적합인뎅?</Typography>;
       } else {
+        setNameError(false);
         return <Typography>&nbsp;</Typography>;
       }
     }
@@ -163,12 +185,14 @@ export default function SignUp() {
         return <Typography>&nbsp;</Typography>;
       }
       if (!reg.test(password.value)) {
+        setPasswordError(true);
         return (
           <Typography className={styles.error} style={{ fontSize: '16px' }}>
             비밀번호는 소문자/숫자 포함 8자 이상, 20자 이하입니다.
           </Typography>
         );
       } else {
+        setPasswordError(false);
         return <Typography>&nbsp;</Typography>;
       }
     }
@@ -184,9 +208,11 @@ export default function SignUp() {
         return <Typography>&nbsp;</Typography>;
       }
       if (password.value === confirm.value) {
+        setPasswordConfirmError(false);
         return <Typography>&nbsp;</Typography>;
       }
       if (password.value !== confirm.value) {
+        setPasswordConfirmError(true);
         return <Typography className={styles.error}>비밀번호가 일치하지 않습니다.</Typography>;
       }
     }
@@ -195,11 +221,31 @@ export default function SignUp() {
 
   async function onSignUp() {
     if (!loginId || !name || !password || !passwordConfirm === true) {
-      alert('모든 입력값을 채워주세요.');
+      // alert('모든 입력값을 채워주세요.');
+      Swal.fire({
+        icon: 'warning',
+        title: '모든 입력값을 채워주세요.',
+      });
       return;
     }
+
     if (password != passwordConfirm) {
-      alert('비밀번호 확인이 일치하지 않습니다.');
+      // alert('비밀번호 확인이 일치하지 않습니다.');
+      Swal.fire({
+        icon: 'error',
+        title: '비밀번호가 일치하지 않습니다.',
+        text: '다시 입력해주세요.',
+      });
+      return;
+    }
+
+    if (loginIdError || nameError || passwordError || passwordConfirmError) {
+      // alert('조건에 적합하지 않은 부분이 있습니다.');
+      Swal.fire({
+        icon: 'error',
+        title: '조건에 적합하지 않은 부분이 있습니다.',
+        text: '입력하신 정보를 다시 확인해주세요.',
+      });
       return;
     }
 
@@ -216,21 +262,46 @@ export default function SignUp() {
     instance
       .post(`/users`, userData)
       .then((res) => {
-        if (res.status == 201) {
+        console.log('여기');
+        console.log(res.status);
+        if (res.status === 201) {
           history.push({
             pathname: '/login',
           });
-          alert('회원가입 성공! 반갑습니다!');
+          // alert('회원가입 성공! 반갑습니다!');
+          Swal.fire({
+            icon: 'success',
+            title: '회원가입에 성공했습니다.',
+            text: '반갑다햄~ 다같이 행복해~!',
+            showConfirmButton: false,
+            timer: 2000,
+          });
           console.log(res);
+          return;
         } else {
-          alert('회원가입에 실패했습니다.');
+          // alert('회원가입에 실패했습니다.');
+          Swal.fire({
+            icon: 'error',
+            title: '회원가입에 실패했습니다.',
+            text: '다시 시도해주세요.',
+          });
         }
       })
       .catch((err) => {
         if (err.response.status === 409) {
-          alert('이미 사용 중인 아이디입니다.');
+          // alert('이미 사용 중인 아이디입니다.');
+          Swal.fire({
+            icon: 'warning',
+            title: '이미 사용 중인 아이디입니다.',
+            text: '다른 아이디를 입력해주세요.',
+          });
         } else {
           alert('회원가입에 실패했습니다.');
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: '회원가입에 실패했습니다.',
+          //   text: '다시 시도해주세요.',
+          // });
         }
       });
   }

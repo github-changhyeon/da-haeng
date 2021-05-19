@@ -13,10 +13,32 @@
 
 .home_logo {
   padding-top: 70px;
+  position: relative;
 }
 
 .home_logo_image {
   width: 750px;
+}
+
+.home_logo_hz {
+  position: absolute;
+  width: 150px;
+  top: 250px;
+  right: 230px;
+
+  animation: rotate 1.5s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
 }
 
 .home_buttons {

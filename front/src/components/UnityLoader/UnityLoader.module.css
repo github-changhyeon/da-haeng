@@ -122,25 +122,16 @@
 
 @keyframes loadMessage {
   0% {
-    content: '광장으로 떠날 준비를 해볼까요?';
+    content: '가상 세상으로 떠날 준비를 해볼까요?';
   }
   30% {
-    content: '광장에서는 많은 친구들을 만날 수 있어요!';
+    content: '광장에서 다양한 체험을 할 수 있어요!';
   }
   50% {
-    content: '광장에서 많은 연습을 해보세요.';
-  }
-  60% {
-    content: '조금만 기다려주세요!';
+    content: '네트워크 환경에 따라 30초 ~ 1분 소요됩니다.';
   }
   80% {
-    content: '잠시 후 광장으로 입장합니다!';
-  }
-  90% {
-    content: '자, 이제 광장으로 떠나볼까요?';
-  }
-  95% {
-    content: '모든 준비가 끝났습니다. 환영합니다!';
+    content: '잠시 후 가상 세상으로 입장합니다!';
   }
 }
 
@@ -171,10 +162,11 @@
 
 .loading_text {
   position: absolute;
-  top: 70px;
+  /* top: 70px; */
+  top: 100px;
 }
 
-span {
+.loading_text span {
   position: relative;
   top: 20px;
   display: inline-block;
@@ -184,39 +176,39 @@ span {
   color: #fff;
 }
 
-span:nth-child(2) {
+.loading_text span:nth-child(2) {
   animation-delay: 0.1s;
 }
 
-span:nth-child(3) {
+.loading_text span:nth-child(3) {
   animation-delay: 0.2s;
 }
 
-span:nth-child(4) {
+.loading_text span:nth-child(4) {
   animation-delay: 0.3s;
 }
 
-span:nth-child(5) {
+.loading_text span:nth-child(5) {
   animation-delay: 0.4s;
 }
 
-span:nth-child(6) {
+.loading_text span:nth-child(6) {
   animation-delay: 0.5s;
 }
 
-span:nth-child(7) {
+.loading_text span:nth-child(7) {
   animation-delay: 0.6s;
 }
 
-span:nth-child(8) {
+.loading_text span:nth-child(8) {
   animation-delay: 0.7s;
 }
 
-span:nth-child(9) {
+.loading_text span:nth-child(9) {
   animation-delay: 0.8s;
 }
 
-span:nth-child(10) {
+.loading_text span:nth-child(10) {
   animation-delay: 0.9s;
 }
 
@@ -225,4 +217,23 @@ span:nth-child(10) {
   100% {
     top: -10px;
   }
+}
+
+.bus_loader_progress {
+  position: absolute;
+  top: 300px;
+  height: 50px;
+  width: 50%;
+}
+
+.bus_loader_progress::after {
+  content: 'Loading...';
+  position: absolute;
+  font-size: 2rem;
+  top: -50px;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  text-align: center;
+  animation: loadMessage 20s linear 0.8s infinite forwards;
 }
