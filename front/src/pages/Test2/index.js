@@ -42,17 +42,17 @@ export default function Test2() {
   useEffect(() => {
     setUnityContext(
       new UnityContext({
-        loaderUrl: 'UnityPlaza/BugerIsPratice3.loader.js',
-        dataUrl: 'UnityPlaza/BugerIsPratice3.data',
-        frameworkUrl: 'UnityPlaza/BugerIsPratice3.framework.js',
-        codeUrl: 'UnityPlaza/BugerIsPratice3.wasm',
+        loaderUrl: 'UnityPlaza/0633.loader.js',
+        dataUrl: 'UnityPlaza/0633.data',
+        frameworkUrl: 'UnityPlaza/0633.framework.js',
+        codeUrl: 'UnityPlaza/0633.wasm',
       })
     );
     const unityContext2 = new UnityContext({
-      loaderUrl: 'UnityPlaza/BugerIsPratice3.loader.js',
-      dataUrl: 'UnityPlaza/BugerIsPratice3.data',
-      frameworkUrl: 'UnityPlaza/BugerIsPratice3.framework.js',
-      codeUrl: 'UnityPlaza/BugerIsPratice3.wasm',
+      loaderUrl: 'UnityPlaza/0633.loader.js',
+      dataUrl: 'UnityPlaza/0633.data',
+      frameworkUrl: 'UnityPlaza/0633.framework.js',
+      codeUrl: 'UnityPlaza/0633.wasm',
     });
 
     unityContext2.on('progress', (progression) => {
