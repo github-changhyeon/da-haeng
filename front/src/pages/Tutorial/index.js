@@ -6,6 +6,7 @@ import UnityLoader from 'src/components/UnityLoader/UnityLoader';
 import { restApi } from 'src/common/axios/index';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router';
+import BackComp from 'src/components/BackComp/BackComp';
 
 export default function Tutorial() {
   const location = useLocation();
@@ -48,7 +49,6 @@ export default function Tutorial() {
       playerName: uname,
       playerID: uid,
       category: category, // burger bus plaza
-      // TODO playType 변경
       playType: 'tutorial', // tutorial exercise practice
       stage: -1,
     };
@@ -84,6 +84,7 @@ export default function Tutorial() {
 
   return (
     <div>
+      <BackComp />
       {/* <h1>로딩률 : {progress * 100}</h1> */}
       {progress < 1 ? <UnityLoader percent={progress * 100} here="tutorial" /> : null}
       {unityContext !== null ? (
