@@ -57,10 +57,10 @@ export default function Plaza() {
 
   useEffect(() => {
     const temp = new UnityContext({
-      loaderUrl: 'UnityPlaza/test.loader.js',
-      dataUrl: 'UnityPlaza/test.data',
-      frameworkUrl: 'UnityPlaza/test.framework.js',
-      codeUrl: 'UnityPlaza/test.wasm',
+      loaderUrl: 'UnityPlaza/BugerIsPratice3.loader.js',
+      dataUrl: 'UnityPlaza/BugerIsPratice3.data',
+      frameworkUrl: 'UnityPlaza/BugerIsPratice3.framework.js',
+      codeUrl: 'UnityPlaza/BugerIsPratice3.wasm',
     });
     temp.on('progress', (progression) => {
       // alert(progression);
