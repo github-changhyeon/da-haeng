@@ -79,12 +79,100 @@ export default function Practice() {
       });
   }, []);
 
+  const onSuccessHandler = () => {
+    const token = sessionStorage.getItem('jwt');
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    if (category === 'burger') {
+      if (nowBurger < stage) {
+        const resultData = {
+          categoryName: 'BURGER',
+          stageNumber: stage,
+        };
+
+        const instance = restApi();
+
+        instance
+          .patch(`/stage`, resultData, config)
+          .then((res) => {
+            // if (res.data.response === 'success') {
+            if (res.status === 200) {
+              alert('결과 저장 성공');
+              history.go(-1);
+            } else {
+              // alert('대 실패 !!');
+              Swal.fire({
+                icon: 'error',
+                title: '잠시 후에 다시 시도해주세요.',
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              history.go(-1);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              icon: 'warning',
+              title: '1. 결과를 저장하는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
+            history.go(-1);
+          });
+      } else {
+        history.go(-1);
+      }
+    } else if (category === 'bus') {
+      if (nowBus < stage) {
+        const resultData = {
+          categoryName: 'BUS',
+          stageNumber: stage,
+        };
+
+        const instance = restApi();
+
+        instance
+          .patch(`/stage`, resultData)
+          .then((res) => {
+            // if (res.data.response === 'success') {
+            if (res.status == 200) {
+              // alert('결과 저장 성공');
+              // history.go(-1);
+            } else {
+              // alert('대 실패 !!');
+              Swal.fire({
+                icon: 'error',
+                title: '잠시 후에 다시 시도해주세요.',
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              history.go(-1);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              icon: 'warning',
+              title: '2. 결과를 저장하는 중에 오류가 발생했습니다.',
+              text: '잠시 후에 다시 시도해주세요.',
+            });
+            history.go(-1);
+          });
+      } else {
+        // history.go(-1);
+      }
+    }
+  };
+
   useEffect(() => {
     if (receiveResult === 'success') {
-      // onSuccessHandler();
-      history.go(-1);
+      onSuccessHandler();
     } else if (receiveResult === 'fail') {
-      history.go(-1);
+      // history.go(-1);
     }
     // console.log(receiveResult);
   }, [receiveResult]);
@@ -118,6 +206,7 @@ export default function Practice() {
     });
 
     setUnityContext(temp);
+    console.log(category);
 
     temp.on('SendResult', (result) => {
       setReceiveResult(result);
