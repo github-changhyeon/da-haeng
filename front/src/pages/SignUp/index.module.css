@@ -14,6 +14,7 @@ input::placeholder {
 
 .check_role_title {
   font-size: 60px;
+  font-weight: bold;
   padding-bottom: 20px;
 }
 
@@ -110,6 +111,7 @@ form {
 
 .check_info_title {
   font-size: 50px;
+  font-weight: bold;
   text-align: center;
   padding-top: 40px;
   padding-bottom: 20px;
@@ -157,4 +159,117 @@ form {
   display: flex;
   justify-content: flex-end;
   font-size: 20px;
+  font-family: 'MaplestoryOTFLight';
+}
+
+.button_skip {
+  z-index: 1;
+  cursor: pointer;
+  width: 160px;
+  height: 60px;
+  background: #a9c505;
+  border: 3px #4d7f36 solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #4d7f36;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_skip:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #4d7f36;
+}
+
+.button_skip_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.button_input {
+  z-index: 1;
+  cursor: pointer;
+  width: 160px;
+  height: 60px;
+  background: #ffaa2b;
+  border: 3px #c5670f solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #c5670f;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_input:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #c5670f;
+}
+
+.button_input_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.button_signup {
+  z-index: 1;
+  cursor: pointer;
+  width: 160px;
+  height: 60px;
+  background: #cb92fb;
+  border: 3px #9152fb solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #9152fb;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_signup:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #9152fb;
+}
+
+.button_signup_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.button_home {
+  z-index: 1;
+  cursor: pointer;
+  width: 140px;
+  height: 60px;
+  background: #ffc531;
+  border: 3px #ca9100 solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #ca9100;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_home:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #ca9100;
+}
+
+.button_home_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
 }

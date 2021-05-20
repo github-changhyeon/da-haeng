@@ -44,11 +44,95 @@
 .home_buttons {
   position: absolute;
   left: -10px;
-  bottom: 80px;
+  bottom: 120px;
   display: flex;
   flex-direction: row;
 }
 
 .home_button {
   padding: 0 8px;
+}
+
+.button_just_arround {
+  z-index: 1;
+  cursor: pointer;
+  width: 150px;
+  height: 60px;
+  background: #ffc531;
+  border: 3px #ca9100 solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #ca9100;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_just_arround:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #ca9100;
+}
+
+.button_just_arround_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.button_login {
+  z-index: 1;
+  cursor: pointer;
+  width: 140px;
+  height: 60px;
+  background: #fb9cbb;
+  border: 3px #f73a78 solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #f73a78;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_login:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #f73a78;
+}
+
+.button_login_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.button_signup {
+  z-index: 1;
+  cursor: pointer;
+  width: 150px;
+  height: 60px;
+  background: #cb92fb;
+  border: 3px #9152fb solid;
+  border-radius: 40px;
+  /* box-shadow: 0 10px 0 darken(#ce89c8, 20%); */
+  box-shadow: 0 10px 0 #9152fb;
+  transition: all 100ms; /* easeInOutExpo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_signup:hover {
+  transform: translate(0, 6px);
+  box-shadow: 0 4px 0 #9152fb;
+}
+
+.button_signup_text {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
 }

@@ -11,6 +11,7 @@ import PaginationComp from 'src/components/PaginationComp/PaginationComp';
 import $ from 'jquery';
 import classNames from 'classnames';
 import Swal from 'sweetalert2';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function MyPage() {
   const history = useHistory();
@@ -84,7 +85,6 @@ export default function MyPage() {
           .then((res) => {
             if (res.status == 200) {
               console.log('성공');
-              // TODO 달미한테 로직 물어보기
               setBurgerStageResult(res.data.burgerStageResult);
               setBusStageResult(res.data.busStageResult);
             } else {
@@ -162,6 +162,7 @@ export default function MyPage() {
 
   return (
     <div className={styles.mypage_background}>
+      <BackgroundComp color="pink" />
       <Header />
       <div className={styles.role}>
         <ProfileComp role={role} name={uname} code={pinCode} />

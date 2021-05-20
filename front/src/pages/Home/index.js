@@ -16,7 +16,17 @@ export default function Home() {
         </div>
         <div className={styles.home_buttons}>
           <div className={styles.home_button}>
-            <ButtonComp
+            <div
+              className={styles.button_just_arround}
+              onClick={() => {
+                history.push({
+                  pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
+                });
+              }}
+            >
+              <div className={styles.button_just_arround_text}>둘러보기</div>
+            </div>
+            {/* <ButtonComp
               onClickFunc={() => {
                 history.push({
                   pathname: generatePath(RouterInfo.PAGE_URLS.MAIN),
@@ -26,10 +36,20 @@ export default function Home() {
               width="150px"
               color="#ffc531"
               colorDeep="#ca9100"
-            />
+            /> */}
           </div>
           <div className={styles.home_button}>
-            <ButtonComp
+            <div
+              className={styles.button_login}
+              onClick={() => {
+                history.push({
+                  pathname: generatePath(RouterInfo.PAGE_URLS.LOGIN),
+                });
+              }}
+            >
+              <div className={styles.button_login_text}>로그인</div>
+            </div>
+            {/* <ButtonComp
               onClickFunc={() => {
                 history.push({
                   pathname: generatePath(RouterInfo.PAGE_URLS.LOGIN),
@@ -39,10 +59,20 @@ export default function Home() {
               width="140px"
               color="#fb9cbb"
               colorDeep="#f73a78"
-            />
+            /> */}
           </div>
           <div className={styles.home_button}>
-            <ButtonComp
+            <div
+              className={styles.button_signup}
+              onClick={() => {
+                history.push({
+                  pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
+                });
+              }}
+            >
+              <div className={styles.button_signup_text}>회원가입</div>
+            </div>
+            {/* <ButtonComp
               onClickFunc={() => {
                 history.push({
                   pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
@@ -52,7 +82,7 @@ export default function Home() {
               width="150px"
               color="#cb92fb"
               colorDeep="#9152fb"
-            />
+            /> */}
           </div>
         </div>
       </div>

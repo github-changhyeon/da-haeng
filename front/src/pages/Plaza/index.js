@@ -6,6 +6,7 @@ import UnityLoader from 'src/components/UnityLoader/UnityLoader';
 import { restApi } from 'src/common/axios/index';
 import Swal from 'sweetalert2';
 import BackComp from 'src/components/BackComp/BackComp';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function Plaza() {
   const [progress, setProgress] = useState(0.0);
@@ -79,6 +80,7 @@ export default function Plaza() {
 
   return (
     <div>
+      <BackgroundComp color="yellow" />
       <BackComp />
       {/* <h1>로딩률 : {progress * 100}</h1> */}
       {progress < 1 ? <UnityLoader percent={progress * 100} here={here} /> : null}

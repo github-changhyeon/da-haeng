@@ -136,16 +136,29 @@ export default function Login() {
             {/* <Password style={{ height: '30px', fontSize: '20px' }} /> */}
             <div className={styles.check_info_buttons}>
               <div className={styles.check_info_button}>
-                <ButtonComp
+                <div className={styles.button_login} onClick={onSubmitHandler}>
+                  <div className={styles.button_login_text}>로그인</div>
+                </div>
+                {/* <ButtonComp
                   onClickFunc={onSubmitHandler}
                   text="로그인"
                   width="140px"
                   color="#fb9cbb"
                   colorDeep="#f73a78"
-                />
+                /> */}
               </div>
               <div className={styles.check_info_button}>
-                <ButtonComp
+                <div
+                  className={styles.button_signup}
+                  onClick={() => {
+                    history.push({
+                      pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
+                    });
+                  }}
+                >
+                  <div className={styles.button_signup_text}>회원가입</div>
+                </div>
+                {/* <ButtonComp
                   onClickFunc={() => {
                     history.push({
                       pathname: generatePath(RouterInfo.PAGE_URLS.SIGNUP),
@@ -155,7 +168,7 @@ export default function Login() {
                   width="150px"
                   color="#cb92fb"
                   colorDeep="#9152fb"
-                />
+                /> */}
               </div>
             </div>
           </div>
