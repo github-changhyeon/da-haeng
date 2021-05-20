@@ -5,6 +5,7 @@ import RouterInfo from 'src/constants/RouterInfo';
 import Header from 'src/components/Header/Header';
 import $ from 'jquery';
 import classNames from 'classnames';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function Ahatech() {
   const history = useHistory();
@@ -25,7 +26,8 @@ export default function Ahatech() {
       imgPath: '/images/aha/aha_2.png',
       title: '김예슬',
       summary: '프론트엔드',
-      contents: '\r\n킬러\r\n\r\n나 지금부터\r\n집중할거니까\r\n말 걸지마\r\n(쫑긋)',
+      contents:
+        '\r\n킬러\r\n\r\n내일은 할 수 있겠어?\r\n그런 마음으로\r\n내일모레는\r\n할 수 있겠어?',
     },
     2: {
       imgPath: '/images/aha/aha_3.png',
@@ -49,6 +51,7 @@ export default function Ahatech() {
 
   return (
     <div className={styles.aha_background}>
+      <BackgroundComp color="pink" />
       <Header />
       <div className={styles.aha_container}>
         <div className={styles.aha_title}>아하텍</div>

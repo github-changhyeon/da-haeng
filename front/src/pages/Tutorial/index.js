@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { useLocation } from 'react-router';
 import BackComp from 'src/components/BackComp/BackComp';
 import { useHistory } from 'react-router-dom';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function Tutorial() {
   const location = useLocation();
@@ -101,6 +102,7 @@ export default function Tutorial() {
 
   return (
     <div>
+      <BackgroundComp color="yellow" />
       <BackComp />
       {/* <h1>로딩률 : {progress * 100}</h1> */}
       {progress < 1 ? <UnityLoader percent={progress * 100} here="tutorial" /> : null}

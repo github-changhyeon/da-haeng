@@ -8,6 +8,7 @@ import Loader from 'src/components/Loader/Loader';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function Stages() {
   const location = useLocation();
@@ -26,50 +27,70 @@ export default function Stages() {
         $('.stage_3').hide();
         $('.stage_4').hide();
         $('.stage_5').hide();
+        $('.gray_2').show();
+        $('.gray_3').show();
+        $('.gray_4').show();
+        $('.gray_5').show();
       } else if (resultNum === 1) {
         $('.stage_1').hide();
         $('.stage_2').show();
         $('.stage_3').hide();
         $('.stage_4').hide();
         $('.stage_5').hide();
+        $('.gray_2').hide();
+        $('.gray_3').show();
+        $('.gray_4').show();
+        $('.gray_5').show();
       } else if (resultNum === 2) {
         $('.stage_1').hide();
         $('.stage_2').hide();
         $('.stage_3').show();
         $('.stage_4').hide();
         $('.stage_5').hide();
+        $('.gray_2').hide();
+        $('.gray_3').hide();
+        $('.gray_4').show();
+        $('.gray_5').show();
       } else if (resultNum === 3) {
         $('.stage_1').hide();
         $('.stage_2').hide();
         $('.stage_3').hide();
         $('.stage_4').show();
         $('.stage_5').hide();
+        $('.gray_2').hide();
+        $('.gray_3').hide();
+        $('.gray_4').hide();
+        $('.gray_5').show();
       } else if (resultNum === 4 || resultNum === 5) {
         $('.stage_1').hide();
         $('.stage_2').hide();
         $('.stage_3').hide();
         $('.stage_4').hide();
         $('.stage_5').show();
+        $('.gray_2').hide();
+        $('.gray_3').hide();
+        $('.gray_4').hide();
+        $('.gray_5').hide();
       }
     } else if (category === 'bus') {
       if (resultNum === 0) {
         $('.stage_1').show();
         $('.stage_2').hide();
         $('.stage_3').hide();
-        $('.stage_4').hide();
-        $('.stage_5').hide();
+        $('.gray_2').show();
+        $('.gray_3').show();
       } else if (resultNum === 1) {
         $('.stage_1').hide();
         $('.stage_2').show();
         $('.stage_3').hide();
-        $('.stage_4').hide();
-        $('.stage_5').hide();
+        $('.gray_2').hide();
+        $('.gray_3').show();
       } else if (resultNum === 2 || resultNum === 3) {
         $('.stage_1').hide();
         $('.stage_2').hide();
         $('.stage_3').show();
-        $('.stage_4').hide();
-        $('.stage_5').hide();
+        $('.gray_2').hide();
+        $('.gray_3').hide();
       }
     }
   }, [resultNum]);
@@ -126,6 +147,7 @@ export default function Stages() {
 
   return (
     <div className={styles.practice_container}>
+      <BackgroundComp color="yellow" />
       <Header />
       {category === null || category === undefined ? <Loader /> : null}
       {category === 'burger' ? (
@@ -147,6 +169,28 @@ export default function Stages() {
             </div>
             <div className={styles.cloud_text}>1</div>
           </div>
+          <div className="gray_2">
+            <div
+              className={styles.cloud_gray}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '90px',
+                left: '380px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>2</div>
+            </div>
+          </div>
           <div
             className={styles.cloud_1}
             style={{
@@ -164,6 +208,28 @@ export default function Stages() {
             </div>
             <div className={styles.cloud_text}>2</div>
           </div>
+          <div className="gray_3">
+            <div
+              className={styles.cloud_gray}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '380px',
+                left: '620px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>3</div>
+            </div>
+          </div>
           <div
             className={styles.cloud_1}
             style={{
@@ -180,6 +246,28 @@ export default function Stages() {
               <img className={styles.ch_burger_icon} src={iconPath} alt="icon" />
             </div>
             <div className={styles.cloud_text}>3</div>
+          </div>
+          <div className="gray_4">
+            <div
+              className={styles.cloud_gray}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '160px',
+                left: '890px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>4</div>
+            </div>
           </div>
           <div
             className={styles.cloud_1}
@@ -199,6 +287,28 @@ export default function Stages() {
             <div className={styles.cloud_text}>4</div>
           </div>
           {/* <div className={styles.cloud}></div> */}
+          <div className="gray_5">
+            <div
+              className={styles.cloud_gray}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '320px',
+                left: '1190px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>5</div>
+            </div>
+          </div>
           <div
             className={styles.cloud_1}
             style={{
@@ -236,6 +346,28 @@ export default function Stages() {
             </div>
             <div className={styles.cloud_text}>1</div>
           </div>
+          <div className="gray_2">
+            <div
+              className={styles.cloud_gray_bus}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '80px',
+                left: '600px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>2</div>
+            </div>
+          </div>
           <div
             className={styles.cloud_bus}
             style={{
@@ -252,6 +384,28 @@ export default function Stages() {
               <img className={styles.ch_bus_icon} src={iconPath} alt="icon" />
             </div>
             <div className={styles.cloud_text}>2</div>
+          </div>
+          <div className="gray_3">
+            <div
+              className={styles.cloud_gray_bus}
+              style={{
+                background: `url('/images/cloud_gray.png') center center`,
+                backgroundSize: '100% 100%',
+                top: '200px',
+                left: '1050px',
+              }}
+              onClick={() => {
+                Swal.fire({
+                  icon: 'info',
+                  title: '아직 도전할 수 없습니다.',
+                  text: '차례대로 도전에 성공해주세요.',
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }}
+            >
+              <div className={styles.cloud_text}>3</div>
+            </div>
           </div>
           <div
             className={styles.cloud_bus}

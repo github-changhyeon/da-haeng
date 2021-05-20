@@ -167,7 +167,7 @@ export default function SignUp() {
       }
       if (1 > name.value.length || name.value.length > 10) {
         setNameError(true);
-        return <Typography className={styles.error}>이름은 다 적합인뎅?</Typography>;
+        return <Typography className={styles.error}>이름은 10자 이하입니다.</Typography>;
       } else {
         setNameError(false);
         return <Typography>&nbsp;</Typography>;
@@ -187,8 +187,8 @@ export default function SignUp() {
       if (!reg.test(password.value)) {
         setPasswordError(true);
         return (
-          <Typography className={styles.error} style={{ fontSize: '16px' }}>
-            비밀번호는 소문자/숫자 포함 8자 이상, 20자 이하입니다.
+          <Typography className={styles.error}>
+            소문자/숫자 포함 8자 이상, 20자 이하입니다.
           </Typography>
         );
       } else {
@@ -396,22 +396,28 @@ export default function SignUp() {
                 </form>
                 <div className={styles.check_role_buttons}>
                   <div className={styles.check_role_button}>
-                    <ButtonComp
+                    <div className={styles.button_skip} onClick={onSkip}>
+                      <div className={styles.button_skip_text}>건너뛰기</div>
+                    </div>
+                    {/* <ButtonComp
                       onClickFunc={onSkip}
                       text="건너뛰기"
                       width="160px"
                       color="#a9c505"
                       colorDeep="#4d7f36"
-                    />
+                    /> */}
                   </div>
                   <div className={styles.check_role_button}>
-                    <ButtonComp
+                    <div className={styles.button_input} onClick={onSubmit}>
+                      <div className={styles.button_input_text}>입력하기</div>
+                    </div>
+                    {/* <ButtonComp
                       onClickFunc={onSubmit}
                       text="입력하기"
                       width="160px"
                       color="#ffaa2b"
                       colorDeep="#c5670f"
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>
@@ -479,16 +485,29 @@ export default function SignUp() {
               </div>
               <div className={styles.check_info_buttons}>
                 <div className={styles.check_info_button}>
-                  <ButtonComp
+                  <div className={styles.button_signup} onClick={onSignUp}>
+                    <div className={styles.button_signup_text}>회원가입</div>
+                  </div>
+                  {/* <ButtonComp
                     onClickFunc={onSignUp}
                     text="회원가입"
                     width="160px"
                     color="#cb92fb"
                     colorDeep="#9152fb"
-                  />
+                  /> */}
                 </div>
                 <div className={styles.check_info_button}>
-                  <ButtonComp
+                  <div
+                    className={styles.button_home}
+                    onClick={() => {
+                      history.push({
+                        pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
+                      });
+                    }}
+                  >
+                    <div className={styles.button_home_text}>홈으로</div>
+                  </div>
+                  {/* <ButtonComp
                     onClickFunc={() => {
                       history.push({
                         pathname: generatePath(RouterInfo.PAGE_URLS.HOME),
@@ -498,7 +517,7 @@ export default function SignUp() {
                     width="140px"
                     color="#ffc531"
                     colorDeep="#ca9100"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

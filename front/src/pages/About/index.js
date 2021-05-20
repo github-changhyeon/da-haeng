@@ -5,6 +5,7 @@ import RouterInfo from 'src/constants/RouterInfo';
 import Header from 'src/components/Header/Header';
 import $ from 'jquery';
 import classNames from 'classnames';
+import BackgroundComp from 'src/components/BackgroundComp/BackgroundComp';
 
 export default function About() {
   const history = useHistory();
@@ -54,6 +55,7 @@ export default function About() {
 
   return (
     <div className={styles.about_background}>
+      <BackgroundComp color="pink" />
       <Header />
       <div className={styles.about_container}>
         <div className={styles.about_title}>이용 방법</div>

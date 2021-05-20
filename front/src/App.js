@@ -41,8 +41,6 @@ const AppRouter = () => {
 const NotLoginRouter = () => {
   return (
     <Router>
-      {/* TODO 배경 color 다르게 주고싶어 */}
-      {/* <BackgroundComp color="blue" /> */}
       <Switch>
         <Route exact path={RouterInfo.PAGE_URLS.HOME} component={Home} />
         <Route path={RouterInfo.PAGE_URLS.LOGIN} component={Login} />
@@ -63,8 +61,6 @@ const NotLoginRouter = () => {
 const LoginRouter = () => {
   return (
     <Router>
-      {/* TODO 배경 color 다르게 주고싶어 */}
-      {/* <BackgroundComp color="blue" /> */}
       <Switch>
         <Route path={RouterInfo.PAGE_URLS.MAIN} component={Main} />
         <Route path={RouterInfo.PAGE_URLS.TUTORIAL} component={Tutorial} />
