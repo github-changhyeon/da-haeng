@@ -16,34 +16,34 @@ export default function Ahatech() {
 
   const lists = {
     0: {
-      imgPath: '/images/circle/circle_1.png',
+      imgPath: '/images/aha/aha_1.png',
       title: '이주희',
       summary: '인프라\r\n백엔드\r\n유니티',
-      contents: '\r\n머장님',
+      contents: '\r\n머장님\r\n\r\n얘들아...\r\n우리 좀\r\n하는 것 같아...',
     },
     1: {
-      imgPath: '/images/circle/circle_2.png',
+      imgPath: '/images/aha/aha_2.png',
       title: '김예슬',
       summary: '프론트엔드',
-      contents: '\r\n킬러',
+      contents: '\r\n킬러\r\n\r\n나 지금부터\r\n집중할거니까\r\n말 걸지마\r\n(쫑긋)',
     },
     2: {
-      imgPath: '/images/circle/circle_3.png',
+      imgPath: '/images/aha/aha_3.png',
       title: '김창현',
       summary: '유니티',
-      contents: '\r\n귀염둥이',
+      contents: '\r\n귀염둥이\r\n\r\n내가 이렇게\r\n코드를 잘 짠다고?',
     },
     3: {
-      imgPath: '/images/circle/circle_4.png',
+      imgPath: '/images/aha/aha_4.png',
       title: '박수빈',
       summary: '백엔드\r\n유니티',
-      contents: '\r\n캔디',
+      contents: '\r\n캔디\r\n\r\n두려워하지 마,\r\n닥치면 다 해!',
     },
     4: {
-      imgPath: '/images/circle/circle_5.png',
+      imgPath: '/images/aha/aha_5.png',
       title: '백민주',
       summary: '유니티',
-      contents: '\r\n얼음 공주',
+      contents: '\r\n얼음 공주\r\n\r\n언니 오빠의 말씀을\r\n잘 듣겠습니다.',
     },
   };
 

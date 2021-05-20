@@ -20,7 +20,7 @@ export default function About() {
       title: '서비스 소개',
       summary: '온라인 지역사회 중심\r\n교수 플랫폼입니다.',
       contents:
-        '\r\n지역사회 중심 교수란?\r\n발달장애 학생들을\r\n위한 교육과정의 하나\r\n\r\n지역사회 환경에서\r\n활동할 때 필요한\r\n기술들을 실제 환경에서 직접 교수하는 것입니다.',
+        '\r\n지역사회 중심 교수란?\r\n발달장애 학생들을\r\n위한 교육과정의 하나\r\n\r\n지역사회 환경에서\r\n활동할 때 필요한\r\n기술들을 실제 환경에서\r\n직접 교수하는 것입니다.',
     },
     1: {
       imgPath: '/images/circle/circle_2.png',

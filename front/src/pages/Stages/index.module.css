@@ -49,6 +49,7 @@
   height: 150px;
   width: 240px;
   position: absolute;
+  /* background-color: linear-gradient(to right bottom, rgb(218, 218, 218), rgb(255, 207, 144)); */
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
   cursor: pointer;
   animation: cloud-wobble 5s infinite;
@@ -92,21 +93,6 @@
   }
 }
 
-.cloud_2 {
-  height: 110px;
-  width: 200px;
-  position: absolute;
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
-  animation: cloud-wobble 5s infinite;
-}
-
-.cloud_2:hover {
-  transition: 200ms;
-  transform: scale(1.1);
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
-}
-
 /* 아래에 그림자 있는 구름 */
 
 .cloud {
@@ -129,6 +115,8 @@
   margin: 120px auto 20px;
 
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+
+  animation: cloud-wobble 5s infinite;
 }
 
 .cloud:after,
@@ -159,7 +147,4 @@
   border-radius: 200px;
   -webkit-border-radius: 200px;
   -moz-border-radius: 200px;
-}
-
-.cloud:hover {
 }
