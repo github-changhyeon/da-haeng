@@ -46,7 +46,7 @@
 
 ## **🏰 아키테쳐**
 
-![architecture](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/architecture.png)
+![architecture](README.assets/architecture.png)
 
 <br/>
 
@@ -75,11 +75,11 @@
 
 * 이용방법 설명
 
-  ![howToUse](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/howToUse.gif)
+  ![howToUse](README.assets/howToUse.gif)
 
 - 캐릭터를 선택해 가상세계로 입장
 
-![choice_char](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/choice_char.gif)
+![choice_char](README.assets/choice_char.gif)
 
 
 
@@ -87,19 +87,19 @@
 
   - 튜토리얼
 
-    ![burger_tutorial](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_tutorial.gif)
+    ![burger_tutorial](README.assets/burger_tutorial.gif)
 
     
 
   - 연습하기
 
-  ![burger_exercise](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_exercise.gif)
+  ![burger_exercise](README.assets/burger_exercise.gif)
 
   
 
   - 도전하기
 
-  ![burger_practice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_practice.gif)
+  ![burger_practice](README.assets/burger_practice.gif)
 
   
 
@@ -107,29 +107,29 @@
 
   - 튜토리얼
 
-  ![bus_tutorial](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_tutorial.gif)
+  ![bus_tutorial](README.assets/bus_tutorial.gif)
 
   
 
   - 연습하기
 
-  ![bus_exercise](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_exercise.gif)
+  ![bus_exercise](README.assets/bus_exercise.gif)
 
   
 
   - 도전하기
 
-  ![bus_practice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_practice.gif)
+  ![bus_practice](README.assets/bus_practice.gif)
 
   
 
 - 광장 이용 시뮬레이션을 제공
 
-  ![plaza_scene](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/plaza_scene.gif)
+  ![plaza_scene](README.assets/plaza_scene.gif)
 
   * 광장 시뮬레이션_멀티플레이
 
-    ### 			![plaza_muti](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/plaza_muti.gif)
+    ![plaza_muti](README.assets/plaza_muti.gif)
 
     
 
@@ -137,29 +137,29 @@
 
 * 회원가입
 
-  ![signup_choice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup_choice.png)
+  ![signup_choice](README.assets/signup_choice.png)
 
   
 
   * 학생_담당선생님 코드 입력 (생략 가능)
 
-  ![signup_input](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup_input.png)
+  ![signup_input](README.assets/signup_input.png)
 
   
 
   * 선생님 / 학생
 
-  ![signup](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup.png)
+  ![signup](README.assets/signup.png)
 
   
 
 * 로그인
 
-  ![login](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/login.png)
+  ![login](README.assets/login.png)
 
 * 마이 페이지에서 자신의 진척도를 조회 가능 
 
-  ![mypage_student](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_student.png)
+  ![mypage_student](README.assets/mypage_student.png)
 
   
 
@@ -167,13 +167,13 @@
 
 - 학생들의 평균 진척도 조회 가능
 
-  ![mypage_teacher1](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_teacher1.png)
+  ![mypage_teacher1](README.assets/mypage_teacher1.png)
 
   
 
 - 학생 개인의 과제 수행 진척도를 통해 개인 맞춤형 학습을 제공할 수 있도록 함
 
-  ![mypage_teacher2](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_teacher2.png)
+  ![mypage_teacher2](README.assets/mypage_teacher2.png)
 
 <br/> <br/>
 <br/> <br/>
@@ -285,25 +285,25 @@ j         ava -jar {생성된jar파일이름}
 
 * File/BuildSetting 열기
 
-![buildSetting](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/buildSetting.png)
+![buildSetting](README.assets/buildSetting.png)
 
 * Player Settings를 눌러 Compression Format을 Disabled로 설정한다.
 
-![playerSettings](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/playerSettings.png)
+![playerSettings](README.assets/playerSettings.png)
 
-![playerSettings1](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/playerSettings1.png)
+![playerSettings1](README.assets/playerSettings1.png)
 
 * Player Settings 설정 후 Build를 누르면 Build 된다.
 
-![build](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build.png)
+![build](README.assets/build.png)
 
 * 파일명을 쓰고 저장
 
-![build2](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build2.png)
+![build2](README.assets/build2.png)
 
 * 빌드
 
-![build3](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build3.png)
+![build3](README.assets/build3.png)
 
 <br>
 
@@ -316,3 +316,4 @@ j         ava -jar {생성된jar파일이름}
 | Low Floor Bus                             | 버스 외부, 내부        | https://assetstore.unity.com/packages/3d/vehicles/low-floor-bus-192605 |
 | Bus Stop Modern4                          | 버스 정류장            | https://assetstore.unity.com/packages/3d/environments/urban/bus-stop-modern4-108906 |
 | Fastfood interior                         | 패스트 푸드점 인테리어 | https://assetstore.unity.com/packages/3d/environments/urban/fastfood-interior-155298 |
+
