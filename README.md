@@ -1,3 +1,5 @@
+
+
 ![index](README.assets/index.jpg)
 
 ## 🚌 다행 (다같이 행복행)
@@ -28,8 +30,25 @@
 | Profile  | ![p1](README.assets/p1.jpg) | ![p2](README.assets/p2.jpg) | ![p3](README.assets/p3.jpg) | ![p4](README.assets/p4.jpg) | ![p5](README.assets/p5.jpg) |
 | Position | 팀장<br />백엔드 | 프론트엔드 | 프론트엔드 | 백엔드 | 프론트엔드 |
 
-
 <br/> <br/>
+
+## **📖 목차**
+
+* [아키테쳐](#아키테쳐)
+* [기술스택](#기술스택)
+* [주요기능](#주요기능)
+* [와이어프레임](#와이어프레임)
+* [사용방법](#사용방법)
+* [Build 방법](#Build 방법)
+* [에셋 사용](#에셋 사용)
+
+
+
+## **🏰 아키테쳐**
+
+![architecture](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/architecture.png)
+
+<br/>
 
 
 ## 🔧 기술 스택
@@ -54,21 +73,107 @@
 
 ### 가상 체험학습
 
+* 이용방법 설명
+
+  ![howToUse](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/howToUse.gif)
+
+- 캐릭터를 선택해 가상세계로 입장
+
+![choice_char](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/choice_char.gif)
+
+
+
 - 실제와 비슷한 키오스크 체험 환경을 제공
+
+  - 튜토리얼
+
+    ![burger_tutorial](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_tutorial.gif)
+
+    
+
+  - 연습하기
+
+  ![burger_exercise](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_exercise.gif)
+
+  
+
+  - 도전하기
+
+  ![burger_practice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/burger_practice.gif)
+
+  
+
 - 버스 이용 시뮬레이션을 제공
+
+  - 튜토리얼
+
+  ![bus_tutorial](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_tutorial.gif)
+
+  
+
+  - 연습하기
+
+  ![bus_exercise](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_exercise.gif)
+
+  
+
+  - 도전하기
+
+  ![bus_practice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/bus_practice.gif)
+
+  
+
+- 광장 이용 시뮬레이션을 제공
+
+  ![plaza_scene](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/plaza_scene.gif)
+
+  * 광장 시뮬레이션_멀티플레이
+
+    ### 			![plaza_muti](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/plaza_muti.gif)
+
+    
 
 ### 회원 
 
-- 마이 페이지에서 자신의 진척도를 조회 가능 
+* 회원가입
+
+  ![signup_choice](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup_choice.png)
+
+  
+
+  * 학생_담당선생님 코드 입력 (생략 가능)
+
+  ![signup_input](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup_input.png)
+
+  
+
+  * 선생님 / 학생
+
+  ![signup](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/signup.png)
+
+  
+
+* 로그인
+
+  ![login](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/login.png)
+
+* 마이 페이지에서 자신의 진척도를 조회 가능 
+
+  ![mypage_student](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_student.png)
+
+  
 
 ### 학생 관리 (선생님용)
 
 - 학생들의 평균 진척도 조회 가능
 
-- 학생 개인의 과제 수행 진척도를 통해 개인 맞춤형 학습을 제공할 수 있도록 함
+  ![mypage_teacher1](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_teacher1.png)
 
   
 
+- 학생 개인의 과제 수행 진척도를 통해 개인 맞춤형 학습을 제공할 수 있도록 함
+
+  ![mypage_teacher2](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/mypage_teacher2.png)
 
 <br/> <br/>
 <br/> <br/>
@@ -171,10 +276,43 @@ npm run start
 ```bash
 cd ./backend
 gradlew clean build
-java -jar {생성된jar파일이름}
+j         ava -jar {생성된jar파일이름}
 ```
 
 
 
+## Unity Build 방법
 
+* File/BuildSetting 열기
 
+![buildSetting](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/buildSetting.png)
+
+* Player Settings를 눌러 Compression Format을 Disabled로 설정한다.
+
+![playerSettings](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/playerSettings.png)
+
+![playerSettings1](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/playerSettings1.png)
+
+* Player Settings 설정 후 Build를 누르면 Build 된다.
+
+![build](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build.png)
+
+* 파일명을 쓰고 저장
+
+![build2](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build2.png)
+
+* 빌드
+
+![build3](/Users/baikminju/Desktop/ssafy_pjt/DaHaeng/README.assets/build3.png)
+
+<br>
+
+## 에셋 사용
+
+| 에셋 이름                                 | 활용 내용              | 링크                                                         |
+| ----------------------------------------- | ---------------------- | ------------------------------------------------------------ |
+| City park                                 | 광장                   | https://assetstore.unity.com/packages/3d/environments/city-park-152068 |
+| Cartoon Cafeterias And Restaurants Volume | 버스도로               | https://assetstore.unity.com/packages/3d/environments/urban/cartoon-cafeterias-and-restaurants-volume-1-168804 |
+| Low Floor Bus                             | 버스 외부, 내부        | https://assetstore.unity.com/packages/3d/vehicles/low-floor-bus-192605 |
+| Bus Stop Modern4                          | 버스 정류장            | https://assetstore.unity.com/packages/3d/environments/urban/bus-stop-modern4-108906 |
+| Fastfood interior                         | 패스트 푸드점 인테리어 | https://assetstore.unity.com/packages/3d/environments/urban/fastfood-interior-155298 |
