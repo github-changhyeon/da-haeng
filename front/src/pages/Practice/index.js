@@ -18,6 +18,8 @@ export default function Practice() {
   const [nowBurger, setNowBurger] = useState(0);
   const [nowBus, setNowBus] = useState(0);
 
+  const [whenClose, setWhenClose] = useState('');
+
   const category = location.state.category;
   const stage = location.state.stage;
 
@@ -102,7 +104,6 @@ export default function Practice() {
             // if (res.data.response === 'success') {
             if (res.status === 200) {
               // alert('결과 저장 성공');
-              history.go(-1);
             } else {
               // alert('대 실패 !!');
               Swal.fire({
@@ -121,7 +122,6 @@ export default function Practice() {
               title: '1. 결과를 저장하는 중에 오류가 발생했습니다.',
               text: '잠시 후에 다시 시도해주세요.',
             });
-            history.go(-1);
           });
       } else {
         history.go(-1);
@@ -163,7 +163,7 @@ export default function Practice() {
             history.go(-1);
           });
       } else {
-        // history.go(-1);
+        history.go(-1);
       }
     }
   };
@@ -176,6 +176,12 @@ export default function Practice() {
     }
     // console.log(receiveResult);
   }, [receiveResult]);
+
+  useEffect(() => {
+    if (whenClose === 'close') {
+      history.go(-1);
+    }
+  }, [whenClose]);
 
   const sendJsonData = () => {
     const dataObj = {
@@ -209,7 +215,11 @@ export default function Practice() {
     console.log(category);
 
     temp.on('SendResult', (result) => {
-      setReceiveResult(result);
+      if (result === 'success' || result === 'fail') {
+        setReceiveResult(result);
+      } else if (result === 'close') {
+        setWhenClose(result);
+      }
     });
   }, []);
 
