@@ -7,11 +7,16 @@ import { restApi } from 'src/common/axios/index';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router';
 import BackComp from 'src/components/BackComp/BackComp';
+import { useHistory } from 'react-router-dom';
 
 export default function Tutorial() {
   const location = useLocation();
 
+  const history = useHistory();
+
   const category = location.state.category;
+
+  const [whenClose, setWhenClose] = useState('');
 
   const [progress, setProgress] = useState(0.0);
   const [unityContext, setUnityContext] = useState(null);
@@ -73,7 +78,19 @@ export default function Tutorial() {
     });
 
     setUnityContext(temp);
+
+    temp.on('SendResult', (result) => {
+      if (result === 'close') {
+        setWhenClose(result);
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    if (whenClose === 'close') {
+      history.go(-1);
+    }
+  }, [whenClose]);
 
   useEffect(() => {
     if (progress !== null && progress >= 1) {
