@@ -17,6 +17,7 @@
 .about_title {
   text-align: center;
   font-size: 3.5rem;
+  font-weight: bold;
 }
 
 .about_cards {
@@ -61,14 +62,14 @@
 
 .front {
   font-size: 2rem;
+  font-weight: bold;
   /* background-image: linear-gradient(to right bottom, #2ecc71, #229955); */
   background-color: #eee;
 }
 
 .back {
   font-size: 1.3rem;
-  /* background-image: linear-gradient(to right bottom, #f1c40f, #e67e22); */
-  background-color: #eee;
+  background-image: linear-gradient(to right bottom, rgb(218, 218, 218), rgb(255, 207, 144));
 }
 
 .back {

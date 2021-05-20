@@ -101,7 +101,7 @@ export default function Practice() {
           .then((res) => {
             // if (res.data.response === 'success') {
             if (res.status === 200) {
-              alert('결과 저장 성공');
+              // alert('결과 저장 성공');
               history.go(-1);
             } else {
               // alert('대 실패 !!');
@@ -136,7 +136,7 @@ export default function Practice() {
         const instance = restApi();
 
         instance
-          .patch(`/stage`, resultData)
+          .patch(`/stage`, resultData, config)
           .then((res) => {
             // if (res.data.response === 'success') {
             if (res.status == 200) {
