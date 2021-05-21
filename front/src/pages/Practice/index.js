@@ -125,7 +125,7 @@ export default function Practice() {
             });
           });
       } else {
-        history.go(-1);
+        // history.go(-1);
       }
     } else if (category === 'bus') {
       if (nowBus < stage) {
@@ -164,7 +164,7 @@ export default function Practice() {
             history.go(-1);
           });
       } else {
-        history.go(-1);
+        // history.go(-1);
       }
     }
   };
