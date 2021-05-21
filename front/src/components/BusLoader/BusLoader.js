@@ -42,6 +42,35 @@ export default function BusLoader() {
           </div>
           <div className={styles.love_front}></div>
           <div className={styles.love_back}></div>
+          <div className={styles.key_container}>
+            <div className={styles.dir_container}>
+              <img
+                src="/images/key_dir.png"
+                alt="방향"
+                style={{ width: '250px', height: 'auto', paddingBottom: '15px' }}
+              />
+              <div className={styles.dir_text}>캐릭터 조종은</div>
+              <div className={styles.dir_text}>키보드 방향키로 가능합니다.</div>
+            </div>
+            <div className={styles.short_keys}>
+              <div className={styles.shift_container}>
+                <img
+                  src="/images/key_shift.png"
+                  alt="달리기"
+                  style={{ width: '150px', height: 'auto', paddingBottom: '15px' }}
+                />
+                <div className={styles.shift_text}>쉬프트 버튼으로 달리기 할 수 있습니다.</div>
+              </div>
+              <div className={styles.space_container}>
+                <img
+                  src="/images/key_space.png"
+                  alt="점프"
+                  style={{ width: '200px', height: 'auto', paddingBottom: '15px' }}
+                />
+                <div className={styles.space_text}>스페이스 바로 점프할 수 있습니다.</div>
+              </div>
+            </div>
+          </div>
           <div className={styles.vehicle_body}>
             <div className={styles.wrap_body}>
               <div className={classNames({ [styles.rooftop]: true, [styles.back]: true })}></div>
