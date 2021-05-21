@@ -259,7 +259,7 @@ public class JwtProperties {
 
 #### 유니티 빌드 파일 다운로드
 - [공유 폴더](https://drive.google.com/drive/folders/1KrOgqr52mz8aaN7NaVobPifzV475_ISc?usp=sharing)에서 다운받으셔야 합니다
-- 다운받은 파일을 `/front/public/unitybuild/` 밑에 넣어줍니다. 
+- 다운받은 파일을 `/front/public/UnityPlaza/` 밑에 넣어줍니다. 
 
 <br>
 
